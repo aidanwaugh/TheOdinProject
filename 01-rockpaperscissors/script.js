@@ -1,100 +1,83 @@
-let compOptions = ["rock", "paper", "scissors"];
-
-let round = 0;
-let playerWin = 0;
+//game variables
+let totalGameRound = 5;
+let gameRound = 0;
 let computerWin = 0;
-let sign = "";
+let playerWin = 0;
 
-game();
+//user stuff
+let userPrompt = "";
+let playerRPS;
 
+//computer stuff
+let compOptions = ["rock", "paper", "scissors"];
 function computerPlay() {
   return compOptions[Math.floor(Math.random() * 3)];
 }
+// let computerRPS = computerPlay();
+let computerRPS;
+function setup() {
+  computerRPS = computerPlay();
+  userPrompt = window.prompt("rock, paper, scissors");
+  playerRPS = userPrompt.toLowerCase();
+  console.log(`playerRPS:${playerRPS} computerRPS:${computerRPS}`);
+}
 
-let playerSelection = sign.toLowerCase();
-let computerSelection = computerPlay();
-
-function roundPlay(playerSelection, computerSelection) {
-  //retrun string of game result
-  let msg = "";
-  if (playerSelection == "rock" && computerSelection == "rock") {
-    round++;
-    console.log(`Tie game. 2 Rocks`);
-    return;
-  } else if (playerSelection == "rock" && computerSelection == "paper") {
+function roundPlay(playerRPS, computerRPS) {
+  if (playerRPS == "rock" && computerRPS == "rock") {
+    gameRound++;
+    return alert(`Tie game.  2 Rocks.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "rock" && computerRPS == "paper") {
     computerWin++;
-    round++;
-    console.log(`U Lose. Paper beats rock`);
-    return;
-  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    gameRound++;
+    return alert(`U Lose.  Paper beats rock.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "rock" && computerRPS == "scissors") {
     playerWin++;
-    round++;
-    console.log(`you win. rock beat scissors`);
-    return;
-  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    gameRound++;
+    return alert(`U Win.  Rock beat scissors.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "paper" && computerRPS == "rock") {
     playerWin++;
-    round++;
-    console.log(`you win paper beat rock`);
-    return;
-  } else if (playerSelection == "paper" && computerSelection == "paper") {
-    round++;
-    console.log(`tie game. 2 papers`);
-    return;
-  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    gameRound++;
+    return alert(`U Win.  Paper beats rock.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "paper" && computerRPS == "paper") {
+    gameRound++;
+    return alert(`Tie game.  2 Papers.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "paper" && computerRPS == "scissors") {
     computerWin++;
-    round++;
-    console.log(`you lose, scissors beats paper`);
-    return;
-  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    gameRound++;
+    return alert(`U Lose.  Scissors beats paper.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "scissors" && computerRPS == "rock") {
     computerWin++;
-    round++;
-    console.log(`youlose. rock beats scissors`);
-    return;
-  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    gameRound++;
+    return alert(`You Lose.  Rock beats scisors.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
+  } else if (playerRPS == "scissors" && computerRPS == "paper") {
     playerWin++;
-    round++;
-    console.log(`you window. scissors beats paper`);
-    return;
+    gameRound++;
+    return alert(`You win.  scissors beats paper.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
   } else {
-    round++;
-    console.log(`tie game. 2 scissors`);
-    return;
+    gameRound++;
+    return alert(`Tie game.  2 Scissors.    Round ${gameRound}/${totalGameRound}   Player: ${playerWin}  Computer: ${computerWin} `);
   }
 }
 
 function game() {
-  //round 1
-  sign = prompt("Rock, Paper, Scissors");
-  computerPlay();
-  roundPlay(playerSelection, computerSelection);
+  setup();
+  roundPlay(playerRPS, computerRPS);
+  setup();
+  roundPlay(playerRPS, computerRPS);
+  setup();
+  roundPlay(playerRPS, computerRPS);
+  setup();
+  roundPlay(playerRPS, computerRPS);
+  setup();
+  roundPlay(playerRPS, computerRPS);
 
-  //round 2
-  sign = prompt("Rock, Paper, Scissors");
-  computerPlay();
-  roundPlay(playerSelection, computerSelection);
-
-  //round3
-  sign = prompt("Rock, Paper, Scissors");
-  computerPlay();
-  roundPlay(playerSelection, computerSelection);
-
-  //round 4
-  sign = prompt("Rock, Paper, Scissors");
-  computerPlay();
-  roundPlay(playerSelection, computerSelection);
-
-  //round 5
-  sign = prompt("Rock, Paper, Scissors");
-  computerPlay();
-  roundPlay(playerSelection, computerSelection);
-
-  if (round == 4) {
-    if (playerWin > computerWin) {
-      console.log(`You win!`);
-    } else if (playerWin < computerWin) {
-      console.log(`You Lose!`);
-    } else {
-      console.log(`tie game`);
-    }
+  if (playerWin > computerWin) {
+    alert(`You win! GAME OVER  ${playerWin}/${gameRound}`);
+  } else if (playerWin < computerWin) {
+    alert(`You Lose! GAME OVER ${playerWin}/${gameRound}`);
+  } else {
+    alert(`tie game GAME OVER ${playerWin}/${gameRound}`);
   }
 }
+
+game();
