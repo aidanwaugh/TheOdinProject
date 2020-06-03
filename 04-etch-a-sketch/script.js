@@ -2,7 +2,9 @@ const clearBtn = document.getElementById("clearBtn");
 const grid = document.getElementById("grid");
 let gridSize;
 
-// MAKE GRID
+clearBtn.addEventListener("click", reset);
+
+// DRAW GRID
 function makeGrid(gridSize) {
   container.style.setProperty("--grid-rows", gridSize);
   container.style.setProperty("--grid-cols", gridSize);
@@ -10,21 +12,24 @@ function makeGrid(gridSize) {
     let cell = document.createElement("div");
     grid.appendChild(cell).className = "cell";
   }
+  document
+    .querySelectorAll(".cell")
+    .forEach((cell) => cell.addEventListener("mouseover", colorChange));
 }
 
-clearBtn.addEventListener("click", reset);
-
+//SELECT VALUE FOR NEW GRID + DRAW
 function reset() {
   grid.querySelectorAll(".cell").forEach((cell) => cell.remove());
-  let prompt = window.prompt("Enter new grid length between 2 & 30");
+  let gridSize = prompt("Enter new grid length between 2 & 64");
+  while (isNaN(gridSize) || gridSize > 64 || gridSize < 2) {
+    gridSize = prompt("Invalid! Please select a size between 2-64");
+  }
+  makeGrid(gridSize);
+}
 
-  if (!(prompt >= 2 && prompt <= 30)) {
-    alert("Value must be between 2 & 30");
-  }
-  if (prompt >= 2 && prompt <= 30) {
-    // (gridWidth = parseInt(prompt));
-    makeGrid(parseInt(prompt));
-  }
+//CHANGE COLOR WHEN MOUSE OVER
+function colorChange() {
+  this.style.backgroundColor = "black";
 }
 
 makeGrid(16);

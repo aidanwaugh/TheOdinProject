@@ -10,19 +10,18 @@
 }
 
 #container {
-  background-color: red;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #grid {
   width: 500px;
   height: 500px;
-  background-color: yellow;
+  background-color: rgb(255, 255, 255);
   display: grid;
   grid-gap: 0;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
-}
-
-#grid > div {
-  border: 1px solid black;
 }
