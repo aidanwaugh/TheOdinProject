@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --grid-cols: 16;
+  --grid-rows: 16;
+}
+
+#container {
+  background-color: red;
+}
+
+#grid {
+  width: 500px;
+  height: 500px;
+  background-color: yellow;
+  display: grid;
+  grid-gap: 0;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+#grid > div {
+  border: 1px solid black;
+}
