@@ -53,7 +53,16 @@ function appendNumber(buttonNumberInnerText) {
 
 */
 function operate(buttonOperatorInnerText) {
-  if (numCurrent == "" && numPrev == "") return;
+  if (numCurrent == "" && numPrev == "") {
+    console.log(`numCurrent & numPrev are EMPTY. No operator can be added`);
+    return;
+  }
+
+  if (operandCalculate != "") {
+    console.log(`operandCalculate = ${operandCalculate}. It is NOT empty. No additional operands allowed`);
+    return;
+  }
+
   if (numPrev != "") {
     operandNext = buttonOperatorInnerText;
     console.log(operandNext);
@@ -66,8 +75,6 @@ function operate(buttonOperatorInnerText) {
     operandCalculate = buttonOperatorInnerText;
     console.log(`OPERATEempty numPrev: =${numPrev}  numCurrent:${numCurrent}  numResult:${numResult} operandCalculate:${operandCalculate} operandNext:${operandNext}`);
   }
-
-  //   numCurrent = "";
 }
 
 function clear() {}
