@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.other-video > img {
+  float: left;
+}
+
+/* COMMENT SECTION */
+.img-user-thumbnail {
+  float: left;
+  border-radius: 50%;
+}
+
+.img-comment-likes {
+  margin-left: 50px;
+}
