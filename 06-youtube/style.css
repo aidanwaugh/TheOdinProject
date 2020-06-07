@@ -4,16 +4,151 @@
   box-sizing: border-box;
 }
 
-.other-video > img {
+body {
+  margin: 0;
+  background-color: #f9f9f9;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+#content {
+  margin: 0 5% 0 5%;
+}
+
+/* FONTS */
+h1 {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+h2 {
+  display: inline;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+p {
+  font-size: 0.9rem;
+}
+#p-main-views {
+  font-weight: 300;
+  color: #606060;
+  display: inline;
+}
+
+#show-more {
+  text-transform: uppercase;
+  color: #606060;
+  font-size: 0.8rem;
+}
+
+.video-details {
+  font-weight: 300;
+  font-size: 12px;
+  color: #606060;
+  margin: 5px 0 5px 0;
+}
+
+/* NAV */
+nav {
+  background-color: white;
+  margin: 0 0 0.5rem 0;
+  padding: 1rem 0 1rem 0;
+}
+.nav-left {
   float: left;
 }
 
+.nav-center {
+  margin-left: 25%;
+}
+
+.nav-right {
+  float: right;
+}
+
+/* VIDEO SECTION */
+section {
+  margin-top: 1rem;
+}
+
+#main-video {
+  float: left;
+}
+
+#video-statistics,
+#video-description,
+#up-next {
+  border-bottom: 0.5px solid #e0e0e0;
+}
+#video-statistics,
+#video-description {
+  padding-bottom: 1.5rem;
+}
+
+.video-statistics > .right > img {
+  float: right;
+}
+
+.img-right {
+  float: right;
+}
 /* COMMENT SECTION */
+#comments-number > p {
+  display: inline;
+}
+
+#comments-number > img {
+  margin-left: 2rem;
+}
+
 .img-user-thumbnail {
   float: left;
   border-radius: 50%;
+  margin-right: 1rem;
 }
 
 .img-comment-likes {
   margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+#comments-add {
+  height: 50px;
+  margin-top: 1.5rem;
+}
+
+.comments-single > p {
+  margin-bottom: 5px;
+}
+
+input {
+  width: 90%;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f9f9f9;
+}
+
+/* UP NEXT */
+aside {
+  margin-top: 1rem;
+  float: right;
+}
+#toggle {
+  float: right;
+}
+
+.other-video {
+  height: 100px;
+}
+/* .other-video > img {
+  float: left;
+  margin-right: 1rem;
+} */
+
+.img-left {
+  float: left;
+  margin-right: 1rem;
 }

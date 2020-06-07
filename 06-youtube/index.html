@@ -1,60 +1,59 @@
+<!-- is functional in display
+  THINGS FOR LATER
+the section and aside are too far apart
+code in general is unorganized 
+vertical spacing between elments does not match
+no media response added for layout -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>YouTube Mockup</title>
   </head>
   <body>
     <nav>
-      <img src="img/hamburger.png" alt="hamburger menu" />
-      <img src="img/ytCanada.png" alt="youtube logo" />
-      <img src="img/search.png" alt="" />
-      <img src="img/createVideo.png" alt="createvid" />
-      <img src="img/apps.png" alt="youtube apps" />
-      <img src="img/settings.png" alt="youtube settings" />
-      <img src="img/signin.png" alt="sign in" />
+      <img class="nav-left" src="img/hamburger.png" alt="hamburger menu" />
+      <img class="nav-left" src="img/ytCanada.png" alt="youtube logo" />
+      <img class="nav-center" src="img/search.png" alt="" />
+      <img class="nav-right" src="img/createVideo.png" alt="createvid" />
+      <img class="nav-right" src="img/apps.png" alt="youtube apps" />
+      <img class="nav-right" src="img/settings.png" alt="youtube settings" />
+      <img class="nav-right" src="img/signin.png" alt="sign in" />
     </nav>
     <div id="content">
       <section id="main-video">
-        <!-- video -->
-        <iframe
-          width="988"
-          height="556"
-          src="https://www.youtube.com/embed/hiVbB7Pf2lY"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <div id="video-statistics">
-          <div class="left">
+        <div style="float: right;">
+          <!-- video -->
+          <iframe
+            width="988"
+            height="556"
+            src="https://www.youtube.com/embed/hiVbB7Pf2lY"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <div id="video-statistics">
             <img src="img/location.png" alt="" />
             <h1>It Is The People | A Pacific Crest Trail Film</h1>
-            <p>341,718 views &middot Nov 9, 2019</p>
-          </div>
-          <div class="right">
-            <div id="likes">
-              <img src="img/likedislike.png" alt="thumbs up" />
-            </div>
-            <img src="img/share.png" alt="" />
-            <p>Share</p>
-            <img src="img/save.png" alt="" />
-            <p>Save</p>
-            <img src="img/options.png" alt="" />
-            <!-- thups up -->
-            <!-- tums down -->
+            <p id="p-main-views">341,718 views &middot Nov 9, 2019</p>
+            <img class="img-right" src="img/likedislike.png" alt="thumbs up" />
+            <img class="img-right" src="img/share.png" alt="" />
+            <img class="img-right" src="img/save.png" alt="" />
+            <img class="img-right" src="img/options.png" alt="" />
           </div>
           <div id="video-description">
             <div class="left">
               <!-- image -->
+              <img class="img-user-thumbnail img-left" src="img/elena-48.png" alt="" />
             </div>
             <div class="center">
               <div>
-                <img class="img-user-thumbnail" src="img/elena-48.png" alt="" />
                 <p><strong>Elina Osborne</strong></p>
-                <p>29.5K subscribers</p>
-                <img src="img/subscribe.png" alt="" />
+                <p class="video-details">29.5K subscribers</p>
+                <img class="img-right" src="img/subscribe.png" alt="" />
               </div>
 
               <p>
@@ -62,82 +61,91 @@
 
                 Like with your first love, it’s easy to look back at this PCT experience with rose tinted glasses. But
               </p>
-              <p id="show-more">Show More</p>
+              <p id="show-more"><strong>Show More</strong></p>
             </div>
           </div>
-        </div>
-        <section id="comments">
-          <div id="comments-number">
-            <p>1,175 Comments</p>
-            <img src="img/sortby.png" alt="" />
-            <p>Sort By</p>
 
-            <!-- sort by -->
-          </div>
-          <div id="comments-add">
-            <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-            <input type="text" />
-          </div>
-          <div id="comments-all">
-            <div class="comments-single">
-              <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-              <p>TexasCountryLiving <span>6 months ago</span></p>
-              <p>“It’s privileged homelessness with intention.”</p>
-              <img class="img-comment-likes" src="img/comment1.png" alt="" />
+          <section id="comments">
+            <div id="comments-number">
+              <p>1,175 Comments</p>
+              <img src="img/sortby.png" alt="Add a public comment..." />
             </div>
-          </div>
-        </section>
+            <div id="comments-add">
+              <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+              <input type="text" placeholder="Add a public comment..." />
+            </div>
+            <div id="comments-all">
+              <div class="comments-single">
+                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+                <p>TexasCountryLiving <span>6 months ago</span></p>
+                <p>“It’s privileged homelessness with intention.”</p>
+                <img class="img-comment-likes" src="img/comment1.png" alt="" />
+              </div>
+              <div class="comments-single">
+                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+                <p>Jan Ge Jo <span>6 months ago</span></p>
+                <p>This films are what YouTube should be about. Thank you.</p>
+                <img class="img-comment-likes" src="img/comment2.png" alt="" />
+              </div>
+              <div class="comments-single">
+                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+                <p>Micah Madsen <span>6 months ago</span></p>
+                <p>This is stunning, raw & remarkable. Thank you for sharing.</p>
+                <img class="img-comment-likes" src="img/comment3.png" alt="" />
+              </div>
+            </div>
+          </section>
+        </div>
       </section>
       <aside>
         <div id="up-next">
           <h2>Up next</h2>
-          <img src="img/autoplay.png" alt="" />
+          <img id="toggle" src="img/autoplay.png" alt="" />
           <div class="other-video">
-            <img src="img/vid1.jpg" alt="" />
+            <img class="img-left" src="img/vid1.jpg" alt="" />
             <p><strong>This is not a beautiful hiking video | A Pacific Crest Trail...</strong></p>
             <p class="video-details">Peter Hochhauser</p>
             <p class="video-details">743K views &middot 3 years ago</p>
           </div>
         </div>
         <div class="other-video">
-          <img src="img/vid2.jpg" alt="" />
+          <img class="img-left" src="img/vid2.jpg" alt="" />
           <p><strong>The Pacific Crest Trail | Chapter One</strong></p>
           <p class="video-details">Elina Osborne</p>
           <p class="video-details">92K views &middot 6 months ago</p>
         </div>
         <div class="other-video">
-          <img src="img/vid3.jpg" alt="" />
+          <img class="img-left" src="img/vid3.jpg" alt="" />
           <p><strong>I Just Want To Ride - Lael Wilcox and the 2019 Tour Divide</strong></p>
           <p class="video-details">PEARL iZUMi</p>
           <p class="video-details">689K views &middot 6 months ago</p>
         </div>
         <div class="other-video">
-          <img src="img/vid4.jpg" alt="" />
+          <img class="img-left" src="img/vid4.jpg" alt="" />
           <p><strong>PCT Prep: Going Ultralight?</strong></p>
           <p class="video-details">Elina Osborne</p>
           <p class="video-details">36K views &middot 9 months ago</p>
         </div>
         <div class="other-video">
-          <img src="img/vid5.jpg" alt="" />
+          <img class="img-left" src="img/vid5.jpg" alt="" />
           <p><strong>10 Wildcamping Essentials</strong></p>
           <p class="video-details">Athena Mellor</p>
           <p class="video-details">149K views &middot 1 month ago</p>
         </div>
         <div class="other-video">
-          <img src="img/vid6.jpg" alt="" />
+          <img class="img-left" src="img/vid6.jpg" alt="" />
           <p><strong>WHERE DREAMS GO TO DIE - Gary Robbins and The Barkley...</strong></p>
           <p class="video-details">TheGingerRunner</p>
           <p class="video-details">1.4M views &middot 2 years ago</p>
         </div>
         <div class="other-video">
-          <img src="img/vid7.jpg" alt="" />
+          <img class="img-left" src="img/vid7.jpg" alt="" />
           <p><strong>Breathtaking: K2 - The World's Most Dangerous Montain |....</strong></p>
           <p class="video-details">Eddie Bauer</p>
           <p class="video-details">112K views &middot 5 days ago</p>
-          <p class="new">New</p>
         </div>
         <div class="other-video">
-          <img src="img/vid8.jpg" alt="" />
+          <img class="img-left" src="img/vid8.jpg" alt="" />
           <p><strong>This is why they all hate hiking</strong></p>
           <p class="video-details">Chase Mountains</p>
           <p class="video-details">328K views &middot 7 months ago</p>
