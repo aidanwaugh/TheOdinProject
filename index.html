@@ -58,6 +58,8 @@
       <li><a href="https://validator.w3.org/" target="_blank">HTML Validator | W3C</a></li>
       <li><a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS Validator | W3C</a></li>
       <li><a href="https://learn.shayhowe.com/html-css/" target="_blank">Learn to code HTML & CSS Online Book | Shay Howe</a></li>
+      <li><a href="http://cssgridgarden.com/" target="_blank">CSS Grid Garden</a></li>
+      <li><a href="http://flexboxfroggy.com/" target="_blank">CSS Flexbox Froggy</a></li>
     </ol>
 
     <h3>JavaScript</h3>
@@ -70,6 +72,15 @@
     <h3>Backend + Frameworks</h3>
     <ol>
       <li><a href="https://rubygarage.org/blog/technology-stack-for-web-development"></a>Tech Stack for 2020 Web Dev</li>
+    </ol>
+    <h2>VS Code Stuff</h2>
+    <h3>keyboard Shortcuts</h3>
+    <ol>
+      <li>Command Palette Ctrl+Shift+P</li>
+      <li>Command Preferences Ctrl+,</li>
+      <li>Toggle Sidebar Ctrl+B</li>
+      <li>Move current line up/down Alt+Up/Down</li>
+      <li>Delete Line Ctrl+Shift+K</li>
     </ol>
     <!-- Section questions/Learning outcomes and answers -->
     <h2>Learning Outcome Questions & Answers</h2>
@@ -219,6 +230,141 @@
       <li>You can open the developer tools in your browser.</li>
       <li>YYou can select a specific HTML element on your page with your browser’s developer tools.</li>
       <li>YYou can use developer tools to experiment with the CSS on specific elements of a web page.</li>
+    </ol>
+    <h4>CSS</h4>
+    <h5>CSS Basics</h5>
+    <ol>
+      <li>9 What are selectors?</li>
+      <li>9 In general, how specific should you be when targeting elements using selectors?</li>
+      <li>9 What’s the difference between using %, em and rem to specify sizes?</li>
+      <li>9 How do you select an element inside another element?</li>
+      <li>9 How can you shorten up a long batch of CSS that’s doing the same thing to many different elements by putting them all in one line?</li>
+      <li>9 How do you target the immediate child of an element?</li>
+      <li>9 How do you target a class inside a class?</li>
+      <li>9 How do you target a class inside an ID?</li>
+      <li>9 How would you target “all the links inside li elements that have the class bunny which are inside the unordered list with the id things-that-hop”?</li>
+      <li>9 What are the three ways to include CSS in your project?</li>
+      <li>9 How do you import an external stylesheet?</li>
+      <li>9 What is the browser’s default stylesheet?</li>
+      <li>9 What is a “CSS Reset” file and why is it helpful?</li>
+      <li>9 Which stylesheet has preference if you import multiple ones and there are overlapping styles?</li>
+      <li>9 What is the order of priority of selectors</li>
+    </ol>
+    <h5>The Box Model</h5>
+    <ol>
+      <li>9 What’s the difference between margin and padding?</li>
+      <li>9 How do borders affect the size of the box?</li>
+      <li>9 How can margins be used to center an element horizontally on the page?</li>
+      <li>9 What does it mean that “margins are collapsed”?</li>
+      <li>9 What is the difference between block, inline-block and inline elements when thinking about the box model?</li>
+      <li>9 When are you required to specify the width of an element vs letting the browser figure it out for you?</li>
+      <li>9 How do box shadows affect element box sizing?</li>
+      <li>9 How can you check an element’s box model in your developer tools (it’s a helpful graphic)?</li>
+    </ol>
+    <h5>Floats and Positioning</h5>
+    <ol>
+      <li>9 What is the DOM?</li>
+      <li>9 How do elements get placed in the DOM by default?</li>
+      <li>9 How can you override element positioning using the position attribute?</li>
+      <li>9 When are you able to use the top left right and bottom attributes?</li>
+      <li>9 What is the difference between float and position?</li>
+      <li>9 Which element acts as the parent for a floated element?</li>
+      <li>9 What is the difference between floating right and floating left?</li>
+      <li>9 If you have a bunch of elements floated next to each other and you make the browser narrower, what happens?</li>
+      <li>9 What’s the practical difference between relative and absolute positioning?</li>
+      <li>9 Which element acts as the parent for an absolutely or relatively positioned element?</li>
+      <li>9 How would you set up a grid of 20x20 boxes on the page using floats?Using lists?</li>
+      <li>9 What are negative margins useful for?</li>
+    </ol>
+    <h5>Flexbox</h5>
+    <ol>
+      <li>9 How do you define a flex container?</li>
+      <li>9 What items will become a flex-item?</li>
+      <li>9 Can a flex item also be a flex container?</li>
+      <li>9 When to use Flexbox?</li>
+      <li>9 What is the difference between justify-content and align-items.</li>
+      <li>9 How can you change the direction of the axis of Flexbox. What will this do to justify-content and align items?</li>
+      <li>9 How do you change the display order of content with Flexbox. What is a drawback with this (for screen readers)?</li>
+    </ol>
+    <h5>Grid</h5>
+    <ol>
+      <li>9 What is a grid?</li>
+      <li>9 How do you create a grid container?</li>
+      <li>9 How do you create a fixed track size?</li>
+      <li>9 How do you create a flexible track size?</li>
+      <li>9 What is the difference between an implicit and explicit grid?</li>
+      <li>9 How is the fr unit used?</li>
+      <li>9 How do you place items into a precise location on the grid?</li>
+      <li>9 How does Grid handle overlapping content?</li>
+      <li>9 What are grid lines and how are they used?</li>
+      <li>9 How do you position items against the grid line?</li>
+      <li>9 What is a grid cell?</li>
+      <li>9 What are grid areas and how are they used to layout content?</li>
+      <li>9 What are gutters (also known as alleys) in the grid?</li>
+      <li>9 How can you nest grids?</li>
+    </ol>
+    <h5>Best Practices</h5>
+    <ol>
+      <li>9 What is a “container <code>&lt;div&gt;</code>”?</li>
+      <li>9 When should you use SPAN vs DIV?</li>
+      <li>9 When should you use id vs class?</li>
+      <li>9 What are good situations for breaking out styles into multiple classes?</li>
+      <li>9 How can you use margins for alignment?</li>
+    </ol>
+    <h5>Gradients</h5>
+    <ol>
+      <li>9 How do you set the background color?</li>
+      <li>9 Which color is used when elements are stacked on top of each other (on the z-axis)?</li>
+      <li>9 How do you set a partially transparent color? rgba anyone?</li>
+      <li>9 Where are gradients most commonly used in “real world” websites?</li>
+      <li>9 How do you set a gradient background?</li>
+      <li>9 How do you make an image the background of an element?</li>
+      <li>9 Why is it useful to make the image the background of an element instead of using a regular IMG tag?</li>
+      <li>9 How do you make a background image of a fixed size?</li>
+      <li>9 How do you make a background image repeat?</li>
+      <li>9 How do you get your page’s background image to fill the page even when you resize the browser?</li>
+    </ol>
+    <h4>Responsive Design and CSS Frameworks</h4>
+    <h5>Responsive Design</h5>
+    <ol>
+      <li>9 What is responsive design?</li>
+      <li>9 Why is responsive design important to your users?</li>
+      <li>9 How do you make a “fluid” layout?</li>
+      <li>9 What are Media Queries?</li>
+      <li>9 How do you use media queries to make your website responsive?</li>
+    </ol>
+    <h5>CSS Frameworks like Bootstrap and Foundation</h5>
+    <ol>
+      <li>9 What are CSS frameworks?</li>
+      <li>9 How do frameworks actually work?</li>
+      <li>9 How do you interact with the framework to get the look you want?</li>
+      <li>9 What is Twitter Bootstrap?</li>
+      <li>9 What is Zurb Foundation?</li>
+      <li>9 What is TailwindCSS?</li>
+      <li>9 What other frameworks can you find out there?</li>
+      <li>9 What are the disadvantages of using frameworks?</li>
+    </ol>
+    <h4>Advanced CSS</h4>
+    <h5>Animations, Subtle Effects and Compatibility</h5>
+    <ol>
+      <li>9 How do you round corners of a box?</li>
+      <li>9 How do you add a shadow to a box?</li>
+      <li>9 How do you rotate an element a specified amount?</li>
+      <li>9 What interesting animations can you use in CSS3?</li>
+      <li>9 What are pseudo-elements and what are they useful for?</li>
+    </ol>
+    <h5>Using CSS Preprocessors to Save Time</h5>
+    <ol>
+      <li>9 What is a preprocessor?</li>
+      <li>9 Why do preprocessors rock?</li>
+      <li>9 What does it mean that a preprocessor “compiles to CSS”?</li>
+      <li>9 What is SASS/SCSS?</li>
+      <li>9 How can you use SASS to nest CSS?</li>
+      <li>9 How can you use SASS to work with variables in your code?</li>
+      <li>9 Why is it awesome to use mix-ins with SASS?</li>
+      <li>9 If you’re not using Rails, how do you set up SASS?</li>
+      <li>9 What is LESS and how is it different from SASS?</li>
+      <li>9 What other preprocessors are out there?</li>
     </ol>
 
     <h4>JavaScript Basics</h4>
