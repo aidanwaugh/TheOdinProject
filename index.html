@@ -3,53 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>My Odin Project</title>
   </head>
 
   <body>
-    <nav></nav>
+    <nav>
+      <a href="https://github.com/aidanwaugh/TheOdinProject" target="_blank">GitHub</a>
+      <a href="#projects-section">Projects</a>
+      <a href="#cheatsheet-section">Cheatsheet</a>
+      <a href="#resource-section">Resources</a>
+      <a href="#questions-section">Learning Outcomes</a>
+    </nav>
     <header>
-      <h1>The Odin Project</h1>
+      <span> Full Stack JavaScript</span>
+      <h1>My Odin Project</h1>
     </header>
     <section id="projects-section" class="grid-container">
-      <div class="row">Projects</div>
-      <div class="cell">
-        <a href="https://aidanwaugh.github.io/TheOdinProject/01-rockpaperscissors/index.html" target="_blank"
-          >Rock Paper Scissors - V1 (Console/ prompt) | Web Development 101 | JavaScript Basics</a
-        >
+      <div class="cell row">
+        <p class="breadcrumb">/Assignments</p>
+        <h2>Projects</h2>
       </div>
-      <div class="cell">
-        <a href="https://aidanwaugh.github.io/TheOdinProject/03-rockpaperscissors/index.html" target="_blank"
-          >Rock Paper Scissors - V2 (Button + DOM) | Web Development 101 | JavaScript Basics</a
-        >
+      <div class="cell click">
+        <a href="https://aidanwaugh.github.io/TheOdinProject/06-youtube/" target="_blank">
+          <p class="p-300">HTML & CSS &middot 05.02.20</p>
+          <h3>YouTube Video Page</h3>
+          <p>Practice embedding images and video.</p>
+        </a>
       </div>
-      <div class="cell">
-        <a href="https://aidanwaugh.github.io/TheOdinProject/04-etch-a-sketch/index.html" target="_blank"> Etch A Sketch V1</a>
+      <div class="cell click">
+        <a href="https://aidanwaugh.github.io/TheOdinProject/05-calculator/" target="_blank">
+          <p class="p-300">WebDev 101 &middot 05.02.20</p>
+          <h3>Simple Calculator</h3>
+          <p>Web Development 101 final project. Create a on screen calculator.</p>
+        </a>
+      </div>
+
+      <div class="cell click">
+        <a href="https://aidanwaugh.github.io/TheOdinProject/04-etch-a-sketch/" target="_blank">
+          <p class="p-300">WebDev 101 &middot 05.02.20</p>
+          <h3>Etch-A-Sketch</h3>
+          <p>Practice DOM manipulation by building a sketchpad / Etch-A-Sketch combo.</p>
+        </a>
+      </div>
+
+      <div class="cell click">
+        <a href="https://aidanwaugh.github.io/TheOdinProject/03-rockpaperscissors/" target="_blank">
+          <p class="p-300">WebDev 101 &middot 05.02.20</p>
+          <h3>Rock Paper Scissors</h3>
+          <p>First TOP project. A 5 round RPS game implemented only in the browser console with UI added on a later date.</p>
+        </a>
       </div>
     </section>
 
     <section id="cheatsheet-section" class="grid-container">
-      <div class="cell">
+      <div class="cell border-right">
+        <p class="breadcrumb">/cheat sheet</p>
         <h2>Commands</h2>
       </div>
       <div class="cell">
         <h3>Linux Terminal</h3>
         <a href="https://files.fosswire.com/2007/08/fwunixref.pdf" target="_blank">Cheatsheet</a>
-        <ol>
+        <ul>
           <li><code>ls</code> - directory listing</li>
           <li><code>cd</code> - change to home</li>
           <li>
             <code>cd <em>dir</em></code> - change directory to dir
           </li>
-        </ol>
+        </ul>
       </div>
       <div class="cell">
         <h3>Git Commands</h3>
         <a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet/" target="_blank">Github Cheatsheet</a>
-        <ol>
+        <ul>
           <li>git status</li>
           <li>git log</li>
           <li>git branch nameHere</li>
@@ -59,18 +87,20 @@
           <li>git add .</li>
           <li>git commit -m "message here"</li>
           <li>git push origin master</li>
-          <li>git diff DELLATER</li>
-        </ol>
+          <li>git diff</li>
+        </ul>
       </div>
     </section>
 
     <section id="resource-section" class="grid-container">
-      <div class="row">
+      <div class="cell row">
+        <p class="breadcrumb">/Bookmarks</p>
         <h2>Cool Resources</h2>
       </div>
+
       <div class="cell">
         <h3>HTML / CSS</h3>
-        <ol>
+        <ul>
           <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox | CSS Tricks</a></li>
           <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">A Complete Guide to Grid | CSS Tricks</a></li>
           <li><a href="http://www.csszengarden.com/" target="_blank">Style the same page differently only with CSS | Zen Garden</a></li>
@@ -79,388 +109,376 @@
           <li><a href="https://learn.shayhowe.com/html-css/" target="_blank">Learn to code HTML & CSS Online Book | Shay Howe</a></li>
           <li><a href="http://cssgridgarden.com/" target="_blank">CSS Grid Garden</a></li>
           <li><a href="http://flexboxfroggy.com/" target="_blank">CSS Flexbox Froggy</a></li>
-        </ol>
+        </ul>
       </div>
       <div class="cell">
         <h3>JavaScript</h3>
-        <ol>
+        <ul>
           <li><a href="https://github.com/airbnb/javascript" target="_blank">Clean code style guide | AirBnb GitHub</a></li>
           <li><a href="https://eloquentjavascript.net/">Eloquent Javascript Online Book 3rd Edition | Marijn Haverbeke</a></li>
           <li><a href="http://domenlightenment.com/">DOM Enlightenment Online Book w Live Code Links | Cody Lindley</a></li>
-        </ol>
+        </ul>
       </div>
       <div class="cell">
         <h3>Backend + Frameworks</h3>
-        <ol>
+        <ul>
           <li><a href="https://rubygarage.org/blog/technology-stack-for-web-development"></a>Tech Stack for 2020 Web Dev</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="vscode-section" class="grid-container">
-      <div class="cell">
-        <h2>VS Code Stuff</h2>
-      </div>
-      <div class="cell">
-        <h3>keyboard Shortcuts</h3>
-        <ol>
-          <li>Command Palette Ctrl+Shift+P</li>
-          <li>Command Preferences Ctrl+,</li>
-          <li>Toggle Sidebar Ctrl+B</li>
-          <li>Move current line up/down Alt+Up/Down</li>
-          <li>Delete Line Ctrl+Shift+K</li>
-        </ol>
-      </div>
-      <div class="cell">
-        something
+        </ul>
       </div>
     </section>
 
     <section id="questions-section" class="grid-container">
-      <div class="questions-nav">
+      <div class="questions-nav border-right">
+        <p class="breadcrumb">/Learning Outcomes</p>
         <h2>Learning Outcome Questions & Answers</h2>
+        <p class="p-300"><a href="#webdev101">Web Development 101</a></p>
+        <p class="p-300"><a href="#htmlcss">HTML & CSS</a></p>
+        <p class="p-300"><a href="#javascript">JavaScript</a></p>
+        <p class="p-300"><a href="#nodejs">NodeJS</a></p>
       </div>
+
       <div class="questions-list">
-        <h3>Web Development 101</h3>
-        <h4>Installations</h4>
-        <h5>Command Line Basics</h5>
-        <ol>
-          <li>Describe what the command line is.</li>
-          <li>Open the command line on your computer.</li>
-          <li>Use the command line to navigate directories and display directory contents.</li>
-          <li>The command line to create a new directory and a new file.</li>
-          <li>The command line to rename or destroy a directory and a file.</li>
-        </ol>
-        <h4>Git Basics</h4>
-        <ol>
-          <li>What is the Git command used to get a full copy of an existing Git repository from Github?</li>
-          <li>What is the Git command used to check the status of your files?</li>
-          <li>What is the Git command used to track files with Git?</li>
-          <li>What is the Git command used to commit files?</li>
-          <li>What is the Git command used to view your commit history?</li>
-          <li>What is the Git command used to upload projects onto GitHub?</li>
-          <li>Explain the two-stage system that Git uses to save files.</li>
-          <li>Explain what <code> origin</code> is in <code> git push origin master</code>.</li>
-          <li>Explain what <code> master</code> is in <code> git push origin master</code>.</li>
-        </ol>
-        <h4>The Front End</h4>
-        <h5>HTML and CSS Basics</h5>
-        <ol>
-          <li>WWhy do we separate HTML and CSS?</li>
-          <li>WWhat are classes and IDs (and how are they different)?</li>
-          <li>WWhat are elements?</li>
-          <li>WWhat are tags?</li>
-          <li>WWhat are attributes?</li>
-          <li>WWhat are forms?</li>
-          <li>WWhat is a div?</li>
-          <li>WWhat are selectors?</li>
-          <li>WWhat are properties?</li>
-          <li>WWhat are values?</li>
-          <li>WWhat is the “query string” in a URL and what does it do?</li>
-          <li>WWhat is the difference between “pixels” and “ems”?</li>
-          <li>WHow do CSS styles for a particular element get inherited? i.e. how does an element get its “default” styles?</li>
-          <li>WWhat are two CSS attributes you can change to push an element around on the page?</li>
-          <li>WWhat are the three different ways to include CSS in your project or use CSS to style a particular element?</li>
-          <li>WWhat is the “default stylesheet” or “user agent stylesheet”?</li>
-          <li>WWhy use a CSS reset file?</li>
-          <li>WWhat attributes are required by image and links for them to be effective and accessible?</li>
-          <li>WWhere should your CSS live?</li>
-          <li>WHow is an HTML5 document structured?</li>
-          <li>What order should you put html attributes? <span>class, id/name, data-*, src/for/type/href/value, tile/alt, role/aria-*</span></li>
-          <li>What order should CSS properties be grouped? <span>positioning, box model, typographic, visual, misc</span></li>
-          <li>What is the CSS naming convention? <span>use hyphens to be consistent with CSS property names .some-class {font-weight:}</span></li>
-          <li>What js-* class name used for?</li>
-        </ol>
-        <h5>Basic HTML Structure</h5>
-        <ol>
-          <li>What’s the difference between internal links (/somepage) and external links (http://www.somesite.com/somepage)?</li>
-          <li>WWhen on a webpage should you use the full URI (with the http://yoursite.com/somepath) and when should you use the relative path (/somepath)?</li>
-          <li>WHow do you navigate the document tree with links (../../someotherpage)?</li>
-          <li>WHow do you open links in external windows?</li>
-          <li>WWhat are all the possible pseudo-states (e.g. :hover) of a link and when are they actually activated? How do you change styles based on them?</li>
-          <li>What is a suggested order to have the pseudo-class rules render succesfully? <span>a { }a:link { }a:visited { }a:hover { }a:focus { }a:active { }</span></li>
-        </ol>
-        <h5>Images, Video, and Other Media</h5>
-        <ol>
-          <li>What are common attributes of image tags?</li>
-          <li>WHow do you load a smaller version of an image?</li>
-          <li>WHow do you get an image to fill up an element?</li>
-          <li>WHow do you save load times by using appropriately sized images?</li>
-          <li>WWhen should you store images externally vs on your server?</li>
-          <li>WWhat are the main types of image files and how are they different?</li>
-          <li>WWhich file types let you use animation?</li>
-          <li>W Which file types let you use transparent colors?</li>
-          <li>W Which file types are best for photos? Graphics?</li>
-          <li>WWhich file type lets you scale an image as big as you want without affecting file size (and why)?</li>
-          <li>WWhat’s the difference between raster and vector images?</li>
-          <li>WHow do you add video to your page? (please don’t autoplay…)</li>
-          <li>WHow do you add audio to your page? (please don’t autoplay…)</li>
-        </ol>
-        <h5>What's new in Html 5</h5>
-        <ol>
-          <li>What are semantic tags and how are there more of them in HTML5?</li>
-          <li>WWhat does the canvas element do for you?</li>
-          <li>WSeriously, why is canvas potentially amazing?</li>
-          <li>WWhat are the new video control features?</li>
-          <li>WWhat are the new audio control features?</li>
-          <li>WWhat is local storage and how is it used?</li>
-          <li>W What are data attributes and how are they used?</li>
-          <li>WFor people who have already done Rails and maybe some JS, how can data attributes be used to pass off data from your back end to your front end?</li>
-          <li>WWhat are the compatibility trade-offs of the new features?</li>
-          <li>WAre there any performance trade-offs with the new features?</li>
-          <li>WHow does HTML5 fix the problem of needing Flash installed to play movies on many devices?</li>
-        </ol>
-        <h4>Displaying and inputting data</h4>
-        <h5>Inputting Tables in HTML</h5>
-        <ol>
-          <li>When should you use tables?</li>
-          <li>WWhat is the structure of a table?</li>
-          <li>WWhat are the special tags that dictate certain parts of a table, e.g. headers or captions?</li>
-          <li>W How can you combine cells in a table?</li>
-          <li>W Why do you need to be careful about your padding and borders in tables?</li>
-          <li>WHow do you align text within cells in a table?</li>
-        </ol>
-        <h5>Ordered and Unordered Lists</h5>
-        <ol>
-          <li>What is the basic list syntax?</li>
-          <li>How do you nest lists inside each other?</li>
-        </ol>
-        <h5>Forms for Collecting Data</h5>
-        <ol>
-          <li>Why are forms probably the most important part of your site?</li>
-          <li>WHow do you construct a basic form?</li>
-          <li>WHow do you specify which path the form gets submitted to?</li>
-          <li>WWhen would you want to submit using GET vs POST requests?</li>
-          <li>WWhat are all the possible form element types?</li>
-          <li>WWhen should you use checkboxes instead of radio buttons?</li>
-          <li>WWhen should you use a combobox/dropdown instead of a text field?</li>
-          <li>W How do you make a very large text field?</li>
-          <li>WHow do you link elements with their labels?</li>
-          <li>WHow do you link element selections together (e.g. check boxes) so they are nicely formatted when your server receives them?</li>
-          <li>WWhat should your “submit” button probably say instead of “submit”?</li>
-        </ol>
-        <h4>Design and UX</h4>
-        <h5>Introduction to Design and UX</h5>
-        <ol>
-          <li>What is design?</li>
-          <li>WWhat is user experience?</li>
-          <li>WWhat’s the difference between UX and UI?</li>
-          <li>WWhat are the three things UX is meant to focus on?</li>
-          <li>WWhat is visual hierarchy and why is it so important for websites?</li>
-          <li>WWhat are the primary ways to achieve visual hierarchy?</li>
-          <li>W What is the design hierarchy pyramid?</li>
-          <li>WWhat are the CRAP factors of effective layout and what are they used for?</li>
-        </ol>
-        <h5>Fonts and Typography</h5>
-        <ol>
-          <li>WWhy do fonts matter?</li>
-          <li>WWhat’s the difference between a serif and sans-serif font?</li>
-          <li>WWhat are font-family attributes used for?</li>
-          <li>WHow is the active font determined in a font-family?</li>
-          <li>WWhere does the browser actually get its fonts from?</li>
-          <li>WWhere can you get additional fonts from and how do you get them onto your page?</li>
-          <li>WWhat are the disadvantages of using web fonts? Of loading your own?</li>
-          <li>WWhat are the important properties of fonts that you can specify using CSS?</li>
-        </ol>
-        <h5>Developer Tools</h5>
-        <ol>
-          <li>You can open the developer tools in your browser.</li>
-          <li>YYou can select a specific HTML element on your page with your browser’s developer tools.</li>
-          <li>YYou can use developer tools to experiment with the CSS on specific elements of a web page.</li>
-        </ol>
-        <h4>CSS</h4>
-        <h5>CSS Basics</h5>
-        <ol>
-          <li>9 What are selectors?</li>
-          <li>9 In general, how specific should you be when targeting elements using selectors?</li>
-          <li>9 What’s the difference between using %, em and rem to specify sizes?</li>
-          <li>9 How do you select an element inside another element?</li>
-          <li>9 How can you shorten up a long batch of CSS that’s doing the same thing to many different elements by putting them all in one line?</li>
-          <li>9 How do you target the immediate child of an element?</li>
-          <li>9 How do you target a class inside a class?</li>
-          <li>9 How do you target a class inside an ID?</li>
-          <li>9 How would you target “all the links inside li elements that have the class bunny which are inside the unordered list with the id things-that-hop”?</li>
-          <li>9 What are the three ways to include CSS in your project?</li>
-          <li>9 How do you import an external stylesheet?</li>
-          <li>9 What is the browser’s default stylesheet?</li>
-          <li>9 What is a “CSS Reset” file and why is it helpful?</li>
-          <li>9 Which stylesheet has preference if you import multiple ones and there are overlapping styles?</li>
-          <li>9 What is the order of priority of selectors</li>
-        </ol>
-        <h5>The Box Model</h5>
-        <ol>
-          <li>9 What’s the difference between margin and padding?</li>
-          <li>9 How do borders affect the size of the box?</li>
-          <li>9 How can margins be used to center an element horizontally on the page?</li>
-          <li>9 What does it mean that “margins are collapsed”?</li>
-          <li>9 What is the difference between block, inline-block and inline elements when thinking about the box model?</li>
-          <li>9 When are you required to specify the width of an element vs letting the browser figure it out for you?</li>
-          <li>9 How do box shadows affect element box sizing?</li>
-          <li>9 How can you check an element’s box model in your developer tools (it’s a helpful graphic)?</li>
-        </ol>
-        <h5>Floats and Positioning</h5>
-        <ol>
-          <li>9 What is the DOM?</li>
-          <li>9 How do elements get placed in the DOM by default?</li>
-          <li>9 How can you override element positioning using the position attribute?</li>
-          <li>9 When are you able to use the top left right and bottom attributes?</li>
-          <li>9 What is the difference between float and position?</li>
-          <li>9 Which element acts as the parent for a floated element?</li>
-          <li>9 What is the difference between floating right and floating left?</li>
-          <li>9 If you have a bunch of elements floated next to each other and you make the browser narrower, what happens?</li>
-          <li>9 What’s the practical difference between relative and absolute positioning?</li>
-          <li>9 Which element acts as the parent for an absolutely or relatively positioned element?</li>
-          <li>9 How would you set up a grid of 20x20 boxes on the page using floats?Using lists?</li>
-          <li>9 What are negative margins useful for?</li>
-        </ol>
-        <h5>Flexbox</h5>
-        <ol>
-          <li>9 How do you define a flex container?</li>
-          <li>9 What items will become a flex-item?</li>
-          <li>9 Can a flex item also be a flex container?</li>
-          <li>9 When to use Flexbox?</li>
-          <li>9 What is the difference between justify-content and align-items.</li>
-          <li>9 How can you change the direction of the axis of Flexbox. What will this do to justify-content and align items?</li>
-          <li>9 How do you change the display order of content with Flexbox. What is a drawback with this (for screen readers)?</li>
-        </ol>
-        <h5>Grid</h5>
-        <ol>
-          <li>9 What is a grid?</li>
-          <li>9 How do you create a grid container?</li>
-          <li>9 How do you create a fixed track size?</li>
-          <li>9 How do you create a flexible track size?</li>
-          <li>9 What is the difference between an implicit and explicit grid?</li>
-          <li>9 How is the fr unit used?</li>
-          <li>9 How do you place items into a precise location on the grid?</li>
-          <li>9 How does Grid handle overlapping content?</li>
-          <li>9 What are grid lines and how are they used?</li>
-          <li>9 How do you position items against the grid line?</li>
-          <li>9 What is a grid cell?</li>
-          <li>9 What are grid areas and how are they used to layout content?</li>
-          <li>9 What are gutters (also known as alleys) in the grid?</li>
-          <li>9 How can you nest grids?</li>
-        </ol>
-        <h5>Best Practices</h5>
-        <ol>
-          <li>9 What is a “container <code>&lt;div&gt;</code>”?</li>
-          <li>9 When should you use SPAN vs DIV?</li>
-          <li>9 When should you use id vs class?</li>
-          <li>9 What are good situations for breaking out styles into multiple classes?</li>
-          <li>9 How can you use margins for alignment?</li>
-        </ol>
-        <h5>Gradients</h5>
-        <ol>
-          <li>9 How do you set the background color?</li>
-          <li>9 Which color is used when elements are stacked on top of each other (on the z-axis)?</li>
-          <li>9 How do you set a partially transparent color? rgba anyone?</li>
-          <li>9 Where are gradients most commonly used in “real world” websites?</li>
-          <li>9 How do you set a gradient background?</li>
-          <li>9 How do you make an image the background of an element?</li>
-          <li>9 Why is it useful to make the image the background of an element instead of using a regular IMG tag?</li>
-          <li>9 How do you make a background image of a fixed size?</li>
-          <li>9 How do you make a background image repeat?</li>
-          <li>9 How do you get your page’s background image to fill the page even when you resize the browser?</li>
-        </ol>
-        <h4>Responsive Design and CSS Frameworks</h4>
-        <h5>Responsive Design</h5>
-        <ol>
-          <li>9 What is responsive design?</li>
-          <li>9 Why is responsive design important to your users?</li>
-          <li>9 How do you make a “fluid” layout?</li>
-          <li>9 What are Media Queries?</li>
-          <li>9 How do you use media queries to make your website responsive?</li>
-        </ol>
-        <h5>CSS Frameworks like Bootstrap and Foundation</h5>
-        <ol>
-          <li>9 What are CSS frameworks?</li>
-          <li>9 How do frameworks actually work?</li>
-          <li>9 How do you interact with the framework to get the look you want?</li>
-          <li>9 What is Twitter Bootstrap?</li>
-          <li>9 What is Zurb Foundation?</li>
-          <li>9 What is TailwindCSS?</li>
-          <li>9 What other frameworks can you find out there?</li>
-          <li>9 What are the disadvantages of using frameworks?</li>
-        </ol>
-        <h4>Advanced CSS</h4>
-        <h5>Animations, Subtle Effects and Compatibility</h5>
-        <ol>
-          <li>9 How do you round corners of a box?</li>
-          <li>9 How do you add a shadow to a box?</li>
-          <li>9 How do you rotate an element a specified amount?</li>
-          <li>9 What interesting animations can you use in CSS3?</li>
-          <li>9 What are pseudo-elements and what are they useful for?</li>
-        </ol>
-        <h5>Using CSS Preprocessors to Save Time</h5>
-        <ol>
-          <li>9 What is a preprocessor?</li>
-          <li>9 Why do preprocessors rock?</li>
-          <li>9 What does it mean that a preprocessor “compiles to CSS”?</li>
-          <li>9 What is SASS/SCSS?</li>
-          <li>9 How can you use SASS to nest CSS?</li>
-          <li>9 How can you use SASS to work with variables in your code?</li>
-          <li>9 Why is it awesome to use mix-ins with SASS?</li>
-          <li>9 If you’re not using Rails, how do you set up SASS?</li>
-          <li>9 What is LESS and how is it different from SASS?</li>
-          <li>9 What other preprocessors are out there?</li>
-        </ol>
-
-        <h4>JavaScript Basics</h4>
-        <ol>
-          <li>WHow do you declare a variable?</li>
-          <li>WWhat are three different ways to declare a variable?</li>
-          <li>WWhich one should you use when?</li>
-          <li>WWhat are the rules for naming variables?</li>
-          <li>WWhat are operators, operands, and operations?</li>
-          <li>WWhat is concatenation and what happens when you add numbers and strings together?</li>
-          <li>WWhat are the different types of operators in JavaScript?</li>
-          <li>WWhat is the difference between == and ===?</li>
-          <li>WWhat are operator precedence values?</li>
-          <li>WWhat are the increment/decrement operators?</li>
-          <li>WWhat is the difference between prefixing and post-fixing them?</li>
-          <li>WWhat are assignment operators?</li>
-          <li>WWhat is the “Unary +” Operator?</li>
-          <li>WWhat are the eight data types of javascript?</li>
-          <li>WWhich data type is NOT primitive?</li>
-          <li>WWhat is the difference between single, double, and backtick quotes for strings?</li>
-          <li>WWhich type of quote lets you embed variables/expressions into a string?</li>
-          <li>WHow do you embed variables/expressions into a string?</li>
-          <li>WHow do you escape characters in a string?</li>
-          <li>WWhat is the difference between slice/substring/substr?</li>
-          <li>WWhat are methods?</li>
-          <li>WWhat are the three logical operators and what do they stand for?</li>
-          <li>WWhat are the comparison operators?</li>
-          <li>WWhat is nesting?</li>
-          <li>WWhat are truthy and falsy values?</li>
-          <li>WWhat are the falsy values in Javascript?</li>
-          <li>WWhat is the syntax for an if/else conditional?</li>
-          <li>WWhat is the syntax for a switch statement?</li>
-          <li>WWhat is the syntax for a ternary operator?</li>
-          <li>WWhat is the relationship between null and undefined?</li>
-          <li>WWhat are conditionals?</li>
-        </ol>
-        <h5>DOM Manipuation</h5>
-        <ol>
-          <li>What is DOM in relation to a webpage?</li>
-          <li>WWhat's the difference between a "node" and an "element"?</li>
-          <li>WHow do you target nodes with "selectors"?</li>
-          <li>WWhat are the basic methods for finding/adding/removing and altering DOM nodes?</li>
-          <li>WWhat is the difference between a "nodelist" and an "array of nodes"?</li>
-          <li>WHow do "events" and "listeners" work? What are three ways to use events in your code?</li>
-          <li>WHow does "bubbling" work?</li>
-        </ol>
-
-        <h4>The Back End</h4>
-        <h5>Introduction to the Back End</h5>
-        <ol>
-          <li>WWhat is the difference between front-end and back-end development ?</li>
-          <li>WWhy are we required to install back-end languages to our computer (besides to run them)?</li>
-        </ol>
-        <h5>Introduction to Frameworks</h5>
-        <ol>
-          <li>What is a framework?</li>
-          <li>WWhat’s the difference between a programming language and a framework?</li>
-          <li>WWhat languages have frameworks?</li>
-        </ol>
+        <div id="webdev101">
+          <h3>Web Development 101</h3>
+          <h4>Command Line Basics | WebDev 101</h4>
+          <ul>
+            <li>Describe what the command line is. <span>Hover over question to see answer!</span></li>
+            <li>Open the command line on your computer.</li>
+            <li>Use the command line to navigate directories and display directory contents.</li>
+            <li>The command line to create a new directory and a new file.</li>
+            <li>The command line to rename or destroy a directory and a file.</li>
+          </ul>
+          <h4>Git Basics | WebDev 101</h4>
+          <ul>
+            <li>What is the Git command used to get a full copy of an existing Git repository from Github?</li>
+            <li>What is the Git command used to check the status of your files?</li>
+            <li>What is the Git command used to track files with Git?</li>
+            <li>What is the Git command used to commit files?</li>
+            <li>What is the Git command used to view your commit history?</li>
+            <li>What is the Git command used to upload projects onto GitHub?</li>
+            <li>Explain the two-stage system that Git uses to save files.</li>
+            <li>Explain what <code> origin</code> is in <code> git push origin master</code>.</li>
+            <li>Explain what <code> master</code> is in <code> git push origin master</code>.</li>
+          </ul>
+          <h4>Developer Tools | WebDev 101</h4>
+          <ul>
+            <li>You can open the developer tools in your browser.</li>
+            <li>You can select a specific HTML element on your page with your browser’s developer tools.</li>
+            <li>You can use developer tools to experiment with the CSS on specific elements of a web page.</li>
+          </ul>
+          <h4>HTML and CSS Basics | WebDev 101</h4>
+          <ul>
+            <li>Why do we separate HTML and CSS?</li>
+            <li>What are classes and IDs (and how are they different)?</li>
+            <li>What are elements?</li>
+            <li>What are tags?</li>
+            <li>What are attributes?</li>
+            <li>What are forms?</li>
+            <li>What is a div?</li>
+            <li>What are selectors?</li>
+            <li>What are properties?</li>
+            <li>What are values?</li>
+            <li>What is the “query string” in a URL and what does it do?</li>
+            <li>What is the difference between “pixels” and “ems”?</li>
+            <li>How do CSS styles for a particular element get inherited? i.e. how does an element get its “default” styles?</li>
+            <li>What are two CSS attributes you can change to push an element around on the page?</li>
+            <li>What are the three different ways to include CSS in your project or use CSS to style a particular element?</li>
+            <li>What is the “default stylesheet” or “user agent stylesheet”?</li>
+            <li>Why use a CSS reset file?</li>
+            <li>What attributes are required by image and links for them to be effective and accessible?</li>
+            <li>Where should your CSS live?</li>
+            <li>How is an HTML5 document structured?</li>
+            <li>What order should you put html attributes? <span>class, id/name, data-*, src/for/type/href/value, tile/alt, role/aria-*</span></li>
+            <li>What order should CSS properties be grouped? <span>positioning, box model, typographic, visual, misc</span></li>
+            <li>What is the CSS naming convention? <span>use hyphens to be consistent with CSS property names .some-class {font-weight:}</span></li>
+            <li>What js-* class name used for?</li>
+          </ul>
+          <h4>JavaScript Basics | WebDev 101</h4>
+          <ul>
+            <li>How do you declare a variable?</li>
+            <li>What are three different ways to declare a variable?</li>
+            <li>Which one should you use when?</li>
+            <li>What are the rules for naming variables?</li>
+            <li>What are operators, operands, and operations?</li>
+            <li>What is concatenation and what happens when you add numbers and strings together?</li>
+            <li>What are the different types of operators in JavaScript?</li>
+            <li>What is the difference between == and ===?</li>
+            <li>What are operator precedence values?</li>
+            <li>What are the increment/decrement operators?</li>
+            <li>What is the difference between prefixing and post-fixing them?</li>
+            <li>What are assignment operators?</li>
+            <li>What is the “Unary +” Operator?</li>
+            <li>What are the eight data types of javascript?</li>
+            <li>Which data type is NOT primitive?</li>
+            <li>What is the difference between single, double, and backtick quotes for strings?</li>
+            <li>Which type of quote lets you embed variables/expressions into a string?</li>
+            <li>How do you embed variables/expressions into a string?</li>
+            <li>How do you escape characters in a string?</li>
+            <li>What is the difference between slice/substring/substr?</li>
+            <li>What are methods?</li>
+            <li>What are the three logical operators and what do they stand for?</li>
+            <li>What are the comparison operators?</li>
+            <li>What is nesting?</li>
+            <li>What are truthy and falsy values?</li>
+            <li>What are the falsy values in Javascript?</li>
+            <li>What is the syntax for an if/else conditional?</li>
+            <li>What is the syntax for a switch statement?</li>
+            <li>What is the syntax for a ternary operator?</li>
+            <li>What is the relationship between null and undefined?</li>
+            <li>What are conditionals?</li>
+          </ul>
+          <h4>DOM Manipuation | WebDev 101</h4>
+          <ul>
+            <li>What is DOM in relation to a webpage?</li>
+            <li>What's the difference between a "node" and an "element"?</li>
+            <li>How do you target nodes with "selectors"?</li>
+            <li>What are the basic methods for finding/adding/removing and altering DOM nodes?</li>
+            <li>What is the difference between a "nodelist" and an "array of nodes"?</li>
+            <li>How do "events" and "listeners" work? What are three ways to use events in your code?</li>
+            <li>How does "bubbling" work?</li>
+          </ul>
+          <h4>Introduction to the Back End | WebDev 101</h4>
+          <ul>
+            <li>What is the difference between front-end and back-end development ?</li>
+            <li>Why are we required to install back-end languages to our computer (besides to run them)?</li>
+          </ul>
+          <h4>Introduction to Frameworks | WebDev 101</h4>
+          <ul>
+            <li>What is a framework?</li>
+            <li>What’s the difference between a programming language and a framework?</li>
+            <li>What languages have frameworks?</li>
+          </ul>
+        </div>
+        <div id="htmlcss">
+          <h3>HTML & CSS</h3>
+          <h4>Basic HTML Structure | HTML & CSS</h4>
+          <ul>
+            <li>What’s the difference between internal links (/somepage) and external links (http://www.somesite.com/somepage)?</li>
+            <li>When on a webpage should you use the full URI (with the http://yoursite.com/somepath) and when should you use the relative path (/somepath)?</li>
+            <li>How do you navigate the document tree with links (../../someotherpage)?</li>
+            <li>How do you open links in external windows?</li>
+            <li>What are all the possible pseudo-states (e.g. :hover) of a link and when are they actually activated? How do you change styles based on them?</li>
+            <li>What is a suggested order to have the pseudo-class rules render succesfully? <span>a { }a:link { }a:visited { }a:hover { }a:focus { }a:active { }</span></li>
+          </ul>
+          <h4>Images, Video & Media | HTML & CSS</h4>
+          <ul>
+            <li>What are common attributes of image tags?</li>
+            <li>How do you load a smaller version of an image?</li>
+            <li>How do you get an image to fill up an element?</li>
+            <li>How do you save load times by using appropriately sized images?</li>
+            <li>When should you store images externally vs on your server?</li>
+            <li>What are the main types of image files and how are they different?</li>
+            <li>Which file types let you use animation?</li>
+            <li>Which file types let you use transparent colors?</li>
+            <li>Which file types are best for photos? Graphics?</li>
+            <li>Which file type lets you scale an image as big as you want without affecting file size (and why)?</li>
+            <li>What’s the difference between raster and vector images?</li>
+            <li>How do you add video to your page? (please don’t autoplay…)</li>
+            <li>How do you add audio to your page? (please don’t autoplay…)</li>
+          </ul>
+          <h4>What's new in Html 5 | HTML & CSS</h4>
+          <ul>
+            <li>What are semantic tags and how are there more of them in HTML5?</li>
+            <li>What does the canvas element do for you?</li>
+            <li>Seriously, why is canvas potentially amazing?</li>
+            <li>What are the new video control features?</li>
+            <li>What are the new audio control features?</li>
+            <li>What is local storage and how is it used?</li>
+            <li>What are data attributes and how are they used?</li>
+            <li>For people who have already done Rails and maybe some JS, how can data attributes be used to pass off data from your back end to your front end?</li>
+            <li>What are the compatibility trade-offs of the new features?</li>
+            <li>Are there any performance trade-offs with the new features?</li>
+            <li>How does HTML5 fix the problem of needing Flash installed to play movies on many devices?</li>
+          </ul>
+          <h4>Inputting Tables in HTML | HTML & CSS</h4>
+          <ul>
+            <li>When should you use tables?</li>
+            <li>What is the structure of a table?</li>
+            <li>What are the special tags that dictate certain parts of a table, e.g. headers or captions?</li>
+            <li>How can you combine cells in a table?</li>
+            <li>Why do you need to be careful about your padding and borders in tables?</li>
+            <li>How do you align text within cells in a table?</li>
+          </ul>
+          <h4>Ordered and Unordered Lists | HTML & CSS</h4>
+          <ul>
+            <li>What is the basic list syntax?</li>
+            <li>How do you nest lists inside each other?</li>
+          </ul>
+          <h4>Forms for Collecting Data | HTML & CSS</h4>
+          <ul>
+            <li>Why are forms probably the most important part of your site?</li>
+            <li>How do you construct a basic form?</li>
+            <li>How do you specify which path the form gets submitted to?</li>
+            <li>When would you want to submit using GET vs POST requests?</li>
+            <li>What are all the possible form element types?</li>
+            <li>When should you use checkboxes instead of radio buttons?</li>
+            <li>When should you use a combobox/dropdown instead of a text field?</li>
+            <li>How do you make a very large text field?</li>
+            <li>How do you link elements with their labels?</li>
+            <li>How do you link element selections together (e.g. check boxes) so they are nicely formatted when your server receives them?</li>
+            <li>What should your “submit” button probably say instead of “submit”?</li>
+          </ul>
+          <h4>Introduction to Design and UX | HTML & CSS</h4>
+          <ul>
+            <li>What is design?</li>
+            <li>What is user experience?</li>
+            <li>What’s the difference between UX and UI?</li>
+            <li>What are the three things UX is meant to focus on?</li>
+            <li>What is visual hierarchy and why is it so important for websites?</li>
+            <li>What are the primary ways to achieve visual hierarchy?</li>
+            <li>What is the design hierarchy pyramid?</li>
+            <li>What are the CRAP factors of effective layout and what are they used for?</li>
+          </ul>
+          <h4>Fonts and Typography | HTML & CSS</h4>
+          <ul>
+            <li>Why do fonts matter?</li>
+            <li>What’s the difference between a serif and sans-serif font?</li>
+            <li>What are font-family attributes used for?</li>
+            <li>How is the active font determined in a font-family?</li>
+            <li>Where does the browser actually get its fonts from?</li>
+            <li>Where can you get additional fonts from and how do you get them onto your page?</li>
+            <li>What are the disadvantages of using web fonts? Of loading your own?</li>
+            <li>What are the important properties of fonts that you can specify using CSS?</li>
+          </ul>
+          <h4>CSS Basics | HTML & CSS</h4>
+          <ul>
+            <li>What are selectors?</li>
+            <li>In general, how specific should you be when targeting elements using selectors?</li>
+            <li>What’s the difference between using %, em and rem to specify sizes?</li>
+            <li>How do you select an element inside another element?</li>
+            <li>How can you shorten up a long batch of CSS that’s doing the same thing to many different elements by putting them all in one line?</li>
+            <li>How do you target the immediate child of an element?</li>
+            <li>How do you target a class inside a class?</li>
+            <li>How do you target a class inside an ID?</li>
+            <li>How would you target “all the links inside li elements that have the class bunny which are inside the unordered list with the id things-that-hop”?</li>
+            <li>What are the three ways to include CSS in your project?</li>
+            <li>How do you import an external stylesheet?</li>
+            <li>What is the browser’s default stylesheet?</li>
+            <li>What is a “CSS Reset” file and why is it helpful?</li>
+            <li>Which stylesheet has preference if you import multiple ones and there are overlapping styles?</li>
+            <li>What is the order of priority of selectors</li>
+          </ul>
+          <h4>The Box Model | HTML & CSS</h4>
+          <ul>
+            <li>What’s the difference between margin and padding?</li>
+            <li>How do borders affect the size of the box?</li>
+            <li>How can margins be used to center an element horizontally on the page?</li>
+            <li>What does it mean that “margins are collapsed”?</li>
+            <li>What is the difference between block, inline-block and inline elements when thinking about the box model?</li>
+            <li>When are you required to specify the width of an element vs letting the browser figure it out for you?</li>
+            <li>How do box shadows affect element box sizing?</li>
+            <li>How can you check an element’s box model in your developer tools (it’s a helpful graphic)?</li>
+          </ul>
+          <h4>Floats and Positioning | HTML & CSS</h4>
+          <ul>
+            <li>What is the DOM?</li>
+            <li>How do elements get placed in the DOM by default?</li>
+            <li>How can you override element positioning using the position attribute?</li>
+            <li>When are you able to use the top left right and bottom attributes?</li>
+            <li>What is the difference between float and position?</li>
+            <li>Which element acts as the parent for a floated element?</li>
+            <li>What is the difference between floating right and floating left?</li>
+            <li>If you have a bunch of elements floated next to each other and you make the browser narrower, what happens?</li>
+            <li>What’s the practical difference between relative and absolute positioning?</li>
+            <li>Which element acts as the parent for an absolutely or relatively positioned element?</li>
+            <li>How would you set up a grid of 20x20 boxes on the page using floats?Using lists?</li>
+            <li>What are negative margins useful for?</li>
+          </ul>
+          <h4>Flexbox | HTML & CSS</h4>
+          <ul>
+            <li>How do you define a flex container?</li>
+            <li>What items will become a flex-item?</li>
+            <li>Can a flex item also be a flex container?</li>
+            <li>When to use Flexbox?</li>
+            <li>What is the difference between justify-content and align-items.</li>
+            <li>How can you change the direction of the axis of Flexbox. What will this do to justify-content and align items?</li>
+            <li>How do you change the display order of content with Flexbox. What is a drawback with this (for screen readers)?</li>
+          </ul>
+          <h4>Grid | HTML & CSS</h4>
+          <ul>
+            <li>What is a grid?</li>
+            <li>How do you create a grid container?</li>
+            <li>How do you create a fixed track size?</li>
+            <li>How do you create a flexible track size?</li>
+            <li>What is the difference between an implicit and explicit grid?</li>
+            <li>How is the fr unit used?</li>
+            <li>How do you place items into a precise location on the grid?</li>
+            <li>How does Grid handle overlapping content?</li>
+            <li>What are grid lines and how are they used?</li>
+            <li>How do you position items against the grid line?</li>
+            <li>What is a grid cell?</li>
+            <li>What are grid areas and how are they used to layout content?</li>
+            <li>What are gutters (also known as alleys) in the grid?</li>
+            <li>How can you nest grids?</li>
+          </ul>
+          <h4>CSS Best Practices | HTML & CSS</h4>
+          <ul>
+            <li>What is a “container <code>&lt;div&gt;</code>”?</li>
+            <li>When should you use SPAN vs DIV?</li>
+            <li>When should you use id vs class?</li>
+            <li>What are good situations for breaking out styles into multiple classes?</li>
+            <li>How can you use margins for alignment?</li>
+          </ul>
+          <h4>Gradients | HTML & CSS</h4>
+          <ul>
+            <li>How do you set the background color?</li>
+            <li>Which color is used when elements are stacked on top of each other (on the z-axis)?</li>
+            <li>How do you set a partially transparent color? rgba anyone?</li>
+            <li>Where are gradients most commonly used in “real world” websites?</li>
+            <li>How do you set a gradient background?</li>
+            <li>How do you make an image the background of an element?</li>
+            <li>Why is it useful to make the image the background of an element instead of using a regular IMG tag?</li>
+            <li>How do you make a background image of a fixed size?</li>
+            <li>How do you make a background image repeat?</li>
+            <li>How do you get your page’s background image to fill the page even when you resize the browser?</li>
+          </ul>
+          <h4>Responsive Design | HTML & CSS</h4>
+          <ul>
+            <li>What is responsive design?</li>
+            <li>Why is responsive design important to your users?</li>
+            <li>How do you make a “fluid” layout?</li>
+            <li>What are Media Queries?</li>
+            <li>How do you use media queries to make your website responsive?</li>
+          </ul>
+          <h4>CSS Frameworks | HTML & CSS</h4>
+          <ul>
+            <li>What are CSS frameworks?</li>
+            <li>How do frameworks actually work?</li>
+            <li>How do you interact with the framework to get the look you want?</li>
+            <li>What is Twitter Bootstrap?</li>
+            <li>What is Zurb Foundation?</li>
+            <li>What is TailwindCSS?</li>
+            <li>What other frameworks can you find out there?</li>
+            <li>What are the disadvantages of using frameworks?</li>
+          </ul>
+          <h4>Animations, Subtle Effects & Compatibility | HTML & CSS</h4>
+          <ul>
+            <li>How do you round corners of a box?</li>
+            <li>How do you add a shadow to a box?</li>
+            <li>How do you rotate an element a specified amount?</li>
+            <li>What interesting animations can you use in CSS3?</li>
+            <li>What are pseudo-elements and what are they useful for?</li>
+          </ul>
+          <h4>Using CSS Preprocessors | HTML & CSS</h4>
+          <ul>
+            <li>What is a preprocessor?</li>
+            <li>Why do preprocessors rock?</li>
+            <li>What does it mean that a preprocessor “compiles to CSS”?</li>
+            <li>What is SASS/SCSS?</li>
+            <li>How can you use SASS to nest CSS?</li>
+            <li>How can you use SASS to work with variables in your code?</li>
+            <li>Why is it awesome to use mix-ins with SASS?</li>
+            <li>If you’re not using Rails, how do you set up SASS?</li>
+            <li>What is LESS and how is it different from SASS?</li>
+            <li>What other preprocessors are out there?</li>
+          </ul>
+        </div>
+        <div id="javascript">
+          <h3>JavaScript</h3>
+        </div>
+        <div id="nodejs">
+          <h3>NodeJS</h3>
+        </div>
       </div>
     </section>
   </body>
