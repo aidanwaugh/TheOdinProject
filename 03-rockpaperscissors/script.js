@@ -6,6 +6,9 @@ let gameScore = document.getElementById("gameSpan");
 let compRPS = document.getElementById("compRPS");
 let playerUI = document.getElementById("playerRPS");
 let msg = document.getElementById("msg");
+let msgDone = document.getElementById("done");
+
+let buttonContainer = document.getElementById("buttonContainer");
 
 //game variables
 let totalGameRound = 5;
@@ -29,42 +32,38 @@ function computerPlay() {
   return compOptions[Math.floor(Math.random() * 3)];
 }
 
-function roundPlay(playerRPS, computerRPS) {
-  if (playerRPS == "rock" && computerRPS == "rock") {
-    gameRound++;
-    gameMsg = "Tie. 2 Rocks";
-  } else if (playerRPS == "rock" && computerRPS == "paper") {
-    computerWin++;
-    gameRound++;
-    gameMsg = "You lose. Paper beats rock.";
-  } else if (playerRPS == "rock" && computerRPS == "scissors") {
-    playerWin++;
-    gameRound++;
-    gameMsg = "You win. Rock beats scissors";
-  } else if (playerRPS == "paper" && computerRPS == "rock") {
-    playerWin++;
-    gameRound++;
-    gameMsg = "You win. Paper beats rock";
-  } else if (playerRPS == "paper" && computerRPS == "paper") {
-    gameRound++;
-    gameMsg = "Tie game. 2 papers";
-  } else if (playerRPS == "paper" && computerRPS == "scissors") {
-    computerWin++;
-    gameRound++;
-    gameMsg = "You lose. Scissors beats paper.";
-  } else if (playerRPS == "scissors" && computerRPS == "rock") {
-    computerWin++;
-    gameRound++;
-    gameMsg = "You lose. Rock beats scissors";
-  } else if (playerRPS == "scissors" && computerRPS == "paper") {
-    playerWin++;
-    gameRound++;
-    gameMsg = "You win. Scissors beats paper";
-  } else {
-    gameRound++;
-    gameMsg = "Tie game. 2 Scissors";
+function roundPlay(playerRPS, compRPS) {
+  if (gameRound == totalGameRound) {
+    gameRound = 0;
+    playerWin = 0;
+    computerWin = 0;
+    done.innerText = "";
   }
+  let winner = {
+    rock: "scissors",
+    scissors: "paper",
+    paper: "rock",
+  };
+  gameRound++;
+  if (playerRPS === compRPS) {
+    playerWin++;
+    computerWin++;
+    return (gameMsg = "It's a draw. Both players get 1 pt");
+  }
+  winner[playerRPS] === compRPS ? playerWin++ : computerWin++;
+  // put the Player value as the key. the value is the looser. if that loser value matches what the computer put. THe computer lost. But if it doesn't, the computer put in the winning value.
+  return (gameMsg = `${winner[playerRPS] === compRPS ? "Player wins! " + playerRPS + " beats " + computerRPS : "Computer wins! " + playerRPS + " beats " + computerRPS}`);
 }
+
+function reset() {
+  gameRound = 0;
+  gameMsg = `Click a button to play! Best of 5 wins.`;
+  msg.style.display = "block";
+
+  done.innerText = "";
+}
+
+// replay.addEventListener("click", reset());
 
 function game() {
   buttons.forEach((button) => {
@@ -73,16 +72,18 @@ function game() {
       computerRPS = computerPlay();
       compRPS.innerText = computerRPS;
       playerUI.innerText = playerRPS;
-      console.log("you " + playerRPS + "   computer " + computerRPS);
+      console.log("you " + playerRPS + "   computer " + computerRPS + "game" + gameRound);
       roundPlay(playerRPS, computerRPS);
       updateScore();
+
       if (gameRound == totalGameRound) {
+        msg.innerText = "";
         if (playerWin > computerWin) {
-          alert(`You win! GAME OVER  ${playerWin}/${gameRound}`);
+          done.innerText = `You win ${playerWin}/${gameRound}! Game over. Click to play again. `;
         } else if (playerWin < computerWin) {
-          alert(`You Lose! GAME OVER ${computerWin}/${gameRound}`);
+          done.innerText = `You Lose ${computerWin}/${gameRound}. Game over. Click to play again. `;
         } else {
-          alert(`tie game GAME OVER ${playerWin}/${gameRound}`);
+          done.innerText = `Tie game! Game over. Click to play again. `;
         }
       }
     });
