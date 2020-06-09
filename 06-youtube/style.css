@@ -10,12 +10,9 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
-#content {
-  margin: 0 5% 0 5%;
-}
 
 /* FONTS */
-h1 {
+/* h1 {
   font-size: 1.2rem;
   font-weight: normal;
 }
@@ -46,10 +43,10 @@ p {
   font-size: 12px;
   color: #606060;
   margin: 5px 0 5px 0;
-}
+} */
 
 /* NAV */
-nav {
+/* nav {
   background-color: white;
   margin: 0 0 0.5rem 0;
   padding: 1rem 0 1rem 0;
@@ -64,91 +61,67 @@ nav {
 
 .nav-right {
   float: right;
+} */
+
+/*---------------------------------------- GRID ---------------------------------------- */
+.content {
+  display: grid;
+  grid-template-columns: minmax(480px, 960px) 400px;
+  /* grid-auto-rows: minmax(10px, auto); */
+  gap: 2rem;
+  grid-template-areas:
+    "video next"
+    "comments next";
+  justify-content: center;
+  margin: 0 2rem;
 }
 
-/* VIDEO SECTION */
-section {
-  margin-top: 1rem;
+.main-video {
+  /* section */
+  grid-area: video;
 }
 
-#main-video {
-  float: left;
+.up-next {
+  grid-area: next;
 }
 
-#video-statistics,
-#video-description,
-#up-next {
-  border-bottom: 0.5px solid #e0e0e0;
-}
-#video-statistics,
-#video-description {
-  padding-bottom: 1.5rem;
+.comments {
+  grid-area: comments;
 }
 
-.video-statistics > .right > img {
-  float: right;
+.video-container {
+  /* video wrapper */
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
 
-.img-right {
-  float: right;
-}
-/* COMMENT SECTION */
-#comments-number > p {
-  display: inline;
-}
-
-#comments-number > img {
-  margin-left: 2rem;
-}
-
-.img-user-thumbnail {
-  float: left;
-  border-radius: 50%;
-  margin-right: 1rem;
-}
-
-.img-comment-likes {
-  margin-left: 50px;
-  margin-bottom: 10px;
-}
-
-#comments-add {
-  height: 50px;
-  margin-top: 1.5rem;
-}
-
-.comments-single > p {
-  margin-bottom: 5px;
-}
-
-input {
-  width: 90%;
-  border: none;
-  border-bottom-color: currentcolor;
-  border-bottom-style: none;
-  border-bottom-width: medium;
-  border-bottom: 1px solid #e0e0e0;
-  background: #f9f9f9;
-}
-
-/* UP NEXT */
-aside {
-  margin-top: 1rem;
-  float: right;
-}
-#toggle {
-  float: right;
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .other-video {
-  height: 100px;
+  height: 94px;
 }
-/* .other-video > img {
-  float: left;
-  margin-right: 1rem;
-} */
 
-.img-left {
-  float: left;
-  margin-right: 1rem;
+@media (max-width: 1024px) {
+  .content {
+    /* background-color: red; */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "video"
+      "next"
+      "comments";
+    /* margin: 0 2rem; */
+  }
 }
+
+/*---------------------------------------- VIDEO SECTION ----------------------------------------*/

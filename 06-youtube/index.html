@@ -23,90 +23,58 @@ no media response added for layout -->
       <img class="nav-right" src="img/settings.png" alt="youtube settings" />
       <img class="nav-right" src="img/signin.png" alt="sign in" />
     </nav>
-    <div id="content">
-      <section id="main-video">
-        <div style="float: right;">
-          <!-- video   -->
+    <div class="content">
+      <section class="main-video">
+        <div class="video-container">
           <iframe
-            width="988"
-            height="556"
+            width="560"
+            height="315"
             src="https://www.youtube.com/embed/hiVbB7Pf2lY"
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          ></iframe>
-          <div id="video-statistics">
-            <img src="img/location.png" alt="" />
-            <h1>It Is The People | A Pacific Crest Trail Film</h1>
-            <p id="p-main-views">341,718 views &middot Nov 9, 2019</p>
-            <img class="img-right" src="img/likedislike.png" alt="thumbs up" />
-            <img class="img-right" src="img/share.png" alt="" />
-            <img class="img-right" src="img/save.png" alt="" />
-            <img class="img-right" src="img/options.png" alt="" />
+            class="video"
+          >
+          </iframe>
+        </div>
+        <div id="video-statistics">
+          <img src="img/location.png" alt="" />
+          <h1>It Is The People | A Pacific Crest Trail Film</h1>
+          <p id="p-main-views">341,718 views &middot Nov 9, 2019</p>
+          <img class="img-right" src="img/likedislike.png" alt="thumbs up" />
+          <img class="img-right" src="img/share.png" alt="" />
+          <img class="img-right" src="img/save.png" alt="" />
+          <img class="img-right" src="img/options.png" alt="" />
+        </div>
+        <div id="video-description">
+          <div class="left">
+            <!-- image -->
+            <img class="img-user-thumbnail img-left" src="img/elena-48.png" alt="" />
           </div>
-          <div id="video-description">
-            <div class="left">
-              <!-- image -->
-              <img class="img-user-thumbnail img-left" src="img/elena-48.png" alt="" />
+          <div class="center">
+            <div>
+              <p><strong>Elina Osborne</strong></p>
+              <p class="video-details">29.5K subscribers</p>
+              <img class="img-right" src="img/subscribe.png" alt="" />
             </div>
-            <div class="center">
-              <div>
-                <p><strong>Elina Osborne</strong></p>
-                <p class="video-details">29.5K subscribers</p>
-                <img class="img-right" src="img/subscribe.png" alt="" />
-              </div>
 
-              <p>
-                Hi, I’m Elina and in 2019 I hiked the Pacific Crest Trail. This was my experience. <br />
+            <p>
+              Hi, I’m Elina and in 2019 I hiked the Pacific Crest Trail. This was my experience. <br />
 
-                Like with your first love, it’s easy to look back at this PCT experience with rose tinted glasses. But
-              </p>
-              <p id="show-more"><strong>Show More</strong></p>
-            </div>
+              Like with your first love, it’s easy to look back at this PCT experience with rose tinted glasses. But
+            </p>
+            <p id="show-more"><strong>Show More</strong></p>
           </div>
-
-          <section id="comments">
-            <div id="comments-number">
-              <p>1,175 Comments</p>
-              <img src="img/sortby.png" alt="Add a public comment..." />
-            </div>
-            <div id="comments-add">
-              <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-              <input type="text" placeholder="Add a public comment..." />
-            </div>
-            <div id="comments-all">
-              <div class="comments-single">
-                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-                <p>TexasCountryLiving <span>6 months ago</span></p>
-                <p>“It’s privileged homelessness with intention.”</p>
-                <img class="img-comment-likes" src="img/comment1.png" alt="" />
-              </div>
-              <div class="comments-single">
-                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-                <p>Jan Ge Jo <span>6 months ago</span></p>
-                <p>This films are what YouTube should be about. Thank you.</p>
-                <img class="img-comment-likes" src="img/comment2.png" alt="" />
-              </div>
-              <div class="comments-single">
-                <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
-                <p>Micah Madsen <span>6 months ago</span></p>
-                <p>This is stunning, raw & remarkable. Thank you for sharing.</p>
-                <img class="img-comment-likes" src="img/comment3.png" alt="" />
-              </div>
-            </div>
-          </section>
         </div>
       </section>
-      <aside>
-        <div id="up-next">
-          <h2>Up next</h2>
-          <img id="toggle" src="img/autoplay.png" alt="" />
-          <div class="other-video">
-            <img class="img-left" src="img/vid1.jpg" alt="" />
-            <p><strong>This is not a beautiful hiking video | A Pacific Crest Trail...</strong></p>
-            <p class="video-details">Peter Hochhauser</p>
-            <p class="video-details">743K views &middot 3 years ago</p>
-          </div>
+      <aside class="up-next">
+        <h2>Up next</h2>
+        <img id="toggle" src="img/autoplay.png" alt="" />
+        <div class="other-video">
+          <img class="img-left" src="img/vid1.jpg" alt="" />
+          <p><strong>This is not a beautiful hiking video | A Pacific Crest Trail...</strong></p>
+          <p class="video-details">Peter Hochhauser</p>
+          <p class="video-details">743K views &middot 3 years ago</p>
         </div>
         <div class="other-video">
           <img class="img-left" src="img/vid2.jpg" alt="" />
@@ -151,6 +119,36 @@ no media response added for layout -->
           <p class="video-details">328K views &middot 7 months ago</p>
         </div>
       </aside>
+      <section class="comments">
+        <div id="comments-number">
+          <p>1,175 Comments</p>
+          <img src="img/sortby.png" alt="Add a public comment..." />
+        </div>
+        <div id="comments-add">
+          <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+          <input type="text" placeholder="Add a public comment..." />
+        </div>
+        <div id="comments-all">
+          <div class="comments-single">
+            <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+            <p>TexasCountryLiving <span>6 months ago</span></p>
+            <p>“It’s privileged homelessness with intention.”</p>
+            <img class="img-comment-likes" src="img/comment1.png" alt="" />
+          </div>
+          <div class="comments-single">
+            <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+            <p>Jan Ge Jo <span>6 months ago</span></p>
+            <p>This films are what YouTube should be about. Thank you.</p>
+            <img class="img-comment-likes" src="img/comment2.png" alt="" />
+          </div>
+          <div class="comments-single">
+            <img class="img-user-thumbnail" src="img/avatar_48.png" alt="" />
+            <p>Micah Madsen <span>6 months ago</span></p>
+            <p>This is stunning, raw & remarkable. Thank you for sharing.</p>
+            <img class="img-comment-likes" src="img/comment3.png" alt="" />
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>

@@ -32,15 +32,17 @@ function reset() {
 function toggleDraw() {
   if (drawOpacity == true) {
     drawOpacity = false;
+    toggleBtn.innerText = "Draw with Opacity";
   } else {
     drawOpacity = true;
-    console.log(drawOpacity + " draw opacity");
+    toggleBtn.innerText = "Draw Opaque";
   }
 }
 
 //CHANGE COLOR WHEN MOUSE OVER
 function colorChange() {
   if (drawOpacity == true) {
+    //Draw opacity
     let opacity = Number(this.style.opacity);
     this.style.opacity = 0.1;
     this.style.backgroundColor = "black"; //must have bg color. can't change opacity on non existing color
@@ -49,6 +51,7 @@ function colorChange() {
       this.style.opacity = opacity + 0.1;
     }
   } else {
+    // Draw black
     this.style.opacity = 1;
     this.style.backgroundColor = "black";
   }
