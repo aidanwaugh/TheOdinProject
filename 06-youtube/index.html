@@ -15,13 +15,19 @@ no media response added for layout -->
   </head>
   <body>
     <nav>
-      <img class="nav-left" src="img/hamburger.png" alt="hamburger menu" />
-      <img class="nav-left" src="img/ytCanada.png" alt="youtube logo" />
-      <img class="nav-center" src="img/search.png" alt="" />
-      <img class="nav-right" src="img/createVideo.png" alt="createvid" />
-      <img class="nav-right" src="img/apps.png" alt="youtube apps" />
-      <img class="nav-right" src="img/settings.png" alt="youtube settings" />
-      <img class="nav-right" src="img/signin.png" alt="sign in" />
+      <div class="nav-left">
+        <img src="img/hamburger.png" alt="hamburger menu" />
+        <img src="img/ytCanada.png" alt="youtube logo" />
+      </div>
+      <div class="nav-search">
+        <img src="img/search.png" alt="" />
+      </div>
+      <div class="nav-right">
+        <img src="img/createVideo.png" alt="createvid" />
+        <img src="img/apps.png" alt="youtube apps" />
+        <img src="img/settings.png" alt="youtube settings" />
+        <img src="img/signin.png" alt="sign in" />
+      </div>
     </nav>
     <div class="content">
       <section class="main-video">
@@ -40,24 +46,29 @@ no media response added for layout -->
         <div id="video-statistics">
           <img src="img/location.png" alt="" />
           <h1>It Is The People | A Pacific Crest Trail Film</h1>
-          <p id="p-main-views">341,718 views &middot Nov 9, 2019</p>
-          <img class="img-right" src="img/likedislike.png" alt="thumbs up" />
-          <img class="img-right" src="img/share.png" alt="" />
-          <img class="img-right" src="img/save.png" alt="" />
-          <img class="img-right" src="img/options.png" alt="" />
+          <div class="flex-space-between">
+            <p id="p-main-views">341,718 views &middot Nov 9, 2019</p>
+            <div>
+              <img class="img-right" src="img/likedislike.png" alt="thumbs up" />
+              <img class="img-right" src="img/share.png" alt="" />
+              <img class="img-right" src="img/save.png" alt="" />
+              <img class="img-right" src="img/options.png" alt="" />
+            </div>
+          </div>
         </div>
         <div id="video-description">
-          <div class="left">
+          <div class="circle-thumbnail">
             <!-- image -->
-            <img class="img-user-thumbnail img-left" src="img/elena-48.png" alt="" />
+            <img class="img-user-thumbnail" src="img/elena-48.png" alt="" />
           </div>
-          <div class="center">
-            <div>
-              <p><strong>Elina Osborne</strong></p>
-              <p class="video-details">29.5K subscribers</p>
-              <img class="img-right" src="img/subscribe.png" alt="" />
-            </div>
-
+          <div>
+            <p><strong>Elina Osborne</strong></p>
+            <p class="video-details">29.5K subscribers</p>
+          </div>
+          <div>
+            <img src="img/subscribe.png" alt="" />
+          </div>
+          <div>
             <p>
               Hi, I’m Elina and in 2019 I hiked the Pacific Crest Trail. This was my experience. <br />
 
@@ -67,6 +78,7 @@ no media response added for layout -->
           </div>
         </div>
       </section>
+
       <aside class="up-next">
         <h2>Up next</h2>
         <img id="toggle" src="img/autoplay.png" alt="" />
@@ -76,6 +88,7 @@ no media response added for layout -->
           <p class="video-details">Peter Hochhauser</p>
           <p class="video-details">743K views &middot 3 years ago</p>
         </div>
+        <hr />
         <div class="other-video">
           <img class="img-left" src="img/vid2.jpg" alt="" />
           <p><strong>The Pacific Crest Trail | Chapter One</strong></p>
