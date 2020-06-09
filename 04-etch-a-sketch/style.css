@@ -2,26 +2,58 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 :root {
   --grid-cols: 16;
   --grid-rows: 16;
+  --bg: #f4f4f4;
+  --pink: #f9cdcd;
+  --light-grey: #e4e4e4;
+  --grey: #5e5e5e;
+  --dark-grey: #252422;
 }
 
+body {
+  background-color: var(--bg);
+  font-family: sans-serif;
+}
+
+h1 {
+  display: inline;
+  font-size: 1rem;
+}
 #container {
-  background-color: grey;
-  display: flex;
+  display: grid;
   justify-content: center;
-  align-items: center;
+  margin: 7vh auto;
 }
 
 #grid {
-  width: 500px;
-  height: 500px;
+  width: 80vh;
+  height: 80vh;
+
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-gap: 0;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+#gui {
+  height: 6vh;
+}
+
+button {
+  float: right;
+  margin-left: 1.5rem;
+  background-color: var(--bg);
+  border: 1px solid var(--grey);
+  padding: 0.2rem;
+}
+
+button:hover {
+  background-color: var(--grey);
+  color: var(--bg);
 }
