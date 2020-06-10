@@ -1,0 +1,112 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+/* ---------------- LAYOUT TEST ONLY ---------------- */
+.portrait {
+  height: 9rem;
+  background-color: #f4f4f4;
+}
+
+.landscape {
+  height: 5rem;
+  background-color: #f4f4f4;
+}
+
+p {
+  /* text-align: center; */
+  background-color: #f4f4f4;
+  color: gray;
+  justify-content: center;
+}
+
+.landscape p,
+.portrait p {
+  text-align: center;
+}
+/* ------------------ GENERAL KEEP ------------------- */
+.caption p {
+  font-size: 0.8rem;
+  background-color: white;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-bottom {
+  align-self: end;
+}
+
+/* ------------------------ GRID STUFF ------------------ */
+.grid {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1vw 2vw 4vw repeat(5, 1fr) 4vw 2vw 1vw;
+  /* grid-template-rows: 14.2vw; */
+  /* grid-auto-rows: 14.2vw; */
+  /* grid-auto-flow: row; */
+  margin-bottom: 1.5vw;
+  grid-gap: 1.5vw;
+}
+
+/* 1 image grid */
+.c1span11 {
+  grid-column: 1 / span 11;
+}
+
+.c2span9 {
+  grid-column: 2 / span 9;
+}
+.c3span7 {
+  grid-column: 3 / span 7;
+}
+
+.c4span1 {
+  grid-column: 4 / span 1;
+}
+.c4span5 {
+  grid-column: 4 / span 5;
+}
+.c4span4 {
+  grid-column: 4 / span 4;
+}
+
+.c5span3 {
+  grid-column: 5 / span 3;
+}
+.c5span4 {
+  grid-column: 5 / span 4;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 0 auto 0;
+    background-color: lightblue;
+  }
+  .c5span3,
+  .c4span5,
+  .c3span7,
+  .c2span9,
+  .c1span11 {
+    grid-column: 2 / span 1;
+  }
+
+  .align-bottom {
+    align-self: start;
+  }
+  .align-right {
+    text-align: left;
+  }
+}
