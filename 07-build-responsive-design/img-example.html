@@ -1,34 +1,102 @@
 <!--website layout inspiration https://monokai.nl/2019/japan/ -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <nav>
-      <a href="index.html">Index</a>
-      <a href="one.html">One</a>
-      <a href="two.html">Two</a>
-      <a href="three.html">Three</a>
-      <a href="img-example.html">Image Example</a>
-    </nav>
-    <header>
-      <h1>Responsive Photo Layout</h1>
-    </header>
-    <section id="one-image-grid">
-      <div class="grid">
-        <div class="c5span3">
-          <p>col c5span3</p>
-          <img src="img/square.jpg" alt="" />
-        </div>
-        <div class="c4span5">
-          <p>col c4span5</p>
-          <img src="img/landscape.jpg" alt="" />
-        </div>
-      </div>
-    </section>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Index</a>
+    <a href="one.html">One</a>
+    <a href="two.html">Two</a>
+    <a href="three.html">Three</a>
+    <a href="img-example.html">Image Example</a>
+  </nav>
+  <header class="caption">
+    <h1>Responsive Photo Layout</h1>
+    <p>Low resolution and size images chosen for fast loading for this demo.</p>
+  </header>
+
+
+  <div class="grid">
+    <div class="c4span5">
+      <img src="img/landscape.jpg" alt="" />
+    </div>
+  </div>
+  <div class="grid">
+    <div class="c1span5 r1span4">
+      <img src="img/portrait.jpg" alt="">
+    </div>
+    <div class="c6span6 r4span2">
+      <img src="img/landscape.jpg" alt="">
+    </div>
+    <div class="c6span1 r3span1 caption">
+      <p>Grid with 5 rows. Fixes issue?</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="c4span4">
+      <img src="img/landscape.jpg" alt="">
+    </div>
+    <div class="c5span4">
+      <img src="img/square.jpg" alt="">
+    </div>
+    <div class="c8span1 r1span1 caption align-bottom">
+      <p>2 row grid with caption justify-self:bottom</p>
+    </div>
+    <div class="c4span1 r2span1 caption align-right">
+      <p>Caption align right. Already placed at the top.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="c1span5 r1span4">
+      <img src="img/square.jpg" alt="">
+    </div>
+    <div class="c6span6 r3span3">
+      <img src="img/landscape.jpg" alt="">
+    </div>
+    <div class="c1span5 r5span4">
+      <img src="img/portrait.jpg" alt="">
+    </div>
+    <div class="c6span1 r2span1 caption align-bottom">
+      <p>Aside images expand 4 rows</p>
+    </div>
+    <div class="c6span1 r6span1 caption">
+      <p>The remaining image row span can be changed to fit</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="c2span5 align-bottom">
+      <img src="img/landscape.jpg" alt="">
+    </div>
+    <div class="c7span4">
+      <img src="img/portrait.jpg" alt="">
+    </div>
+    <div class="c5span4"><img src="img/landscape.jpg" alt=""></div>
+    <div class="c4span1 r2span1 align-right caption">
+      <p>Caption on single row is easy. No extra grid required.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="c1span7"><img src="img/landscape.jpg" alt=""></div>
+    <div class="c3span3"><img src="img/square.jpg" alt=""></div>
+    <div class="c6span6 r2span3"><img src="img/square.jpg" alt=""></div>
+    <div class="c5span1 r3span1 caption align-right">
+      <p>Caption this.</p>
+    </div>
+  </div>
+
+
+
+</body>
+
 </html>
