@@ -1,119 +1,130 @@
-const numberButtons = document.querySelectorAll(".btnNumber");
-const operatorButtons = document.querySelectorAll(".btnOperator");
-const equalsButton = document.querySelector(".btnEquals");
-const deleteButton = document.querySelector(".btnDelete");
-const clearButton = document.querySelector(".btnClear");
-const displayHistoryTextElement = document.getElementById("displayHistory");
-const displayCurrentTextElement = document.getElementById("displayCurrent");
+const btnNumber = document.querySelectorAll(".btn-number");
+const btnOperation = document.querySelectorAll(".btn-operation");
+const btnEqual = document.querySelector(".btn-equal");
+const btnDelete = document.querySelector(".btn-delete");
+const btnClear = document.querySelector(".btn-clear");
+const displayPrevious = document.querySelector(".display-previous");
+const displayCurrent = document.querySelector(".display-current");
 
 let numCurrent = "";
 let numPrev = "";
-let numHistoryString = "";
-let numResult = "";
-let operandCalculate = "";
-let operandNext = "";
+let operation = undefined;
+let clickedEquals = false;
 
-function math(operator, a, b) {
+function clear() {
+  numCurrent = "";
+  numPrev = "";
+  operation = undefined;
+}
+
+function deleteNumber() {
+  numCurrent = numCurrent.toString().slice(0, -1);
+}
+
+function appendNumber(number) {
+  console.group("appendNumber| numCurrent   number/innerText");
+  console.log("numCurrent " + numCurrent);
+  console.log("number " + number);
+  if (clickedEquals == true) {
+    clear();
+    clickedEquals = false;
+  }
+  if (number === "." && numCurrent.includes(".")) return;
+  numCurrent = numCurrent.toString() + number.toString();
+  console.log("numCurrent " + numCurrent);
+  console.groupEnd();
+}
+
+function chooseOperation(operator) {
+  console.group("chooseOperation | operation/innerText=");
+  console.log(operation);
+  console.log(numCurrent);
+  console.log(operator);
+
+  if (clickedEquals == true) clickedEquals = false;
+  if (numCurrent == "") {
+    console.log(`NO current number - can't add operator`);
+    return;
+  }
+  if (numPrev != "") {
+    console.log("do math (math aint actually runing)");
+    math(operation, parseFloat(numPrev), parseFloat(numCurrent));
+  }
+  operation = operator;
+  numPrev = numCurrent;
+  numCurrent = "";
+  console.log(operation);
+
+  console.groupEnd();
+}
+
+function math(operator, prev, current) {
+  let computation;
+  if (isNaN(prev) || isNaN(current)) return;
   switch (operator) {
     case "+":
-      numResult = a + b;
-      console.log(numResult);
+      computation = prev + current;
       break;
     case "-":
-      numResult = a - b;
-      console.log(numResult);
+      computation = prev - current;
       break;
     case "*":
-      numResult = a * b;
-      console.log(numResult);
+      computation = prev * current;
       break;
-    case "/":
-      numResult = a / b;
-      console.log(numResult);
+    case "÷":
+      computation = prev / current;
       break;
     default:
-      console.log("error with switch");
       return;
   }
-  numCurrent = numResult;
-  operandCalculate = operandNext;
-  operandNext = "";
-  numResult = "";
+  numCurrent = computation;
+  operation = undefined;
   numPrev = "";
 }
 
-console.log(`START numPrev: =${numPrev}  numCurrent:${numCurrent}  numResult:${numResult} operandCalculate:${operandCalculate} operandNext:${operandNext}`);
-
-function appendNumber(buttonNumberInnerText) {
-  numCurrent += buttonNumberInnerText;
-  console.log(`APPENDstart numPrev: =${numPrev}  numCurrent:${numCurrent}  numResult:${numResult} operandCalculate:${operandCalculate} operandNext:${operandNext}`);
-}
-/* 
-
-
-*/
-function operate(buttonOperatorInnerText) {
-  if (numCurrent == "" && numPrev == "") {
-    console.log(`numCurrent & numPrev are EMPTY. No operator can be added`);
-    return;
-  }
-
-  if (operandCalculate != "") {
-    console.log(`operandCalculate = ${operandCalculate}. It is NOT empty. No additional operands allowed`);
-    return;
-  }
-
-  if (numPrev != "") {
-    operandNext = buttonOperatorInnerText;
-    console.log(operandNext);
-    math(operandCalculate, parseInt(numPrev), parseInt(numCurrent));
-    console.log(`OPERATEconcat numPrev: =${numPrev}  numCurrent:${numCurrent}  numResult:${numResult} operandCalculate:${operandCalculate} operandNext:${operandNext}`);
-  }
-  if (numPrev == "") {
-    numPrev = numCurrent;
-    numCurrent = "";
-    operandCalculate = buttonOperatorInnerText;
-    console.log(`OPERATEempty numPrev: =${numPrev}  numCurrent:${numCurrent}  numResult:${numResult} operandCalculate:${operandCalculate} operandNext:${operandNext}`);
-  }
+function getDisplayNumber(number) {
+  const stringNumber = number.toString();
+  return stringNumber;
 }
 
-function clear() {}
-/* 
-
-
-
-*/
 function updateCalculatorDisplay() {
-  //show in HTML
-  displayCurrentTextElement.innerText = numCurrent;
-  displayHistoryTextElement.innerText = numHistoryString;
+  displayCurrent.innerText = getDisplayNumber(numCurrent);
+  if (operation != null) {
+    console.log(operation);
+    displayPrevious.innerText = `${getDisplayNumber(numPrev)} ${operation}`;
+  } else {
+    displayPrevious.innerText = "";
+  }
 }
 
-/* 
+// ------- BUTTONS -------
 
-
-
-
-*/
-//ADD EVENT LISTENERS
-numberButtons.forEach((button) => {
+btnNumber.forEach((button) => {
   button.addEventListener("click", () => {
     appendNumber(button.innerText);
     updateCalculatorDisplay();
   });
 });
 
-operatorButtons.forEach((button) => {
+btnOperation.forEach((button) => {
   button.addEventListener("click", () => {
-    operate(button.innerText);
+    chooseOperation(button.innerText);
     updateCalculatorDisplay();
   });
 });
 
-equalsButton.addEventListener("click", () => {
-  math(operandCalculate, parseInt(numPrev), parseInt(numCurrent));
+btnEqual.addEventListener("click", (button) => {
+  math(operation, parseFloat(numPrev), parseFloat(numCurrent));
+  updateCalculatorDisplay();
+  clickedEquals = true;
 });
 
-clearButton.addEventListener("click", () => {
-  clearButton();
+btnClear.addEventListener("click", (button) => {
+  clear();
+  updateCalculatorDisplay();
+});
+
+btnDelete.addEventListener("click", (button) => {
+  deleteNumber();
+  updateCalculatorDisplay();
 });
