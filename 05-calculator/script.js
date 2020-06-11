@@ -66,32 +66,15 @@ function math(operator, prev, current) {
       return;
   }
   numCurrent = computation;
+  numCurrent = +numCurrent.toFixed(3); //+drops zeros at end, max string is 3
   operation = undefined;
   numPrev = "";
 }
 
-function getDisplayNumber(number) {
-  const stringNumber = number.toString();
-  const integerDigits = parseFloat(stringNumber.split(".")[0]);
-  const decimalDigits = stringNumber.split(".")[1];
-  let integerDisplay;
-  if (isNaN(integerDigits)) {
-    integerDisplay = "";
-  } else {
-    integerDisplay = integerDigits;
-  }
-  if (decimalDigits != null) {
-    return `${integerDisplay}.${decimalDigits}`;
-  } else {
-    return integerDisplay;
-  }
-}
-
 function updateCalculatorDisplay() {
-  displayCurrent.innerText = getDisplayNumber(numCurrent);
+  displayCurrent.innerText = numCurrent.toString();
   if (operation != null) {
-    console.log(operation);
-    displayPrevious.innerText = `${getDisplayNumber(numPrev)} ${operation}`;
+    displayPrevious.innerText = `${numPrev.toString()} ${operation}`;
   } else {
     displayPrevious.innerText = "";
   }
