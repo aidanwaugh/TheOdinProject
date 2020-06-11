@@ -22,44 +22,32 @@ function deleteNumber() {
 }
 
 function appendNumber(number) {
-  console.group("appendNumber| numCurrent   number/innerText");
-  console.log("numCurrent " + numCurrent);
-  console.log("number " + number);
   if (clickedEquals == true) {
     clear();
     clickedEquals = false;
   }
   if (number === "." && numCurrent.includes(".")) return;
   numCurrent = numCurrent.toString() + number.toString();
-  console.log("numCurrent " + numCurrent);
-  console.groupEnd();
 }
 
 function chooseOperation(operator) {
-  console.group("chooseOperation | operation/innerText=");
-  console.log(operation);
-  console.log(numCurrent);
-  console.log(operator);
-
   if (clickedEquals == true) clickedEquals = false;
   if (numCurrent == "") {
     console.log(`NO current number - can't add operator`);
     return;
   }
   if (numPrev != "") {
-    console.log("do math (math aint actually runing)");
+    console.log("do math");
     math(operation, parseFloat(numPrev), parseFloat(numCurrent));
   }
   operation = operator;
   numPrev = numCurrent;
   numCurrent = "";
-  console.log(operation);
-
-  console.groupEnd();
 }
 
 function math(operator, prev, current) {
   let computation;
+  if ((operator == "÷") & (current == 0)) return;
   if (isNaN(prev) || isNaN(current)) return;
   switch (operator) {
     case "+":
@@ -84,7 +72,19 @@ function math(operator, prev, current) {
 
 function getDisplayNumber(number) {
   const stringNumber = number.toString();
-  return stringNumber;
+  const integerDigits = parseFloat(stringNumber.split(".")[0]);
+  const decimalDigits = stringNumber.split(".")[1];
+  let integerDisplay;
+  if (isNaN(integerDigits)) {
+    integerDisplay = "";
+  } else {
+    integerDisplay = integerDigits;
+  }
+  if (decimalDigits != null) {
+    return `${integerDisplay}.${decimalDigits}`;
+  } else {
+    return integerDisplay;
+  }
 }
 
 function updateCalculatorDisplay() {
