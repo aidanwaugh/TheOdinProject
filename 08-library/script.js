@@ -1,23 +1,26 @@
 let myLibraryArray = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, readStatus) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.readStatus = readStatus;
 }
 
 function addBook() {
   const title = document.querySelector("#book-title").value;
   const author = document.querySelector("#book-author").value;
   const pages = document.querySelector("#book-pages").value;
-  const readState = document.querySelector("#book-status");
+  const readState = document.querySelector("#book-state").checked;
 
   if (title == "" || author == "" || pages == "") {
     alert("fill in fields correctly");
   } else {
     const newTitle = new Book(title, author, pages, readState);
     myLibraryArray.push(newTitle);
+    console.table(myLibraryArray);
+    console.log(readState == true);
+    console.log(readState);
   }
 }
 
@@ -25,7 +28,7 @@ function clearFormFields() {
   document.querySelector("#book-title").value = "";
   document.querySelector("#book-author").value = "";
   document.querySelector("#book-pages").value = "";
-  //  document.querySelector("#book-status");
+  document.querySelector("#book-status");
 }
 
 function render(library) {
