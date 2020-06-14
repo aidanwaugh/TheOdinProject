@@ -1,44 +1,57 @@
 let myLibraryArray = [];
-// const submitBtn = document.querySelector("#submit-btn");
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${this.title} ${this.author} ${this.pages} ${this.read}`;
-  };
-}
-
-function addBookToLibraryArray(book) {
-  myLibraryArray.push(book);
 }
 
 function addBook() {
-  let title = document.querySelector("#book-title").value;
-  let author = document.querySelector("#book-author").value;
-  let pages = document.querySelector("#book-pages").value;
-  let readState = document.querySelector("#book-status");
-  let newTitle = new Book(title, author, pages, readState);
-  addBookToLibraryArray(newTitle);
-  render(myLibraryArray);
+  const title = document.querySelector("#book-title").value;
+  const author = document.querySelector("#book-author").value;
+  const pages = document.querySelector("#book-pages").value;
+  const readState = document.querySelector("#book-status");
+
+  if (title == "" || author == "" || pages == "") {
+    alert("fill in fields correctly");
+  } else {
+    const newTitle = new Book(title, author, pages, readState);
+    myLibraryArray.push(newTitle);
+  }
+}
+
+function clearFormFields() {
+  document.querySelector("#book-title").value = "";
+  document.querySelector("#book-author").value = "";
+  document.querySelector("#book-pages").value = "";
+  //  document.querySelector("#book-status");
 }
 
 function render(library) {
   const bookList = document.querySelector("#book-table");
   const newRow = document.createElement("tr");
   library.forEach((book) => {
-    newRow.innerHTML = book.info();
+    newRow.innerHTML = `
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.pages}</td>
+    <td>${book.read}</td>
+    <td><button class="delete-btn delete">X</button></td>
+    `;
     bookList.appendChild(newRow);
   });
 }
 
 document.querySelector("#submit-btn").addEventListener("click", (e) => {
   e.preventDefault(); //prevent actual submit
+
   addBook();
+  render(myLibraryArray);
+  clearFormFields();
 });
 
 const sampleBook = new Book("Harry Potter", "JK", "200", "Read");
-addBookToLibraryArray(sampleBook);
+myLibraryArray.push(sampleBook);
+
 render(myLibraryArray);
