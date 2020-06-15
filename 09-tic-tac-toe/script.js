@@ -5,19 +5,25 @@
 */
 
 // IIFE expression - run right away
+
+function player(playerName, symbol) {
+  const symbolClass = symbol + "Class";
+  return { playerName, symbol, symbolClass };
+}
+
 const gameBoard = (() => {
   let gameBoardArray = ["", "", "", "", "", "", "", "", ""];
-  const player1 = "x";
-  const player2 = "o";
-  let p1Turn = true;
+  const player1 = player("player1", "x", "xClass");
+  const player2 = player("player2", "o", "oClass");
+  let currentPlayer = player1;
   const gameCells = document.querySelectorAll(".game-cell");
 
   const startGame = () => {
-    p1Turn = true;
+    currentPlayer = player1;
     gameBoardArray = ["", "", "", "", "", "", "", "", ""];
     gameCells.forEach((cell) => {
-      cell.classList.remove.(xClass)
-      cell.classList.remove.(oClass)
+      cell.classList.remove("xClass");
+      cell.classList.remove("oClass");
       cell.removeEventListener("click", addPlayerMark); //for replay
       cell.addEventListener("click", addPlayerMark, { once: true }); //remove event listener after clicked
     });
@@ -26,13 +32,17 @@ const gameBoard = (() => {
   const addPlayerMark = (e) => {
     const cell = e.target;
     const cellIndex = cell.id[5]; //can't have html id with number only, so extract number from id string
-    document.getElementById(cell.id).innerHTML = "x";
-    document.getElementById(cell.id).classList.add("xClass");
+    document.getElementById(cell.id).innerHTML = currentPlayer.symbol;
+    document.getElementById(cell.id).classList.add(currentPlayer.symbolClass);
     gameBoardArray[cellIndex] = "x";
-    return console.log(gameBoardArray);
+    switchTurn();
+    return console.log(currentPlayer);
   };
 
-  const switchTurn = () => {};
+  const switchTurn = () => {
+    currentPlayer == player1 ? (currentPlayer = player2) : (currentPlayer = player1);
+    return currentPlayer;
+  };
 
   const endGame = () => {};
 
