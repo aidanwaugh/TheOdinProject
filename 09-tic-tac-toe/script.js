@@ -11,7 +11,7 @@ function player(playerName, symbol) {
 
 const gameBoard = (() => {
   let gameBoardArray = ["", "", "", "", "", "", "", "", ""];
-  let gameBoardAiOptionArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]; //options for ai
+  let gameBoardAiOptionArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   const player1 = player("player1", "x", "xClass");
   const player2 = player("player2", "o", "oClass");
   let currentPlayer = player1;
@@ -20,11 +20,10 @@ const gameBoard = (() => {
   const btnPlayerVsPlayer = document.querySelector("#btn-player");
   const btnPlayerVsAi = document.querySelector("#btn-ai");
   let winningCell = ["", "", ""];
-  let playGame = false; //lets click and hover TODO: set to false
+  let playGame = false;
   let versusAi = false;
 
   const pickOpponent = () => {
-    // console.log("pick opponent run");
     btnPlayerVsPlayer.style.display = "inline-block";
     btnPlayerVsAi.style.display = "inline-block";
     btnPlayerVsPlayer.addEventListener("click", startGame);
@@ -35,7 +34,6 @@ const gameBoard = (() => {
   };
 
   const startGame = () => {
-    // console.log("start playing! reset. vs AI=" + versusAi);
     currentPlayer = player1;
     gameBoardArray = ["", "", "", "", "", "", "", "", ""];
     gameBoardAiOptionArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -49,10 +47,10 @@ const gameBoard = (() => {
       cell.classList.remove("oClass");
       cell.classList.remove("highlight-cell");
       cell.innerHTML = "";
-      cell.removeEventListener("click", addPlayerMark); //for replay
+      cell.removeEventListener("click", addPlayerMark);
       cell.addEventListener("mouseenter", hoverPlayerMarkShow);
       cell.addEventListener("mouseleave", hoverPlayerMarkHide);
-      cell.addEventListener("click", addPlayerMark, { once: true }); //remove event listener after clicked
+      cell.addEventListener("click", addPlayerMark, { once: true });
     });
   };
 
@@ -77,36 +75,28 @@ const gameBoard = (() => {
   const addPlayerMark = (e) => {
     if (playGame) {
       const cell = e.target;
-      const cellIndex = cell.id[5]; //can't have html id with number only, so extract number from id string
+      const cellIndex = cell.id[5];
       cell.innerHTML = currentPlayer.symbol;
       cell.classList.remove("hover-cell");
       cell.classList.add(currentPlayer.symbolClass);
       gameBoardArray[cellIndex] = currentPlayer.symbol;
       gameBoardAiOptionArray[cellIndex] = null;
-      // console.log(gameBoardArray);
       checkWin(currentPlayer);
       switchTurn();
     }
   };
 
   const switchTurn = () => {
-    //ai turn
     currentPlayer == player1 ? (currentPlayer = player2) : (currentPlayer = player1);
+    //AI make move
     if (versusAi == true && currentPlayer == player2) {
       let currentAiOptions = gameBoardAiOptionArray.filter((string) => string != null);
-      // console.log("AI options before" + currentAiOptions);
       let cellAiIndex = Math.floor(Math.random() * (currentAiOptions.length - 1)) + 0;
-      // debugger;
-      console.log(cellAiIndex + " " + currentAiOptions[cellAiIndex]);
-      //place cell index inside option array
       let cellAiMark = document.getElementById("cell-" + currentAiOptions[cellAiIndex]);
       cellAiMark.innerHTML = player2.symbol;
       cellAiMark.classList.add(player2.symbolClass);
-      // console.log(gameBoardAiOptionArray);
-      gameBoardAiOptionArray[currentAiOptions[cellAiIndex]] = null; //FIXME:
+      gameBoardAiOptionArray[currentAiOptions[cellAiIndex]] = null;
       gameBoardArray[currentAiOptions[cellAiIndex]] = player2.symbol;
-      // console.log("AI options after" + gameBoardAiOptionArray + " removed " + cellAiIndex);
-      console.log(currentPlayer.playerName);
       checkWin(player2);
       currentPlayer = player1;
     }
@@ -114,7 +104,7 @@ const gameBoard = (() => {
   };
 
   const checkWin = (currentPlayer) => {
-    console.log("checking win " + currentPlayer.playerName + " " + gameBoardArray);
+    console.log("checking win for " + currentPlayer.playerName + " " + gameBoardArray);
     const winningCombos = [
       ["0", "1", "2"],
       ["3", "4", "5"],
@@ -135,7 +125,6 @@ const gameBoard = (() => {
         winningCell[0] = winningCombos[i][0];
         winningCell[1] = winningCombos[i][1];
         winningCell[2] = winningCombos[i][2];
-        // console.log(playGame);
         return [winningCell[0], winningCell[1], winningCell[2], endGameWinner(currentPlayer)];
       }
     }
@@ -147,13 +136,13 @@ const gameBoard = (() => {
   };
 
   const endGameWinner = (currentPlayer) => {
-    //if the array content has the current player class, set background of each cell light grey
     playGame = false;
     versusAi = false;
+    //highlight winning cell combination
     document.getElementById("cell-" + winningCell[0]).classList.add("highlight-cell");
     document.getElementById("cell-" + winningCell[1]).classList.add("highlight-cell");
     document.getElementById("cell-" + winningCell[2]).classList.add("highlight-cell");
-    msg.innerHTML = `${currentPlayer.playerName} ${currentPlayer.symbol} is winner! Play again?`;
+    msg.innerHTML = `${currentPlayer.playerName} is winner! Play again?`;
     btnPlayerVsPlayer.style.display = "inline-block";
     btnPlayerVsAi.style.display = "inline-block";
     console.log(`${currentPlayer.playerName} with symbol ${currentPlayer.symbol} is winner!
@@ -169,9 +158,9 @@ const gameBoard = (() => {
     console.log("game is a draw");
   };
 
-  pickOpponent(); //run the game
+  pickOpponent();
 })();
 
 /*  TODO:
-- play against dumb AI, play against MINMAX AI | const addDumbAiMark = () => {}
+- make code DRY - have addPlayerMark(player,mark)?
 */

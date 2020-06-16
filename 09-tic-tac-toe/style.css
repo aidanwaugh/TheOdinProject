@@ -153,6 +153,10 @@ button:hover {
   .ui-grid {
     grid-template-columns: repeat(3, 20vw);
   }
+
+  button {
+    width: 15vw;
+  }
   .game-cell {
     font-size: 5rem;
   }
