@@ -63,7 +63,16 @@ h1 {
   grid-area: h1;
   text-align: center;
   margin: 0;
-  font-size: 4.5rem;
+  font-size: 1.8rem;
+}
+
+h1 a {
+  color: #e4e4e4;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: #5e5e5e;
 }
 .player1 {
   grid-area: p1;

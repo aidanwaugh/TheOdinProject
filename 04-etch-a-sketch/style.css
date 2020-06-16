@@ -24,6 +24,15 @@ h1 {
   display: inline;
   font-size: 1rem;
 }
+
+h1 a {
+  color: #e4e4e4;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: #5e5e5e;
+}
 #container {
   display: grid;
   justify-content: center;

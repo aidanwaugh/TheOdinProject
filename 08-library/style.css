@@ -21,7 +21,14 @@ body {
 h1 {
   margin-bottom: 0;
 }
+h1 a {
+  color: #e4e4e4;
+  text-decoration: none;
+}
 
+h1 a:hover {
+  color: #5e5e5e;
+}
 .subtitle {
   color: var(--grey);
   margin-top: 0;
