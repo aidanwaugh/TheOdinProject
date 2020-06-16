@@ -34,9 +34,9 @@ const gameBoard = (() => {
     const cellIndex = cell.id[5]; //can't have html id with number only, so extract number from id string
     document.getElementById(cell.id).innerHTML = currentPlayer.symbol;
     document.getElementById(cell.id).classList.add(currentPlayer.symbolClass);
-    gameBoardArray[cellIndex] = "x";
+    gameBoardArray[cellIndex] = currentPlayer.symbol;
+    checkWin(currentPlayer);
     switchTurn();
-    return console.log(currentPlayer);
   };
 
   const switchTurn = () => {
@@ -44,14 +44,44 @@ const gameBoard = (() => {
     return currentPlayer;
   };
 
-  const endGame = () => {};
+  const checkWin = (currentPlayer) => {
+    const winningCombos = [
+      ["0", "1", "2"],
+      ["3", "4", "5"],
+      ["6", "7", "8"],
+      ["0", "3", "6"],
+      ["1", "4", "7"],
+      ["2", "5", "8"],
+      ["0", "4", "8"],
+      ["2", "4", "6"],
+    ];
 
-  const checkWin = () => {};
+    //winner - if array indexes match winning combo & are same symbol
+    for (let i = 0; i < winningCombos.length; i++) {
+      if (
+        gameBoardArray[winningCombos[i][0]] == currentPlayer.symbol &&
+        gameBoardArray[winningCombos[i][1]] == currentPlayer.symbol &&
+        gameBoardArray[winningCombos[i][2]] == currentPlayer.symbol
+      ) {
+        endGame();
+      }
+    }
+
+    //draw - if array has no ""
+    if (!gameBoardArray.some((cell) => cell == "")) {
+      console.log("game is a draw");
+    }
+    // console.log(!gameBoardArray.some((cell) => cell == ""));
+  };
+
+  const endGame = () => {
+    console.log(currentPlayer.playerName + " a match row");
+  };
 
   startGame(); //run the game
 })();
 
-/*  FUTURE IMPLEMENTION OPTIONS
+/*  FUTURE IMPLEMENTATION OPTIONS
 - play against dumb AI, play against MINMAX AI | const addDumbAiMark = () => {}
 
 */
