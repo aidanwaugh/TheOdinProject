@@ -17,9 +17,11 @@ const gameBoard = (() => {
   const player2 = player("player2", "o", "oClass");
   let currentPlayer = player1;
   const gameCells = document.querySelectorAll(".game-cell");
-  let winningCell0;
-  let winningCell1;
-  let winningCell2;
+  //TODO: turn winning cell into an array
+  // let winningCell0;
+  // let winningCell1;
+  // let winningCell2;
+  let winningCell = ["", "", ""];
 
   const startGame = () => {
     currentPlayer = player1;
@@ -29,8 +31,24 @@ const gameBoard = (() => {
       cell.classList.remove("oClass");
       cell.classList.remove("highlight-cell");
       cell.removeEventListener("click", addPlayerMark); //for replay
+      cell.addEventListener("mouseenter", hoverPlayerMarkShow);
+      cell.addEventListener("mouseleave", hoverPlayerMarkHide);
       cell.addEventListener("click", addPlayerMark, { once: true }); //remove event listener after clicked
     });
+  };
+
+  const hoverPlayerMarkShow = (e) => {
+    if (e.target.classList.contains("xClass") || e.target.classList.contains("oClass")) {
+      console.log(`Cell is not empty. No hover effect can be added.`);
+    } else {
+      e.target.innerHTML = currentPlayer.symbol;
+    }
+  };
+  const hoverPlayerMarkHide = (e) => {
+    if (e.target.classList.contains("xClass") || e.target.classList.contains("oClass")) {
+    } else {
+      e.target.innerHTML = "";
+    }
   };
 
   const addPlayerMark = (e) => {
@@ -66,10 +84,10 @@ const gameBoard = (() => {
         gameBoardArray[winningCombos[i][1]] == currentPlayer.symbol &&
         gameBoardArray[winningCombos[i][2]] == currentPlayer.symbol
       ) {
-        winningCell0 = winningCombos[i][0];
-        winningCell1 = winningCombos[i][1];
-        winningCell2 = winningCombos[i][2];
-        return [winningCell0, winningCell1, winningCell2, endGame(currentPlayer)];
+        winningCell[0] = winningCombos[i][0];
+        winningCell[1] = winningCombos[i][1];
+        winningCell[2] = winningCombos[i][2];
+        return [winningCell[0], winningCell[1], winningCell[2], endGame(currentPlayer)];
       }
     }
 
@@ -81,11 +99,11 @@ const gameBoard = (() => {
 
   const endGame = (currentPlayer) => {
     //if the array content has the current player class, set background of each cell light grey
-    document.getElementById("cell-" + winningCell0).classList.add("highlight-cell");
-    document.getElementById("cell-" + winningCell1).classList.add("highlight-cell");
-    document.getElementById("cell-" + winningCell2).classList.add("highlight-cell");
+    document.getElementById("cell-" + winningCell[0]).classList.add("highlight-cell");
+    document.getElementById("cell-" + winningCell[1]).classList.add("highlight-cell");
+    document.getElementById("cell-" + winningCell[2]).classList.add("highlight-cell");
     console.log(`${currentPlayer.playerName} with symbol ${currentPlayer.symbol} is winner!
-    Winning cells are ${winningCell0},${winningCell1},${winningCell2},`);
+    Winning cells are ${winningCell[0]},${winningCell[1]},${winningCell[2]},`);
   };
 
   startGame(); //run the game
@@ -93,9 +111,6 @@ const gameBoard = (() => {
 
 /*  TODO:
 - game display of winner
-- game show colored boxes of winner
-- game hover over  to preview
-- format the x and o
 - play against dumb AI, play against MINMAX AI | const addDumbAiMark = () => {}
 - turn let winningcell into an array
 */

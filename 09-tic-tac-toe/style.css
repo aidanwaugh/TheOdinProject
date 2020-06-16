@@ -44,6 +44,33 @@ body {
   font-size: 7rem;
 }
 
+.game-cell:first-child,
+.game-cell:nth-child(2),
+.game-cell:nth-child(3) {
+  border-top: none;
+}
+
+.game-cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.game-cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.game-cell:nth-of-type(1n + 7) {
+  border-bottom: none;
+}
+
+.game-cell:not(.xClass):not(.oClass):hover {
+  background-color: var(--light-grey);
+  color: var(--grey);
+}
+
+.game-cell:not(.xClass):not(.oClass):hover .game-cell:not(.xClass):not(.oClass)::before {
+  content: "S";
+}
+
 .highlight-cell {
   background-color: var(--light-grey);
 }
