@@ -4,8 +4,6 @@
 [6,7,8]
 */
 
-// IIFE expression - run right away
-
 function player(playerName, symbol) {
   const symbolClass = symbol + "Class";
   return { playerName, symbol, symbolClass };
@@ -17,19 +15,33 @@ const gameBoard = (() => {
   const player2 = player("player2", "o", "oClass");
   let currentPlayer = player1;
   const gameCells = document.querySelectorAll(".game-cell");
-  //TODO: turn winning cell into an array
-  // let winningCell0;
-  // let winningCell1;
-  // let winningCell2;
+  const msg = document.querySelector("#message");
+  const btnPlayerVsPlayer = document.querySelector("#btn-player");
+  const btnPlayerVsAi = document.querySelector("#btn-ai");
   let winningCell = ["", "", ""];
+  let playGame = false; //lets click and hover TODO: set to false
+
+  const pickOpponent = () => {
+    console.log("pick opponent run");
+    btnPlayerVsPlayer.style.display = "inline-block";
+    btnPlayerVsAi.style.display = "inline-block";
+    btnPlayerVsPlayer.addEventListener("click", startGame);
+  };
 
   const startGame = () => {
+    console.log("start playing! reset");
     currentPlayer = player1;
     gameBoardArray = ["", "", "", "", "", "", "", "", ""];
+    playGame = true;
+    document.querySelector(".game-board").style.display = "grid";
+    msg.innerHTML = "";
+    btnPlayerVsPlayer.style.display = "none";
+    btnPlayerVsAi.style.display = "none";
     gameCells.forEach((cell) => {
       cell.classList.remove("xClass");
       cell.classList.remove("oClass");
       cell.classList.remove("highlight-cell");
+      cell.innerHTML = "";
       cell.removeEventListener("click", addPlayerMark); //for replay
       cell.addEventListener("mouseenter", hoverPlayerMarkShow);
       cell.addEventListener("mouseleave", hoverPlayerMarkHide);
@@ -38,27 +50,34 @@ const gameBoard = (() => {
   };
 
   const hoverPlayerMarkShow = (e) => {
-    if (e.target.classList.contains("xClass") || e.target.classList.contains("oClass")) {
-      console.log(`Cell is not empty. No hover effect can be added.`);
-    } else {
-      e.target.innerHTML = currentPlayer.symbol;
+    if (playGame) {
+      if (e.target.classList.contains("xClass") || e.target.classList.contains("oClass")) {
+        console.log(`Cell is not empty. No hover effect can be added.`);
+      } else {
+        e.target.classList.add("hover-cell");
+        e.target.innerHTML = currentPlayer.symbol;
+      }
     }
   };
   const hoverPlayerMarkHide = (e) => {
     if (e.target.classList.contains("xClass") || e.target.classList.contains("oClass")) {
     } else {
+      e.target.classList.remove("hover-cell");
       e.target.innerHTML = "";
     }
   };
 
   const addPlayerMark = (e) => {
-    const cell = e.target;
-    const cellIndex = cell.id[5]; //can't have html id with number only, so extract number from id string
-    document.getElementById(cell.id).innerHTML = currentPlayer.symbol;
-    document.getElementById(cell.id).classList.add(currentPlayer.symbolClass);
-    gameBoardArray[cellIndex] = currentPlayer.symbol;
-    checkWin(currentPlayer);
-    switchTurn();
+    if (playGame) {
+      const cell = e.target;
+      const cellIndex = cell.id[5]; //can't have html id with number only, so extract number from id string
+      cell.innerHTML = currentPlayer.symbol;
+      cell.classList.remove("hover-cell");
+      cell.classList.add(currentPlayer.symbolClass);
+      gameBoardArray[cellIndex] = currentPlayer.symbol;
+      checkWin(currentPlayer);
+      switchTurn();
+    }
   };
 
   const switchTurn = () => {
@@ -87,30 +106,42 @@ const gameBoard = (() => {
         winningCell[0] = winningCombos[i][0];
         winningCell[1] = winningCombos[i][1];
         winningCell[2] = winningCombos[i][2];
-        return [winningCell[0], winningCell[1], winningCell[2], endGame(currentPlayer)];
+        console.log(playGame);
+        return [winningCell[0], winningCell[1], winningCell[2], endGameWinner(currentPlayer)];
       }
     }
 
     //draw - if array has no ""
     if (!gameBoardArray.some((cell) => cell == "")) {
-      console.log("game is a draw");
+      endGameDraw();
     }
   };
 
-  const endGame = (currentPlayer) => {
+  const endGameWinner = (currentPlayer) => {
     //if the array content has the current player class, set background of each cell light grey
+    playGame = false;
+
     document.getElementById("cell-" + winningCell[0]).classList.add("highlight-cell");
     document.getElementById("cell-" + winningCell[1]).classList.add("highlight-cell");
     document.getElementById("cell-" + winningCell[2]).classList.add("highlight-cell");
+    msg.innerHTML = `${currentPlayer.playerName} ${currentPlayer.symbol} is winner! Play again?`;
+    btnPlayerVsPlayer.style.display = "inline-block";
+    btnPlayerVsAi.style.display = "inline-block";
     console.log(`${currentPlayer.playerName} with symbol ${currentPlayer.symbol} is winner!
     Winning cells are ${winningCell[0]},${winningCell[1]},${winningCell[2]},`);
   };
 
-  startGame(); //run the game
+  const endGameDraw = () => {
+    playGame = false;
+    msg.innerHTML = "Game over! It's a draw. Play again?";
+    btnPlayerVsPlayer.style.display = "inline-block";
+    btnPlayerVsAi.style.display = "inline-block";
+    console.log("game is a draw");
+  };
+
+  pickOpponent(); //run the game
 })();
 
 /*  TODO:
-- game display of winner
 - play against dumb AI, play against MINMAX AI | const addDumbAiMark = () => {}
-- turn let winningcell into an array
 */
