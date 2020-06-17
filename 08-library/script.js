@@ -1,4 +1,5 @@
 let myLibraryArray = [];
+let msgAlert = document.querySelector(".alert");
 
 function Book(title, author, pages, readState) {
   this.title = title;
@@ -12,17 +13,19 @@ function addBook() {
   const author = document.querySelector("#book-author").value;
   const pages = document.querySelector("#book-pages").value;
   const checkbox = document.querySelector("#book-state").checked;
-
+  const numValidate = /\D/;
   //set read state of book
   if (checkbox == true) {
     readState = "checked";
   } else {
     readState = "";
   }
-
+  console.log(numValidate.test(pages));
   //form validation
-  if (title == "" || author == "" || pages == "") {
-    alert("add correct fields");
+  if (title == "" || author == "") {
+    displayAlert("Please fill in all fields", "#ff5959");
+  } else if (numValidate.test(pages) || pages == "") {
+    displayAlert("Please enter a number for pages", "#ff5959");
   } else {
     const newTitle = new Book(title, author, pages, readState);
 
@@ -30,6 +33,7 @@ function addBook() {
     console.table(myLibraryArray);
     render(myLibraryArray);
     clearFormFields();
+    displayAlert("Book added!", "#91db88");
   }
 }
 
@@ -38,6 +42,7 @@ function deleteBook(btn) {
   myLibraryArray.splice(tableRow.rowIndex - 1, 1); //tr of <th> is rowIndex 0, then start at 1
   tableRow.remove();
   console.table(myLibraryArray);
+  displayAlert("Book deleted!", "#91db88");
 }
 
 function changeReadState(checkbox) {
@@ -56,6 +61,15 @@ function clearFormFields() {
   document.querySelector("#book-author").value = "";
   document.querySelector("#book-pages").value = "";
   document.querySelector("#book-state").checked = false;
+}
+
+function displayAlert(msg, color) {
+  msgAlert.innerHTML = msg;
+  msgAlert.style.background = color;
+  setTimeout(() => {
+    msgAlert.innerHTML = "";
+    msgAlert.style.background = "#f4f4f4";
+  }, 2000);
 }
 
 function render(library) {

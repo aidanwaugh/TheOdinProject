@@ -42,13 +42,12 @@ span {
 .ui-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: 10vh 40vh 10vh;
+  grid-template-columns: 15vh 30vh 15vh;
   grid-template-areas: "h1 h1 h1" "p1 buttons p2";
   justify-content: center;
   color: var(--dark-grey);
   margin-bottom: 3rem;
   padding: 1rem 0;
-  /* border-bottom: 1px solid var(--grey); */
 }
 
 h1,
@@ -63,7 +62,7 @@ h1 {
   grid-area: h1;
   text-align: center;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
 }
 
 h1 a {
