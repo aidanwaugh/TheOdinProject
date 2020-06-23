@@ -29,21 +29,20 @@
     <section class="column" id="self-notes">
       <h2>Things to do</h2>
       <ol>
-        <li>figure out layout for 3 columns. Each one will have a list and each list can have sub topics (in future)
+        <li>input styling + button</li>
+        <li>input placeholder, defuault and focus</li>
+        <li>proj count span style</li>
+        <li>popup for edit task</li>
+        <li>Javascript
+          <ol>
+
+            <li>JS projects and change view</li>
+            <li>Local storage implemented</li>
+            <li>JS list items add</li>
+            <li>JS list items edit</li>
+            <li>JS list items move around</li>
+          </ol>
         </li>
-        <li>add CSS and add dummy html to style
-          <ul>
-            <li>nav</li>
-            <li>task item including move symbol, checkbox, input, delete</li>
-            <li>add new item form</li>
-            <li>add new sub project form</li>
-          </ul>
-        </li>
-        <li>JS projects and change view</li>
-        <li>Local storage implemented</li>
-        <li>JS list items add</li>
-        <li>JS list items edit</li>
-        <li>JS list items move around</li>
       </ol>
     </section>
     <section class="column">
@@ -60,23 +59,33 @@
             <div class="tasks">
               <div class="task">
                 <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="">
-                <div data-task-tag>@tag</div>
-                <label for="" data-task-input>go running</label>
+                <input type="checkbox" id="" data-priority="normal">
+                <label for="" data-task-input><span data-task-tag>@tag </span>go running</label>
                 <div data-task-deadline>Tomorrow</div>
-                <button class="ui-delete btn">⨯</button>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
               </div>
               <div class="task">
                 <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="">
-                <div data-task-tag></div>
-                <label for="" data-task-input>Buy groceries</label>
+                <input type="checkbox" id="" data-priority="medium">
+                <label for="" data-task-input data-task> <span data-task-tag></span>Buy groceries</label>
                 <div data-task-deadline>13-06-2020</div>
-                <button class="ui-delete btn">⨯</button>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
               </div>
             </div>
-            <div class="new-task-creator"></div>
-            <div class="new-sub-list-creator"></div>
+            <div class="new-task-creator">
+              <form action="" data-new-task-form="">
+                <input data-new-task-input="" type="text" class="new task" placeholder="new task name"
+                  aria-label="new task name">
+                <button class="btn create" aria-label="create new task">+</button>
+              </form>
+            </div>
+            <div class="new-sub-list-creator">
+              <button class="add-sub-list-btn btn">Add Section</button>
+            </div>
           </div>
         </div>
         <!-- end of individual list -->
@@ -86,12 +95,29 @@
             <div class="ui-drag btn">⋮⋮</div>
             <button type="button" class="ui-collapse btn">⋁</button>
             <h3>project title here <span>#</span></h3>
-            <button type="button" class="ui-list-menu btn">⋯</button>
+            <!-- <button type="button" class="ui-list-menu btn">⋯</button> -->
           </div>
           <div class="list-body">
             <div class="tasks">
-              <div class="task"></div>
-              <div class="task"></div>
+              <div class="task">
+                <div class="ui-drag btn">⋮⋮</div>
+                <input type="checkbox" id="" data-priority="high">
+                <label for="" data-task-input><span data-task-tag>@xmas </span>go hiking on the Howe Sound Crest
+                  Trail</label>
+                <div data-task-deadline></div>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
+              </div>
+              <div class="task">
+                <div class="ui-drag btn">⋮⋮</div>
+                <input type="checkbox" id="" data-priority="urgent">
+                <label for="" data-task-input><span data-task-tag>@waiting </span>go running</label>
+                <div data-task-deadline>Monday</div>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
+              </div>
             </div>
             <div class="new-task-creator"></div>
             <div class="new-sub-list-creator"></div>
