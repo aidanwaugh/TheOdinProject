@@ -20,8 +20,7 @@
         <li class="project-name">To Buy</li>
       </ul>
       <form action="">
-        <button class="btn btn-create">+</button>
-        <input type="text" placeholder="new project">
+        <button class="btn btn-create">+</button><input type="text" placeholder="new project">
       </form>
     </div>
   </nav>
@@ -29,22 +28,88 @@
     <section class="column" id="self-notes">
       <h2>Things to do</h2>
       <ol>
-        <li>input styling + button</li>
-        <li>input placeholder, defuault and focus</li>
-        <li>proj count span style</li>
-        <li>popup for edit task</li>
-        <li>Javascript
+        <li>JS projects add project, update inside, change view</li>
+        <li>Local storage implemented</li>
+        <li>JS list items add
+          <ul>
+            <li>task content</li>
+            <li>task @tag added through input, separated by regex</li>
+            <li>task priority p1-p3, p4 default, entered in input text and regex assign</li>
+            <li>task due date added (optional)</li>
+          </ul>
+        </li>
+        <li>JS list item delete</li>
+        <li>JS list items edit</li>
+        <li>JS add new sub section</li>
+        <li>JS subsection collapse and show</li>
+        <li>Bugs
           <ol>
-
-            <li>JS projects and change view</li>
-            <li>Local storage implemented</li>
-            <li>JS list items add</li>
-            <li>JS list items edit</li>
+            <li> FIXED ui-drag only shows single ⋮ not &#8285;&#8285; </li>
+          </ol>
+        </li>
+        <li>Future Addons
+          <ol>
             <li>JS list items move around</li>
+            <li>have all 3 columns have a single list (all with full functionality)</li>
+            <li>nav date to show range span from Sunday - Monday</li>
+            <li>Firebase implementation</li>
+            <li>have deadlines within 7 days show the week day "Tuesday"</li>
+            <li>3 separate sites with same nav, GTD, to buy, quotes</li>
           </ol>
         </li>
       </ol>
     </section>
+    <section class="column">
+      <header>
+        <h2>Test<span> 1</span></h2>
+      </header>
+      <div class="column-body">
+        <!-- start of individual list -->
+        <div class="list-container">
+          <div class="list-header">
+            <h3><span></span></h3>
+          </div>
+          <div class="list-body">
+            <div class="tasks">
+              <div class="task">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="p4">
+                <label for="" data-task-input><span data-task-tag>@tag </span>go running</label>
+                <div data-task-deadline>Tomorrow</div>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
+              </div>
+              <div class="new-task-creator">
+                <div class=new-task-prompt>
+                  <div class="btn btn-create">+</div>
+                  <p>Add task</p>
+                </div>
+                <form action="" data-new-task-form="" class="hide">
+                  <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
+                  <input type="date" name="" id="" placeholder="deadline">
+                  <button class="btn">Add</button>
+                </form>
+              </div>
+              <div class="new-sub-list-creator">
+                <div>
+                  <button class="add-sub-list-btn btn">Add Section</button>
+                </div>
+                <div>
+                  <form action="" data-new-sub-list-form="" class="hide">
+                    <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
+                    <button class="btn">Add</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- end of individual list -->
+
+        </div>
+    </section>
+    <!--------------------- FOR REFERENCE --------------- -->
     <section class="column">
       <header>
         <h2>Getting Things done <span>3</span></h2>
@@ -58,8 +123,8 @@
           <div class="list-body">
             <div class="tasks">
               <div class="task">
-                <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="" data-priority="normal">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="p4">
                 <label for="" data-task-input><span data-task-tag>@tag </span>go running</label>
                 <div data-task-deadline>Tomorrow</div>
                 <div class="delete-btn-container">
@@ -67,8 +132,8 @@
                 </div>
               </div>
               <div class="task">
-                <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="" data-priority="medium">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="p3">
                 <label for="" data-task-input data-task> <span data-task-tag></span>Buy groceries</label>
                 <div data-task-deadline>13-06-2020</div>
                 <div class="delete-btn-container">
@@ -77,14 +142,27 @@
               </div>
             </div>
             <div class="new-task-creator">
+              <div class=new-task-prompt>
+                <div class="btn btn-create">+</div>
+                <p>Add task</p>
+              </div>
               <form action="" data-new-task-form="">
-                <input data-new-task-input="" type="text" class="new task" placeholder="new task name"
-                  aria-label="new task name">
-                <button class="btn create" aria-label="create new task">+</button>
+                <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
+                <input type="date" name="" id="" placeholder="deadline">
+                <button class="btn">Add</button>
               </form>
             </div>
             <div class="new-sub-list-creator">
-              <button class="add-sub-list-btn btn">Add Section</button>
+              <div>
+                <button class="add-sub-list-btn btn">Add Section</button>
+              </div>
+              <div>
+                <form action="" data-new-sub-list-form="">
+                  <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
+                  <button class="btn">Add</button>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>
@@ -92,7 +170,7 @@
         <!-- start of individual list -->
         <div class="list-container">
           <div class="list-header">
-            <div class="ui-drag btn">⋮⋮</div>
+            <div class="ui-drag btn">&#8285;&#8285;</div>
             <button type="button" class="ui-collapse btn">⋁</button>
             <h3>project title here <span>#</span></h3>
             <!-- <button type="button" class="ui-list-menu btn">⋯</button> -->
@@ -100,8 +178,8 @@
           <div class="list-body">
             <div class="tasks">
               <div class="task">
-                <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="" data-priority="high">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="p2">
                 <label for="" data-task-input><span data-task-tag>@xmas </span>go hiking on the Howe Sound Crest
                   Trail</label>
                 <div data-task-deadline></div>
@@ -110,8 +188,8 @@
                 </div>
               </div>
               <div class="task">
-                <div class="ui-drag btn">⋮⋮</div>
-                <input type="checkbox" id="" data-priority="urgent">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="p1">
                 <label for="" data-task-input><span data-task-tag>@waiting </span>go running</label>
                 <div data-task-deadline>Monday</div>
                 <div class="delete-btn-container">
@@ -126,7 +204,20 @@
         <!-- end of individual list -->
       </div>
     </section>
-    <section class="column"></section>
+  </div>
+  <div class="screen-cover hide"></div>
+  <div class="task-popup hide">
+    <div>
+      <h3>Edit Task</h3>
+      <div class="delete-btn-container">
+        <button class="btn">⨯</button>
+      </div>
+    </div>
+    <form action="" data-new-task-form="">
+      <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
+      <input type="date" name="" id="" placeholder="deadline">
+      <button class="btn">Save</button>
+    </form>
   </div>
   <script src="main.js"></script>
 </body>
