@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --light-grey: #e4e4e4;
+  --grey: #5e5e5e;
+  --dark-grey: #252422;
+}
+
+body {
+  background-color: #f4f4f4;
+  font-family: sans-serif;
+}
+
+nav {
+  width: 100%;
+}
+nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  list-style-type: none;
+  font-size: 1.1rem;
+}
+
+nav ul li:hover {
+  color: var(--grey);
+}
+
+.active-tab {
+  border-bottom: 1px solid var(--grey);
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  width: 100%;
+  flex-grow: 1;
+}

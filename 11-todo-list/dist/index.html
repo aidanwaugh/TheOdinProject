@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>ODIN Todo List</title>
+</head>
+
+<body>
+  <nav>
+    <span id="nav-date">22.6.2020</span>
+    <h1>ToDo <a href="" target="_blank">/ GitHub </a><a href="" target="_blank">/
+        Project Brief</a></h1>
+    <div>
+      <ul class="project-list">
+        <li class="project-name active-project">GTD</li>
+        <li class="project-name">To Buy</li>
+      </ul>
+      <form action="">
+        <button class="btn btn-create">+</button>
+        <input type="text" placeholder="new project">
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <section class="column" id="self-notes">
+      <h2>Things to do</h2>
+      <ol>
+        <li>figure out layout for 3 columns. Each one will have a list and each list can have sub topics (in future)
+        </li>
+        <li>add CSS and add dummy html to style
+          <ul>
+            <li>nav</li>
+            <li>task item including move symbol, checkbox, input, delete</li>
+            <li>add new item form</li>
+            <li>add new sub project form</li>
+          </ul>
+        </li>
+        <li>JS projects and change view</li>
+        <li>Local storage implemented</li>
+        <li>JS list items add</li>
+        <li>JS list items edit</li>
+        <li>JS list items move around</li>
+      </ol>
+    </section>
+    <section class="column">
+      <header>
+        <h2>Getting Things done <span>3</span></h2>
+      </header>
+      <div class="column-body">
+        <!-- start of individual list -->
+        <div class="list-container">
+          <div class="list-header">
+            <h3></h3>
+          </div>
+          <div class="list-body">
+            <div class="tasks">
+              <div class="task">
+                <div class="ui-drag btn">⋮⋮</div>
+                <input type="checkbox" id="">
+                <div data-task-tag>@tag</div>
+                <label for="" data-task-input>go running</label>
+                <div data-task-deadline>Tomorrow</div>
+                <button class="ui-delete btn">⨯</button>
+              </div>
+              <div class="task">
+                <div class="ui-drag btn">⋮⋮</div>
+                <input type="checkbox" id="">
+                <div data-task-tag></div>
+                <label for="" data-task-input>Buy groceries</label>
+                <div data-task-deadline>13-06-2020</div>
+                <button class="ui-delete btn">⨯</button>
+              </div>
+            </div>
+            <div class="new-task-creator"></div>
+            <div class="new-sub-list-creator"></div>
+          </div>
+        </div>
+        <!-- end of individual list -->
+        <!-- start of individual list -->
+        <div class="list-container">
+          <div class="list-header">
+            <div class="ui-drag btn">⋮⋮</div>
+            <button type="button" class="ui-collapse btn">⋁</button>
+            <h3>project title here <span>#</span></h3>
+            <button type="button" class="ui-list-menu btn">⋯</button>
+          </div>
+          <div class="list-body">
+            <div class="tasks">
+              <div class="task"></div>
+              <div class="task"></div>
+            </div>
+            <div class="new-task-creator"></div>
+            <div class="new-sub-list-creator"></div>
+          </div>
+        </div>
+        <!-- end of individual list -->
+      </div>
+    </section>
+    <section class="column"></section>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
