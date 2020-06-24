@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>ODIN Todo List</title>
+  <script defer src="main.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,13 @@
     <h1>ToDo <a href="" target="_blank">/ GitHub </a><a href="" target="_blank">/
         Project Brief</a></h1>
     <div>
-      <ul class="project-list">
-        <li class="project-name active-project">GTD</li>
-        <li class="project-name">To Buy</li>
+      <ul class="project-list" id="projects-container">
+        <!-- <li class="project-name active-project">Other</li>
+        <li class="project-name">Tzap</li> -->
       </ul>
-      <form action="">
-        <button class="btn btn-create">+</button><input type="text" placeholder="new project">
+      <form action="" id="new-project-form">
+        <button class="btn btn-create">+</button>
+        <input type="text" placeholder="new project" id="new-project-input">
       </form>
     </div>
   </nav>
@@ -60,6 +62,7 @@
       </ol>
     </section>
     <section class="column">
+      <!-- TODO: -->
       <header>
         <h2>Test<span> 1</span></h2>
       </header>
@@ -73,9 +76,9 @@
             <div class="tasks">
               <div class="task">
                 <div class="ui-drag btn">&#8285;&#8285;</div>
-                <input type="checkbox" id="" data-priority="p4">
-                <label for="" data-task-input><span data-task-tag>@tag </span>go running</label>
-                <div data-task-deadline>Tomorrow</div>
+                <input type="checkbox" id="" data-priority="">
+                <label for="" data-task-input><span data-task-tag></span>go running</label>
+                <div data-task-deadline></div>
                 <div class="delete-btn-container">
                   <button class="ui-delete btn">⨯</button>
                 </div>
@@ -219,7 +222,7 @@
       <button class="btn">Save</button>
     </form>
   </div>
-  <script src="main.js"></script>
+
 </body>
 
 </html>
