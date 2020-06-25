@@ -7,25 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>ODIN Todo List</title>
-  <script defer src="main.js"></script>
+  <script defer type="module" src="../src/index.js"></script>
 </head>
 
 <body>
   <nav>
-    <!-- <span id="nav-date">22.6.2020</span> -->
+    <span id="nav-date">22.6.2020</span>
     <h1>ToDo <a href="" target="_blank">/ GitHub </a><a href="" target="_blank">/
         Project Brief</a></h1>
-    <div>
-      <ul class="project-list" id="projects-container">
-        <!-- <li class="project-name active-project">Other</li>
-        <li class="project-name">Tzap</li> -->
-      </ul>
-      <form action="" id="new-project-form">
-        <button class="btn btn-create">+</button>
-        <input type="text" placeholder="new project" id="new-project-input">
-      </form>
-    </div>
-    <button id="btn-delete-project" class="btn">Delete Project</button>
+    <ul class="project-list" id="projects-container">
+      <li class="project-name active-project">GTD</li>
+    </ul>
   </nav>
   <div class="container">
     <section class="column" id="self-notes">
@@ -74,7 +66,7 @@
             <h3><span></span></h3>
           </div>
           <div class="list-body">
-            <div class="tasks">
+            <div class="tasks" data-section-id="22">
               <div class="task">
                 <div class="ui-drag btn">&#8285;&#8285;</div>
                 <input type="checkbox" id="" data-priority="">
@@ -85,13 +77,13 @@
                 </div>
               </div>
               <div class="new-task-creator">
-                <div class=new-task-prompt>
+                <div class="new-task-prompt">
                   <div class="btn btn-create">+</div>
                   <p>Add task</p>
                 </div>
-                <form action="" data-new-task-form="" class="hide">
-                  <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
-                  <input type="date" name="" id="" placeholder="deadline">
+                <form action="" data-new-task-form>
+                  <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
+                  <input data-new-task-deadline type="date" name="" id="">
                   <button class="btn">Add</button>
                 </form>
               </div>
@@ -109,9 +101,51 @@
               </div>
             </div>
           </div>
-          <!-- end of individual list -->
-
         </div>
+        <!-- end of individual list -->
+        <!-- start of individual list -->
+        <div class="list-container">
+          <div class="list-header">
+            <h3>some titlehere<span></span></h3>
+          </div>
+          <div class="list-body">
+            <div class="tasks" data-section-id="33">
+              <div class="task">
+                <div class="ui-drag btn">&#8285;&#8285;</div>
+                <input type="checkbox" id="" data-priority="">
+                <label for="" data-task-input><span data-task-tag></span>bake cake</label>
+                <div data-task-deadline></div>
+                <div class="delete-btn-container">
+                  <button class="ui-delete btn">⨯</button>
+                </div>
+              </div>
+              <div class="new-task-creator">
+                <div class="new-task-prompt">
+                  <div class="btn btn-create">+</div>
+                  <p>Add task</p>
+                </div>
+                <form action="" data-new-task-form>
+                  <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
+                  <input data-new-task-deadline type="date" name="" id="">
+                  <button class="btn">Add</button>
+                </form>
+              </div>
+              <div class="new-sub-list-creator">
+                <div>
+                  <button class="add-sub-list-btn btn">Add Section</button>
+                </div>
+                <div>
+                  <form action="" data-new-sub-list-form="" class="hide">
+                    <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
+                    <button class="btn">Add</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of individual list -->
     </section>
     <!--------------------- FOR REFERENCE --------------- -->
     <section class="column">
