@@ -1,5 +1,10 @@
 //factory function - return object without the 'new' keyword (makes it factory)
-export default function Task(input, deadline) {
+export default function Task(input, deadline, listIndex) {
+  function setTaskId() {
+    let taskId = Date.now().toString();
+    return taskId;
+  }
+
   function getTaskTag() {
     let tagRegex = /(?=@).\w+/g;
     let taskTag = input.match(tagRegex);
@@ -14,17 +19,20 @@ export default function Task(input, deadline) {
 
   function getDeadline() {
     let taskDeadline = deadline;
-    if (taskDeadline === "") return "none";
+    if (taskDeadline === "") return "noDeadline";
     return taskDeadline;
   }
 
   return {
+    id: setTaskId(),
+    listIndex: listIndex,
     name: getTaskName(),
     tag: getTaskTag(),
     priority: "default P",
     deadline: getDeadline(),
+    completed: false,
     info: () => {
-      console.log(`Task = name:${getTaskName()} tag:${getTaskTag()} priority:tbd deadline:${getDeadline()}`);
+      console.log(`Task = id:${setTaskId()} listIndex:${listIndex} name:${getTaskName()} tag:${getTaskTag()} priority:tbd deadline:${getDeadline()}`);
     },
   };
 }

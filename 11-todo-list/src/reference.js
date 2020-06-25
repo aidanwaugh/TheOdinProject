@@ -11,6 +11,7 @@ taskIndex - order of task items in array, when drag task, index is updated
 let columnArray1 = [
   {
     sectionName: "",
+    sectionId: "date.now",
     columnIndex: 0,
     columnCollapsed: false,
     tasks: [
@@ -31,4 +32,17 @@ let columnArray1 = [
     ],
   },
   { sectionName: "waiting for", columnIndex: 1, columnCollapsed: false, tasks: [] },
+];
+
+let t = [
+  {
+    id: "22",
+    name: "waiting",
+    tasks: [{ id: "1", name: "pizza", complete: false }],
+  },
+  {
+    id: "33",
+    name: "current",
+    tasks: [{ id: "43", name: "laundary", complete: false }],
+  },
 ];
