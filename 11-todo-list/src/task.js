@@ -1,8 +1,8 @@
 //factory function - return object without the 'new' keyword (makes it factory)
-export default function Task(input, deadline, listIndex) {
+export default function createTask(input, deadline, listIndex) {
   function setTaskId() {
-    let taskId = Date.now().toString();
-    return taskId;
+    // let taskId =
+    return Date.now().toString();
   }
 
   function getTaskTag() {
@@ -24,9 +24,9 @@ export default function Task(input, deadline, listIndex) {
   }
 
   return {
+    name: getTaskName(),
     id: setTaskId(),
     listIndex: listIndex,
-    name: getTaskName(),
     tag: getTaskTag(),
     priority: "default P",
     deadline: getDeadline(),

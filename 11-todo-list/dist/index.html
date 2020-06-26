@@ -23,33 +23,17 @@
     <section class="column" id="self-notes">
       <h2>Things to do</h2>
       <ol>
-        <li>JS projects add project, update inside, change view</li>
-        <li>Local storage implemented</li>
-        <li>JS list items add
-          <ul>
-            <li>task content</li>
-            <li>task @tag added through input, separated by regex</li>
-            <li>task priority p1-p3, p4 default, entered in input text and regex assign</li>
-            <li>task due date added (optional)</li>
-          </ul>
-        </li>
-        <li>JS list item delete</li>
-        <li>JS list items edit</li>
-        <li>JS add new sub section</li>
-        <li>JS subsection collapse and show</li>
-        <li>Bugs
+        <li>hook up task input to array</li>
+        <li>task input to show on DOM</li>
+        <li>local storage</li>
+        <li> figure out initial setup of array </li>
+        <li>deelte list</li>
+        <li>click to complete, dblclick to edit</li>
+        <li>Future (post odin)
           <ol>
-            <li> FIXED ui-drag only shows single ⋮ not &#8285;&#8285; </li>
-          </ol>
-        </li>
-        <li>Future Addons
-          <ol>
-            <li>JS list items move around</li>
-            <li>have all 3 columns have a single list (all with full functionality)</li>
-            <li>nav date to show range span from Sunday - Monday</li>
-            <li>Firebase implementation</li>
-            <li>have deadlines within 7 days show the week day "Tuesday"</li>
-            <li>3 separate sites with same nav, GTD, to buy, quotes</li>
+            <li>drag list items in position and save to loca lstorage</li>
+            <li>date formatting</li>
+            <li>how to set up for gtd and to buy on separate pages</li>
           </ol>
         </li>
       </ol>
@@ -58,14 +42,14 @@
       <header>
         <h2>Test<span> 1</span></h2>
       </header>
-      <div class="column-body" data-column-id="1">
+      <div class="column-body">
         <!-- start of individual list -->
-        <div class="list-container" data-list-id="22">
+        <div id="list-22" class="list-container" data-list-id="22">
           <div class="list-header">
             <h3><span></span></h3>
           </div>
           <div class="list-body">
-            <div class="tasks" data-tasks-id="22">
+            <div class="tasks" data-list-id="22">
               <div class="task">
                 <div class="ui-drag btn">&#8285;&#8285;</div>
                 <input type="checkbox" id="" data-priority="">
@@ -81,9 +65,10 @@
                 <div class="btn btn-create">+</div>
                 <p>Add task</p>
               </div>
-              <form action="" data-new-task-form-id="22">
-                <input data-new-task-input-id="22" type="text" class="new task" placeholder="e.g. @next running p2">
-                <input data-new-task-deadline-id="22" type="date" name="" id="">
+              <form action="" data-new-task-form data-list-id="22">
+                <input data-new-task-input-id="22" data-list-id="22" type="text" class="new task"
+                  placeholder="e.g. @next running p2">
+                <input data-new-task-deadline-id="22" data-list-id="22" type="date" name="" id="">
                 <button class="btn">Add</button>
               </form>
             </div>
@@ -92,8 +77,8 @@
                 <button class="add-sub-list-btn btn">Add Section</button>
               </div>
               <div>
-                <form action="" data-new-sub-list-form class="">
-                  <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
+                <form action="" data-new-section-form data-list-id="22">
+                  <input type="text" placeholder="e.g. waiting for">
                   <button class="btn">Add</button>
                 </form>
               </div>
@@ -101,48 +86,7 @@
           </div>
         </div>
         <!-- end of individual list -->
-        <!-- start of individual list -->
-        <div class="list-container" data-list-id="33">
-          <div class="list-header">
-            <h3>some titlehere<span></span></h3>
-          </div>
-          <div class="list-body">
-            <div class="tasks" data-tasks-id="33">
-              <div class="task">
-                <div class="ui-drag btn">&#8285;&#8285;</div>
-                <input type="checkbox" id="" data-priority="">
-                <label for="" data-task-input><span data-task-tag></span>bake cake</label>
-                <div data-task-deadline></div>
-                <div class="delete-btn-container">
-                  <button class="ui-delete btn">⨯</button>
-                </div>
-              </div>
-            </div>
-            <div class="new-task-creator">
-              <div class="new-task-prompt">
-                <div class="btn btn-create">+</div>
-                <p>Add task</p>
-              </div>
-              <form action="" data-new-task-form-id="33">
-                <input data-new-task-input-id="33" type="text" class="new task" placeholder="e.g. @next running p2">
-                <input data-new-task-deadline-id="33" type="date" name="" id="">
-                <button class="btn">Add</button>
-              </form>
-            </div>
-            <div class="new-sub-list-creator">
-              <div>
-                <button class="add-sub-list-btn btn">Add Section</button>
-              </div>
-              <div>
-                <form action="" data-new-sub-list-form="" class="hide">
-                  <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
-                  <button class="btn">Add</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end of individual list -->
+
     </section>
     <!--------------------- FOR REFERENCE --------------- -->
     <section class="column">
@@ -181,7 +125,7 @@
                 <div class="btn btn-create">+</div>
                 <p>Add task</p>
               </div>
-              <form action="" data-new-task-form="">
+              <form action="" data-new-task-form>
                 <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
                 <input type="date" name="" id="" placeholder="deadline">
                 <button class="btn">Add</button>
@@ -192,7 +136,7 @@
                 <button class="add-sub-list-btn btn">Add Section</button>
               </div>
               <div>
-                <form action="" data-new-sub-list-form="">
+                <form action="" data-new-section-form>
                   <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
                   <button class="btn">Add</button>
                 </form>
@@ -248,7 +192,7 @@
         <button class="btn">⨯</button>
       </div>
     </div>
-    <form action="" data-new-task-form="">
+    <form action="" data-new-task-form>
       <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
       <input type="date" name="" id="" placeholder="deadline">
       <button class="btn">Save</button>
@@ -266,21 +210,22 @@
     </div>
   </template>
   <template id="list-template">
-    <div class="list-container" data-list-id="">
+    <div class="list-container">
       <div class="list-header">
-        <h3><span></span></h3>
+        <h3 data-list-header></h3><span></span>
       </div>
       <div class="list-body">
-        <div class="tasks" data-tasks-id="">
+        <div class="tasks">
         </div>
         <div class="new-task-creator">
           <div class="new-task-prompt">
             <div class="btn btn-create">+</div>
             <p>Add task</p>
           </div>
-          <form action="" data-new-task-form-id="">
-            <input data-new-task-input-id="" type="text" class="new task" placeholder="e.g. @next running p2">
-            <input data-new-task-deadline-id="" type="date" name="" id="">
+          <!-- TODO: -->
+          <form action="" data-new-task-form>
+            <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
+            <input data-new-task-deadline type="date" name="" id="">
             <button class="btn">Add</button>
           </form>
         </div>
@@ -289,7 +234,7 @@
             <button class="add-sub-list-btn btn">Add Section</button>
           </div>
           <div>
-            <form action="" data-new-sub-list-form class="">
+            <form action="" data-new-section-form>
               <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
               <button class="btn">Add</button>
             </form>

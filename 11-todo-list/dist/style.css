@@ -483,14 +483,14 @@ form[data-new-task-form] button:hover {
   opacity: 0.7;
 }
 /* new section */
-form[data-new-sub-list-form] {
+form[data-new-section-form] {
   display: flex;
   flex: 1;
   border-radius: 0.2rem;
   border: 1px solid var(--light-grey);
   margin-bottom: 1rem;
 }
-form[data-new-sub-list-form] input[type="text"] {
+form[data-new-section-form] input[type="text"] {
   flex: 1;
   border: none;
   border-radius: 0;
@@ -498,14 +498,14 @@ form[data-new-sub-list-form] input[type="text"] {
   color: var(--grey);
 }
 
-form[data-new-sub-list-form] button {
+form[data-new-section-form] button {
   padding: 0 auto;
   color: var(--bg);
   background-color: var(--accent);
   width: 2.5rem;
 }
 
-form[data-new-sub-list-form] button:hover {
+form[data-new-section-form] button:hover {
   opacity: 0.7;
 }
 

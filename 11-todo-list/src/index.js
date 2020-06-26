@@ -1,64 +1,79 @@
-import Task from "./task.js";
+import createTask from "./task.js";
+import createList from "./list.js";
 
-const newTaskForm = document.querySelector("[data-new-task-form]");
-const newTaskInput = document.querySelector("[data-new-task-input]");
-const newTaskDeadline = document.querySelector("[data-new-task-deadline]");
 const domContainer = document.querySelector("#container");
 
 const keyTarget = document.querySelector(`[data-doc-id]`);
 const LOCAL_STORAGE_LIST_KEY = `${keyTarget.dataset.docId}.lists`;
 
 let gtdArray = [];
-let testArray = [
-  { id: "22", name: "waiting", tasks: [] },
-  { id: "33", name: "current", tasks: [] },
-];
+let testArray = [{ listName: "waiting", listId: "22", tasks: [] }];
 
 domContainer.addEventListener("submit", (e) => {
   e.preventDefault();
-  const target = e.target;
-  //add task item
-  if (target.hasAttribute("data-new-task-form-id")) {
-    const taskInput = e.target[0].value;
-    const taskDeadline = e.target[1].value;
-    if (taskInput == null || taskInput === "") return;
-    const selectedListId = e.target.parentElement.parentElement.parentElement.dataset.listId;
-    const targetList = testArray.find((list) => list.id === selectedListId); //add item to selected list
+  const targetElement = e.target;
+  const targetListId = e.target.dataset.listId; //22
+  const listContainerElement = document.querySelector(`#list-${targetListId}`);
+  const listTasksElement = listContainerElement.querySelector(".tasks");
+  const textInput = targetElement[0].value;
+  if (textInput == null || textInput === "") return;
 
-    // console.log(targetList.id);
+  if (targetElement.hasAttribute("data-new-task-form")) {
+    const taskDeadline = targetElement[1].value;
+    console.log("id: " + targetListId);
+    //FIXME:
+    const targetList = testArray.find((list) => list.listId === targetListId); //add item to selected list
+    console.log(targetList);
+    console.log(testArray);
     const newTaskIndex = targetList.tasks.length;
-    const newTask = Task(taskInput, taskDeadline, newTaskIndex);
-    //reset form values
-    e.target[0].value = null;
-    e.target[1].value = null;
-    //send to array
+    const newTask = createTask(textInput, taskDeadline, newTaskIndex);
     targetList.tasks.push(newTask);
+    targetElement[0].value = null;
+    targetElement[1].value = null;
     console.log(targetList.tasks);
-    const tasksContainer = document.querySelector(`[data-tasks-id="${targetList.id}"]`);
-    clearElement(tasksContainer);
+    clearElement(listTasksElement);
     // saveToLocalStorage();
-    renderTasks(targetList);
+    renderTasks(targetList, listTasksElement);
   }
 
-  if (target.hasAttribute("data-new-sub-list-form")) {
-    console.log("make a section");
-    //TODO: push form value to new object, render in dom using template
+  if (targetElement.hasAttribute("data-new-section-form")) {
+    const newList = createList(textInput);
+    testArray.push(newList);
+    // console.log(newList.listId);
+    console.log(newList);
+    console.log(testArray);
+
+    renderList(textInput, newList.listId, listContainerElement);
+    targetElement[0].value = null;
   }
 });
 
 domContainer.addEventListener("click", (e) => {
-  // console.log(e.target);
+  //
 });
 
-function renderTasks(targetList) {
-  const taskTemplate = document.getElementById("task-template");
+function renderList(listName, listArrayId, referenceNode) {
+  const listTemplate = document.importNode(document.getElementById("list-template").content, true);
+  const listContainer = listTemplate.querySelector(".list-container");
+  const listTitle = listTemplate.querySelector("[data-list-header");
+  const listId = listArrayId;
+  listContainer.id = "list-" + listId;
+  listContainer.dataset.listId = listId;
+  listTemplate.querySelector(".tasks").dataset.listId = listId;
+  listTemplate.querySelector("[data-new-task-form]").dataset.listId = listId;
+  listTemplate.querySelector("[data-new-task-input]").dataset.listId = listId;
+  listTemplate.querySelector("[data-new-task-deadline]").dataset.listId = listId;
+  listTemplate.querySelector("[data-new-section-form]").dataset.listId = listId;
+  listTitle.append(listName + " " + listId);
+  referenceNode.parentNode.insertBefore(listTemplate, referenceNode.nextSibling); //add new list after current
+}
 
-  targetList.tasks.forEach((task) => {
-    const taskElement = document.importNode(taskTemplate.content, true);
-    const label = taskElement.querySelector("label");
+function renderTasks(list, renderLocation) {
+  list.tasks.forEach((task) => {
+    const taskTemplate = document.importNode(document.getElementById("task-template").content, true);
+    const label = taskTemplate.querySelector("label");
     label.append(task.name);
-    const tasksContainer = document.querySelector(`[data-tasks-id="${targetList.id}"]`);
-    tasksContainer.appendChild(taskElement);
+    renderLocation.appendChild(taskTemplate);
   });
 }
 
