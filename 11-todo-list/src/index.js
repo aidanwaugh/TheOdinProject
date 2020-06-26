@@ -21,12 +21,12 @@ domContainer.addEventListener("submit", (e) => {
   if (targetElement.hasAttribute("data-new-task-form")) {
     const taskDeadline = targetElement[1].value;
     console.log("id: " + targetListId);
-    //FIXME:
     const targetList = testArray.find((list) => list.listId === targetListId); //add item to selected list
     console.log(targetList);
     console.log(testArray);
     const newTaskIndex = targetList.tasks.length;
     const newTask = createTask(textInput, taskDeadline, newTaskIndex);
+    console.log(newTask.info());
     targetList.tasks.push(newTask);
     targetElement[0].value = null;
     targetElement[1].value = null;
@@ -67,7 +67,7 @@ function renderList(listName, listArrayId, referenceNode) {
   listTitle.append(listName + " " + listId);
   referenceNode.parentNode.insertBefore(listTemplate, referenceNode.nextSibling); //add new list after current
 }
-
+//TODO:
 function renderTasks(list, renderLocation) {
   list.tasks.forEach((task) => {
     const taskTemplate = document.importNode(document.getElementById("task-template").content, true);
