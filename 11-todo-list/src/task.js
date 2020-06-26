@@ -54,7 +54,7 @@ export default function createTask(input, deadline, listIndex) {
 
   function getTaskName() {
     // let tagRegex = /(?=@).\w+\s?/g;
-    return taskName;
+    return taskName[0];
   }
 
   function getDeadline() {

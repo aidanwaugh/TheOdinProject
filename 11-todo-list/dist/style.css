@@ -49,6 +49,7 @@ h2 {
 
 h3 {
   font-size: 1rem;
+  flex: 1;
 }
 
 nav {
@@ -362,7 +363,8 @@ div[data-task-deadline] {
   /* background-color: sandybrown; */
 }
 
-.list-header:hover .ui-drag {
+.list-header:hover .ui-drag,
+.list-header:hover .ui-delete {
   opacity: 1;
 }
 

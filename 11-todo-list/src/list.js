@@ -1,4 +1,4 @@
-export default function createList(name) {
+export default function createList(name, column) {
   function getListId() {
     return Date.now().toString();
   }
@@ -6,5 +6,6 @@ export default function createList(name) {
     listName: name,
     listId: getListId(),
     tasks: [],
+    listCol: column,
   };
 }
