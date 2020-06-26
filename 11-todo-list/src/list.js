@@ -5,7 +5,7 @@ export default function createList(name, column) {
   return {
     listName: name,
     listId: getListId(),
-    tasks: [],
     listCol: column,
+    tasks: [],
   };
 }

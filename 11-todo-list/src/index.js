@@ -5,10 +5,14 @@ const domContainer = document.querySelector("#container");
 
 const keyTarget = document.querySelector(`[data-doc-id]`); //gtd
 const LOCAL_STORAGE_LIST_KEY = `${keyTarget.dataset.docId}.lists`;
-
-// let gtdArray = [];
-// let gtdArray = [{ listName: "waiting", listId: "111", tasks: [] }];
+/* 
 let gtdArray = [
+  { column: "col-0", name: "GTD", lists: [{ listCol: "col-0", listName: "col-0-default", listId: "000", tasks: [] }] },
+  { column: "col-1", name: "Projects", lists: [{ listCol: "col-1", listName: "col-1-default", listId: "111", tasks: [] }] },
+  { column: "col-2", name: "SomedayMaybe", lists: [{ listCol: "col-2", listName: "col-2-default", listId: "222", tasks: [] }] },
+];
+ */
+let gtdArray = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
   { column: "col-0", name: "GTD", lists: [{ listCol: "col-0", listName: "col-0-default", listId: "000", tasks: [] }] },
   { column: "col-1", name: "Projects", lists: [{ listCol: "col-1", listName: "col-1-default", listId: "111", tasks: [] }] },
   { column: "col-2", name: "SomedayMaybe", lists: [{ listCol: "col-2", listName: "col-2-default", listId: "222", tasks: [] }] },
@@ -25,18 +29,12 @@ domContainer.addEventListener("submit", (e) => {
 
   if (targetElement.hasAttribute("data-new-task-form")) {
     const taskDeadline = targetElement[1].value;
-    // console.log("id: " + targetListId);
-    //TODO:
     let targetList = undefined;
     for (let i = 0; i < gtdArray.length; i++) {
-      // let targetList = gtdArray[i].find((list) => list.listId === targetListId);
-      // console.log(gtdArray[i].lists);
       targetList = gtdArray[i].lists.find((list) => list.listId === targetListId);
-      // console.log(targetList);
       if (targetList != undefined) break;
     }
 
-    // const targetList = gtdArray.find((list) => list.listId === targetListId); //add item to selected list
     const newTaskIndex = targetList.tasks.length;
     const newTask = createTask(textInput, taskDeadline, newTaskIndex);
     targetList.tasks.push(newTask);
@@ -51,21 +49,15 @@ domContainer.addEventListener("submit", (e) => {
     targetElement[1].value = null;
     clearElement(listTasksElement);
     // saveToLocalStorage();
-    renderTasks(targetList, listTasksElement);
+    saveAndRenderTasks(targetList, listTasksElement);
   }
 
   if (targetElement.hasAttribute("data-new-section-form")) {
     const columnId = listContainerElement.parentElement.parentElement.id;
     const targetCol = gtdArray.find((col) => col.column === columnId); //add item to selected list
     const newList = createList(textInput, columnId);
-    // console.log(newList);
-    // console.log(targetCol);
     targetCol.lists.push(newList);
-    // gtdArray.push(newList);
-    // console.log(newList.listId);
-    // console.log(newList);
-    // console.log(gtdArray);
-
+    saveToLocalStorage();
     renderList(textInput, newList.listId, listContainerElement);
     targetElement[0].value = null;
   }
@@ -90,6 +82,7 @@ function renderList(listName, listArrayId, referenceNode) {
   listTitle.append(listName + " " + listId);
   referenceNode.parentNode.insertBefore(listTemplate, referenceNode.nextSibling); //add new list after current
 }
+
 function renderTasks(list, renderLocation) {
   list.tasks.forEach((task) => {
     const taskTemplate = document.importNode(document.getElementById("task-template").content, true);
@@ -116,7 +109,6 @@ function renderDate(date) {
   todayDate.setDate(todayDate.getDate());
   let endDate = new Date();
   endDate.setDate(endDate.getDate() + 7);
-  //if dued date is within 1 week, show day name, else date
   if (taskDueDate < todayDate) {
     formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
   } else if (taskDueDate < endDate) {
@@ -133,6 +125,11 @@ function clearElement(element) {
   }
 }
 
-// function saveToLocalStorage() {
-//   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(gtdArray));
-// }
+function saveToLocalStorage() {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(gtdArray));
+}
+
+function saveAndRenderTasks(list, renderLocation) {
+  saveToLocalStorage();
+  renderTasks(list, renderLocation);
+}
