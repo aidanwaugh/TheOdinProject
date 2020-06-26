@@ -18,7 +18,7 @@ export default function createTask(input, deadline, listIndex) {
   function getTaskTag() {
     // let tagRegex = /(?=@).\w+/g;
     // let taskTag = input.match(tagRegex);
-    if (taskTag == null) return "empty";
+    if (taskTag == null) return "";
     return taskTag[0] + " ";
   }
 
@@ -59,8 +59,13 @@ export default function createTask(input, deadline, listIndex) {
 
   function getDeadline() {
     let taskDeadline = deadline;
-    if (taskDeadline === "") return "empty";
+    if (taskDeadline === "") return "";
     return taskDeadline;
+  }
+
+  function setCompleted() {
+    let completed = false;
+    return completed;
   }
 
   return {
@@ -70,9 +75,13 @@ export default function createTask(input, deadline, listIndex) {
     tag: getTaskTag(),
     priority: getTaskPriority(taskPriority),
     deadline: getDeadline(),
-    completed: false,
+    completed: setCompleted(),
     info: () => {
-      console.log(`Task = id:${setTaskId()} listIndex:${listIndex} name:${getTaskName()} tag:${getTaskTag()} priority:${getTaskPriority(taskPriority)} deadline:${getDeadline()}`);
+      console.log(
+        `Task = name:${getTaskName()} id:${setTaskId()} listIndex:${listIndex}  tag:${getTaskTag()} priority:${getTaskPriority(
+          taskPriority
+        )} deadline:${getDeadline()} completed:${setCompleted()}`
+      );
     },
   };
 }

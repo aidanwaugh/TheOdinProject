@@ -67,14 +67,38 @@ function renderList(listName, listArrayId, referenceNode) {
   listTitle.append(listName + " " + listId);
   referenceNode.parentNode.insertBefore(listTemplate, referenceNode.nextSibling); //add new list after current
 }
-//TODO:
 function renderTasks(list, renderLocation) {
   list.tasks.forEach((task) => {
     const taskTemplate = document.importNode(document.getElementById("task-template").content, true);
+    const taskDiv = document.querySelector(".task");
+    taskDiv.dataset.taskId = task.id;
+    const checkbox = taskTemplate.querySelector(`input[type="checkbox"]`);
+    checkbox.dataset.priority = task.priority;
     const label = taskTemplate.querySelector("label");
     label.append(task.name);
+    const taskTag = taskTemplate.querySelector("[data-task-tag");
+    taskTag.append(task.tag);
+    const taskDeadline = taskTemplate.querySelector("[data-task-deadline]");
+    task.deadline == "" ? taskDeadline.append(task.deadline) : taskDeadline.append(renderDate(task.deadline));
+
     renderLocation.appendChild(taskTemplate);
   });
+}
+
+function renderDate(date) {
+  let dateObj = new Date(date);
+  let dateObjUTC = dateObj.getUTCDate();
+  let formattedDate;
+  let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  //if dued date is within 1 week, show day name, else date
+  if (dateObj < endDate) {
+    formattedDate = weekday[dateObj.getUTCDay()];
+  } else {
+    formattedDate = `${dateObj.getUTCDate()}-${dateObj.getUTCMonth() + 1}-${dateObj.getUTCFullYear()}`;
+  }
+  return formattedDate;
 }
 
 function clearElement(element) {

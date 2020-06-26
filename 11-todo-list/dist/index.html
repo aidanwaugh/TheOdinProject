@@ -36,6 +36,11 @@
             <li>how to set up for gtd and to buy on separate pages</li>
           </ol>
         </li>
+        <li>Known bugs
+          <ol>
+            <li>input of task can have just priority or tag </li>
+          </ol>
+        </li>
       </ol>
     </section>
     <section class="column">
@@ -193,22 +198,24 @@
       </div>
     </div>
     <form action="" data-new-task-form>
-      <input data-new-task-input="" type="text" class="new task" placeholder="e.g. @next running p2">
+      <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
       <input type="date" name="" id="" placeholder="deadline">
       <button class="btn">Save</button>
     </form>
   </div>
+  <!-- TODO: -->
   <template id="task-template">
     <div class="task">
       <div class="ui-drag btn">&#8285;&#8285;</div>
-      <input type="checkbox" id="" data-priority="">
-      <label for="" data-task-input></label><span data-task-tag></span>
+      <input type="checkbox">
+      <label for="" data-task-input><span data-task-tag></span></label>
       <div data-task-deadline></div>
       <div class="delete-btn-container">
         <button class="ui-delete btn">⨯</button>
       </div>
     </div>
   </template>
+
   <template id="list-template">
     <div class="list-container">
       <div class="list-header">
@@ -222,7 +229,6 @@
             <div class="btn btn-create">+</div>
             <p>Add task</p>
           </div>
-          <!-- TODO: -->
           <form action="" data-new-task-form>
             <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
             <input data-new-task-deadline type="date" name="" id="">
