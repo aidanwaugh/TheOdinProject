@@ -1,3 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+  display: inline-block;
+}
+
 #content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,4 +30,10 @@ div[data-col-id='col-1'] {
 #content div div div {
   border: 1px solid orange;
   color: orange;
+}
+
+.new-task-prompt {
+  p {
+    display: inline-block;
+  }
 }

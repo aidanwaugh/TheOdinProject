@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="main.js" defer></script>
-  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js" defer></script>
+  <link rel="stylesheet" href="/dist/style.css">
   <title>Document</title>
 </head>
 
@@ -13,6 +13,50 @@
   <div id="content">
 
   </div>
+
+  <template id="task-template">
+    <div class="task">
+      <input type="checkbox">
+      <label for="" data-task-input><span data-task-tag></span></label>
+      <span data-task-deadline></span>
+      <button class="ui-delete btn">⨯</button>
+    </div>
+  </template>
+
+  <template id="list-template">
+    <div class="list-container">
+      <div class="list-header">
+        <h3 data-list-header></h3><span data-list-task-count></span>
+        <button class="ui-delete btn">⨯</button>
+      </div>
+      <div class="list-body">
+        <div class="tasks" data-tasks>
+        </div>
+        <div class="new-task-creator">
+          <div class="new-task-prompt">
+            <span class="btn btn-create">+</span>
+            <p>Add task</p>
+          </div>
+          <form action="" data-new-task-form>
+            <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
+            <input data-new-task-deadline type="date" name="" id="">
+            <button class="btn">Add</button>
+          </form>
+        </div>
+        <div class="new-sub-list-creator">
+          <div class="">
+            <button class="add-sub-list-btn btn">Add Section</button>
+          </div>
+          <div>
+            <form action="" data-new-section-form>
+              <input data-new-sub-list-input="" type="text" placeholder="e.g. waiting for">
+              <button class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 
 </body>
 
