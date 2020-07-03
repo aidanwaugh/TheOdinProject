@@ -1,13 +1,6 @@
 export function createTask(inputValue, listId) {
   let input = inputValue;
   let targetList = findTargetList(listId);
-  //select which list that task is going in
-  // for (let i = 0; i < todoData.length; i++) {
-  //   targetList = todoData[i].lists.find((list) => list.id == listId);
-  //   if (targetList != undefined) {
-  //     break;
-  //   }
-  // }
 
   const indexRegex = /\d+\)/g;
   let taskIndex = input.match(indexRegex);
@@ -43,6 +36,18 @@ export function createTask(inputValue, listId) {
 
   return { index: taskIndex, name: taskName, tag: taskTag, priority: taskPriority, deadline: '', completed: '' };
 }
+/* ------------------------------------------------ */
+
+export function createList(inputValue, currentListId) {
+  const input = inputValue;
+  const targetList = findTargetList(currentListId);
+  const targetListIndex = targetList.index + 1;
+  const newListId = Date.now();
+
+  return { index: targetListIndex, name: input, id: newListId, tasks: [] };
+}
+
+/* ------------------------------------------------ */
 
 export let todoData = [
   {
@@ -113,4 +118,20 @@ export const addTask = (newTask, listId) => {
   increaseIndexValues(newTask.index, targetList.tasks);
   targetList.tasks.push(newTask);
   sortByIndex(targetList.tasks);
+};
+
+export const addList = (newList, currentListId, parentColumn) => {
+  let targetList = findTargetList(currentListId);
+  let targetColumn;
+  for (let i = 0; i < todoData.length; i++) {
+    if (todoData[i].columnId == parentColumn) {
+      targetColumn = todoData[i];
+      break;
+    }
+  }
+
+  console.log(targetColumn);
+  increaseIndexValues(newList.index, targetColumn.lists);
+  targetColumn.lists.push(newList);
+  sortByIndex(targetColumn.lists);
 };
