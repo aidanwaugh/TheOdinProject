@@ -27,6 +27,13 @@ export const renderTasks = (listId, tasksArray) => {
     taskDiv.dataset.taskIndex = task.index;
     const label = taskTemplate.querySelector('label');
     label.append(task.name);
+    if (task.complete == true) taskDiv.classList.add('complete');
+
+    const tagElement = taskTemplate.querySelector('[data-task-tag]');
+    if (task.tag !== '') tagElement.innerText = task.tag + ' ';
+    const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
+    if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
+
     taskLocation.appendChild(taskTemplate);
   });
 };
@@ -70,12 +77,38 @@ export const renderPage = (items) => {
         const taskTemplate = document.importNode(document.querySelector(uiSelectors.taskTemplate).content, true);
         const taskLocation = listElement.querySelector(uiSelectors.listTaskRenderLocation);
         const label = taskTemplate.querySelector('label');
+        const taskDiv = taskTemplate.querySelector('div');
         label.append(task.name);
+        if (task.complete == true) taskDiv.classList.add('complete');
+        const tagElement = taskTemplate.querySelector('[data-task-tag]');
+        if (task.tag !== '') tagElement.innerText = task.tag + ' ';
+        const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
+        if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
+        //
         taskLocation.appendChild(taskTemplate);
       });
       columnElement.appendChild(listElement);
     });
   });
+};
+
+const renderDeadline = (deadline) => {
+  let taskDueDate = new Date(deadline);
+  // let taskDueDateUTC = taskDueDate.getUTCDate();
+  let formattedDate;
+  let weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  let todayDate = new Date();
+  todayDate.setDate(todayDate.getDate());
+  let endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  if (taskDueDate < todayDate) {
+    formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
+  } else if (taskDueDate < endDate) {
+    formattedDate = weekday[taskDueDate.getUTCDay()];
+  } else {
+    formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
+  }
+  return formattedDate;
 };
 
 export const getTaskInput = (listContainerId) => {

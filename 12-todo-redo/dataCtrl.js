@@ -16,7 +16,9 @@ export function createTask(inputValue, deadlineValue, listId) {
 
   const tagRegex = /@\S+/g;
   let taskTag = input.match(tagRegex);
-  if (taskTag !== null) {
+  if (taskTag === null) {
+    taskTag = '';
+  } else if (taskTag !== null) {
     input = input.replace(tagRegex, '');
     taskTag = taskTag[0];
   }
@@ -48,7 +50,7 @@ export function createTask(inputValue, deadlineValue, listId) {
 
   let taskDeadline = deadlineValue;
 
-  return { index: taskIndex, name: taskName, tag: taskTag, priority: taskPriority, deadline: taskDeadline, completed: false };
+  return { index: taskIndex, name: taskName, tag: taskTag, priority: taskPriority, deadline: taskDeadline, complete: false };
 }
 /* ------------------------------------------------ */
 
@@ -70,20 +72,32 @@ export let todoData = [
     lists: [
       {
         index: 0,
-        name: 'i0',
-        id: 100,
+        name: '',
+        id: 111,
         tasks: [
-          { index: 0, name: 'hehheeh' },
-          { index: 1, name: 'randomtask' },
+          { index: 0, name: 'Hi!', tag: '@example', priority: 4, deadline: '2020-07-04', complete: false },
+          { index: 1, name: 'Tags, priority & deadlines are optional', tag: '', priority: 4, deadline: '', complete: false },
+          { index: 2, name: 'use @ for tags', tag: '@tag', priority: 4, deadline: '', complete: false },
+          { index: 3, name: 'Set priority with P1-4 [lowercase p]', tag: '', priority: 4, deadline: '', complete: false },
+          { index: 4, name: 'Set task position with #)', tag: '', priority: 4, deadline: '', complete: false },
+          { index: 5, name: 'Click checkbox or text to complete', tag: '', priority: 4, deadline: '', complete: true },
         ],
       },
-      { index: 1, name: 'i1', id: 101, tasks: [{ index: 0, name: 'brh' }] },
+      {
+        index: 1,
+        name: 'Future Addons',
+        id: 1593802129857,
+        tasks: [
+          { index: 0, name: 'dbl click tasks to edit', tag: '', priority: 1, deadline: '', complete: false },
+          { index: 1, name: 'btn to clear all completed tasks', tag: '', priority: 4, deadline: '', complete: false },
+        ],
+      },
     ],
   },
   {
     columnId: 'col-1',
     columnName: 'col1name',
-    lists: [{ index: 0, name: 'cnter row here', id: 111, tasks: [{ index: 0, name: 'make cake' }] }],
+    lists: [{ index: 0, name: '', id: 222, tasks: [] }],
   },
   {
     columnId: 'col-2',
@@ -91,13 +105,9 @@ export let todoData = [
     lists: [
       {
         index: 0,
-        name: 'last row',
-        id: 222,
-        tasks: [
-          { index: 0, name: 'running' },
-          { index: 1, name: 'shoes' },
-          { index: 2, name: 'stretch' },
-        ],
+        name: '',
+        id: 333,
+        tasks: [],
       },
     ],
   },
@@ -149,32 +159,34 @@ export const deleteTask = (taskIndexString, listContainerId) => {
   console.log(targetListTasks);
 };
 
-export const deleteList = (listContainerId, parentColumnName) => {
-  let columnLists;
-  for (let i = 0; i < todoData.length; i++) {
-    if (todoData[i].columnId == parentColumnName) {
-      columnLists = todoData[i].lists;
-      break;
-    }
-  }
-  let targetListIndex = findTargetList(listContainerId).index;
-  columnLists.splice(targetListIndex, 1);
-  console.log(columnLists);
-  decreaseIndexValues(targetListIndex, columnLists);
+export const toggleTaskComplete = (taskIndexString, listContainerId) => {
+  const taskIndex = parseInt(taskIndexString);
+  let targetListTasks = findTargetList(listContainerId).tasks;
+  targetListTasks[taskIndex].complete == false
+    ? (targetListTasks[taskIndex].complete = true)
+    : (targetListTasks[taskIndex].complete = false);
+  console.log(targetListTasks);
 };
 
-export const addList = (newList, currentListId, parentColumn) => {
-  //FIXME: delete?
-  let targetList = findTargetList(currentListId);
-  let targetColumn; //TODO: make into function
+const findTargetColumn = (columnName) => {
   for (let i = 0; i < todoData.length; i++) {
-    if (todoData[i].columnId == parentColumn) {
-      targetColumn = todoData[i];
-      break;
+    if (todoData[i].columnId == columnName) {
+      return todoData[i];
     }
   }
+};
 
-  console.log(targetColumn);
+export const deleteList = (listContainerId, parentColumnName) => {
+  const columnLists = findTargetColumn(parentColumnName).lists;
+  let targetListIndex = findTargetList(listContainerId).index;
+  columnLists.splice(targetListIndex, 1);
+  decreaseIndexValues(targetListIndex, columnLists);
+  console.log(columnLists);
+};
+
+export const addList = (newList, parentColumn) => {
+  let targetColumn = findTargetColumn(parentColumn);
+  // console.log(targetColumn);
   increaseIndexValues(newList.index, targetColumn.lists);
   targetColumn.lists.push(newList);
   sortByIndex(targetColumn.lists);

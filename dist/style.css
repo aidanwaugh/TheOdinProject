@@ -39,3 +39,8 @@ div[data-col-id='col-1'] {
 .new-task-prompt p {
   display: inline-block;
 }
+
+.complete label {
+  color: grey;
+  text-decoration: line-through;
+}

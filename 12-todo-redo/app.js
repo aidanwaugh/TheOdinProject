@@ -33,6 +33,11 @@ const loadEventListeners = () => {
       if (e.target.dataset.listDelete == 'btn') {
         deleteListSubmit(listContainerId);
       }
+
+      if (e.target.dataset.task == 'checkbox' || e.target.dataset.task == 'label') {
+        const taskIndex = e.target.parentElement.dataset.taskIndex;
+        toggleTaskCompleteSubmit(taskIndex, listContainerId);
+      }
     });
   });
 };
@@ -46,6 +51,7 @@ const newTaskSubmit = (listContainerId) => {
   dataCtrl.addTask(newTask, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
   uiCtrl.clearInput(listContainerId);
+  // console.log(dataCtrl.todoData);
 };
 
 const deleteTaskSubmit = (deletedTask, listContainerId) => {
@@ -59,12 +65,11 @@ const newListSubmit = (listContainerId) => {
   const parentColumn = uiCtrl.getParentColumn(listContainerId);
   console.log(parentColumn);
 
-  //TODO:
   const input = uiCtrl.getListInput(listContainerId, parentColumn);
   if (input === '' || input === null) return;
   const newList = dataCtrl.createList(input, listContainerId);
   console.log(newList);
-  dataCtrl.addList(newList, listContainerId, parentColumn);
+  dataCtrl.addList(newList, parentColumn);
   uiCtrl.renderList(listContainerId, newList);
   loadEventListeners();
   uiCtrl.clearInput(listContainerId);
@@ -72,9 +77,16 @@ const newListSubmit = (listContainerId) => {
 
 const deleteListSubmit = (listContainerId) => {
   const parentColumn = uiCtrl.getParentColumn(listContainerId);
-  console.log(parentColumn);
+  // console.log(parentColumn);
   dataCtrl.deleteList(listContainerId, parentColumn);
   init();
+};
+
+//TODO:
+const toggleTaskCompleteSubmit = (taskIndex, listContainerId) => {
+  // console.log(taskIndex);
+  dataCtrl.toggleTaskComplete(taskIndex, listContainerId);
+  uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
 };
 
 const init = () => {

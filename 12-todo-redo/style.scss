@@ -38,3 +38,10 @@ div[data-col-id='col-1'] {
     display: inline-block;
   }
 }
+
+.complete {
+  label {
+    color: grey;
+    text-decoration: line-through;
+  }
+}
