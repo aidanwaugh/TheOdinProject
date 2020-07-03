@@ -24,7 +24,7 @@
   </template>
 
   <template id="list-template">
-    <div class="list-container">
+    <div class="list-container" data-list-container>
       <div class="list-header">
         <h3 data-list-header></h3><span data-list-task-count></span>
         <button class="ui-delete btn">⨯</button>
@@ -37,10 +37,10 @@
             <span class="btn btn-create">+</span>
             <p>Add task</p>
           </div>
-          <form action="" data-new-task-form>
-            <input data-new-task-input type="text" class="new task" placeholder="e.g. @next running p2">
-            <input data-new-task-deadline type="date" name="" id="">
-            <button class="btn">Add</button>
+          <form action="" data-new-task='form'>
+            <input data-new-task='input' type="text" class="new task" placeholder="e.g. @next running p2">
+            <input data-new-task='deadline' type="date" name="" id="">
+            <button class="btn" data-new-task='btn'>Add</button>
           </form>
         </div>
         <div class="new-sub-list-creator">
