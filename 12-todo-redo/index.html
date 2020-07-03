@@ -16,18 +16,20 @@
 
   <template id="task-template">
     <div class="task">
-      <input type="checkbox">
-      <label for="" data-task-input><span data-task-tag></span></label>
-      <span data-task-deadline></span>
-      <button class="ui-delete btn">⨯</button>
+      <input type="checkbox" data-task="checkbox">
+      <label for="" data-task="label"><span data-task="tag"></span></label>
+      <span data-task="deadline"></span>
+      <button class="ui-delete btn" data-task="delete">⨯</button>
     </div>
   </template>
+
+
 
   <template id="list-template">
     <div class="list-container" data-list-container>
       <div class="list-header">
         <h3 data-list-header></h3><span data-list-task-count></span>
-        <button class="ui-delete btn">⨯</button>
+        <button class="ui-delete btn" data-list-delete='btn'>⨯</button>
       </div>
       <div class="list-body">
         <div class="tasks" data-tasks>

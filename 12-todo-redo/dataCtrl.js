@@ -1,4 +1,4 @@
-export function createTask(inputValue, listId) {
+export function createTask(inputValue, deadlineValue, listId) {
   let input = inputValue;
   let targetList = findTargetList(listId);
 
@@ -30,11 +30,25 @@ export function createTask(inputValue, listId) {
     input = input.replace(tagPriority, '');
   }
 
-  const spaceRegex = /\S.+\S/g;
-  let taskName = input.match(spaceRegex);
-  taskName = taskName[0];
+  const firstSpaceRegex = /^\s?/g;
+  let tempName = input.match(firstSpaceRegex);
+  if (tempName == null) {
+    tempName = input;
+  } else {
+    tempName = input.replace(firstSpaceRegex, '');
+  }
+  const lastSpaceRegex = /\s?$/g;
+  let taskName;
+  taskName = tempName.match(lastSpaceRegex);
+  if (taskName == null) {
+    taskName = tempName;
+  } else {
+    taskName = tempName.replace(lastSpaceRegex, '');
+  }
 
-  return { index: taskIndex, name: taskName, tag: taskTag, priority: taskPriority, deadline: '', completed: '' };
+  let taskDeadline = deadlineValue;
+
+  return { index: taskIndex, name: taskName, tag: taskTag, priority: taskPriority, deadline: taskDeadline, completed: false };
 }
 /* ------------------------------------------------ */
 
@@ -57,19 +71,19 @@ export let todoData = [
       {
         index: 0,
         name: 'i0',
-        id: '000',
+        id: 100,
         tasks: [
           { index: 0, name: 'hehheeh' },
           { index: 1, name: 'randomtask' },
         ],
       },
-      { index: 1, name: 'i1', id: '001', tasks: [{ index: 0, name: 'brh' }] },
+      { index: 1, name: 'i1', id: 101, tasks: [{ index: 0, name: 'brh' }] },
     ],
   },
   {
     columnId: 'col-1',
     columnName: 'col1name',
-    lists: [{ index: 0, name: 'cnter row here', id: '111', tasks: [{ index: 0, name: 'make cake' }] }],
+    lists: [{ index: 0, name: 'cnter row here', id: 111, tasks: [{ index: 0, name: 'make cake' }] }],
   },
   {
     columnId: 'col-2',
@@ -78,7 +92,7 @@ export let todoData = [
       {
         index: 0,
         name: 'last row',
-        id: '222',
+        id: 222,
         tasks: [
           { index: 0, name: 'running' },
           { index: 1, name: 'shoes' },
@@ -99,13 +113,20 @@ export const findTargetList = (listId) => {
   }
 };
 
-const increaseIndexValues = (newTaskIndex, list) => {
-  list.forEach((task) => {
-    if (newTaskIndex <= task.index) {
-      task.index += 1;
+const increaseIndexValues = (referenceIndex, listArray) => {
+  listArray.forEach((item) => {
+    if (referenceIndex <= item.index) {
+      item.index += 1;
     }
   });
-  console.log(list);
+};
+
+const decreaseIndexValues = (referenceIndex, listArray) => {
+  listArray.forEach((item) => {
+    if (referenceIndex < item.index) {
+      item.index -= 1;
+    }
+  });
 };
 
 const sortByIndex = (list) => {
@@ -120,9 +141,32 @@ export const addTask = (newTask, listId) => {
   sortByIndex(targetList.tasks);
 };
 
+export const deleteTask = (taskIndexString, listContainerId) => {
+  const taskIndex = parseInt(taskIndexString);
+  let targetListTasks = findTargetList(listContainerId).tasks;
+  targetListTasks.splice(taskIndex, 1);
+  decreaseIndexValues(taskIndex, targetListTasks);
+  console.log(targetListTasks);
+};
+
+export const deleteList = (listContainerId, parentColumnName) => {
+  let columnLists;
+  for (let i = 0; i < todoData.length; i++) {
+    if (todoData[i].columnId == parentColumnName) {
+      columnLists = todoData[i].lists;
+      break;
+    }
+  }
+  let targetListIndex = findTargetList(listContainerId).index;
+  columnLists.splice(targetListIndex, 1);
+  console.log(columnLists);
+  decreaseIndexValues(targetListIndex, columnLists);
+};
+
 export const addList = (newList, currentListId, parentColumn) => {
+  //FIXME: delete?
   let targetList = findTargetList(currentListId);
-  let targetColumn;
+  let targetColumn; //TODO: make into function
   for (let i = 0; i < todoData.length; i++) {
     if (todoData[i].columnId == parentColumn) {
       targetColumn = todoData[i];
