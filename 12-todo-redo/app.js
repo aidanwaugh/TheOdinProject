@@ -51,6 +51,8 @@ const newTaskSubmit = (listContainerId) => {
   dataCtrl.addTask(newTask, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
   uiCtrl.clearInput(listContainerId);
+
+  storageCtrl.saveToLocalStorage(dataCtrl.todoData);
   // console.log(dataCtrl.todoData);
 };
 
@@ -58,6 +60,7 @@ const deleteTaskSubmit = (deletedTask, listContainerId) => {
   const taskIndex = deletedTask.dataset.taskIndex;
   dataCtrl.deleteTask(taskIndex, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
+  storageCtrl.saveToLocalStorage(dataCtrl.todoData);
 };
 
 const newListSubmit = (listContainerId) => {
@@ -73,24 +76,28 @@ const newListSubmit = (listContainerId) => {
   uiCtrl.renderList(listContainerId, newList);
   loadEventListeners();
   uiCtrl.clearInput(listContainerId);
+  storageCtrl.saveToLocalStorage(dataCtrl.todoData);
 };
 
 const deleteListSubmit = (listContainerId) => {
   const parentColumn = uiCtrl.getParentColumn(listContainerId);
   // console.log(parentColumn);
   dataCtrl.deleteList(listContainerId, parentColumn);
+  storageCtrl.saveToLocalStorage(dataCtrl.todoData);
   init();
 };
 
-//TODO:
 const toggleTaskCompleteSubmit = (taskIndex, listContainerId) => {
   // console.log(taskIndex);
   dataCtrl.toggleTaskComplete(taskIndex, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
+  storageCtrl.saveToLocalStorage(dataCtrl.todoData);
 };
 
 const init = () => {
   const items = dataCtrl.todoData;
+  // const items = storageCtrl.getItemsFromStorage();
+  console.log(items);
   uiCtrl.renderPage(items);
   loadEventListeners();
 };

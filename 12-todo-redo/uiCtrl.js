@@ -33,7 +33,8 @@ export const renderTasks = (listId, tasksArray) => {
     if (task.tag !== '') tagElement.innerText = task.tag + ' ';
     const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
     if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
-
+    const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
+    checkElement.classList.add(`p${task.priority}`);
     taskLocation.appendChild(taskTemplate);
   });
 };
@@ -84,6 +85,8 @@ export const renderPage = (items) => {
         if (task.tag !== '') tagElement.innerText = task.tag + ' ';
         const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
         if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
+        const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
+        checkElement.classList.add(`p${task.priority}`);
         //
         taskLocation.appendChild(taskTemplate);
       });
