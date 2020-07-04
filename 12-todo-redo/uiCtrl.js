@@ -25,6 +25,7 @@ export const renderTasks = (listId, tasksArray) => {
     const taskLocation = listElement.querySelector(uiSelectors.listTaskRenderLocation);
     const taskDiv = taskTemplate.querySelector('div');
     taskDiv.dataset.taskIndex = task.index;
+
     const label = taskTemplate.querySelector('label');
     label.append(task.name);
     if (task.complete == true) taskDiv.classList.add('complete');
@@ -34,6 +35,7 @@ export const renderTasks = (listId, tasksArray) => {
     const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
     if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
     const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
+    checkElement.checked = task.complete;
     checkElement.classList.add(`p${task.priority}`);
     taskLocation.appendChild(taskTemplate);
   });
@@ -44,7 +46,7 @@ export const renderList = (listId, newList) => {
   console.log(listElement);
   const listTemplate = document.importNode(document.querySelector(uiSelectors.listTemplate).content, true);
   const listTitle = listTemplate.querySelector(uiSelectors.listHeader);
-  listTitle.innerText = newList.name + ' ' + newList.id;
+  listTitle.innerText = newList.name;
   listTemplate.querySelector(uiSelectors.listContainer).dataset.listContainer = newList.id;
   listElement.parentNode.insertBefore(listTemplate, listElement.nextSibling); //add new list behind current list
 };
@@ -63,14 +65,16 @@ export const renderPage = (items) => {
   items.forEach((col) => {
     //column render
     let columnElement = document.createElement('div');
-    columnElement.innerText = col.columnName;
     columnElement.dataset.colId = col.columnId;
+    let columnHeader = document.createElement('h2');
+    columnHeader.innerText = col.columnName;
+    columnElement.appendChild(columnHeader);
     contentElement.appendChild(columnElement);
     //list render
     col.lists.forEach((list) => {
       const listElement = document.importNode(document.querySelector(uiSelectors.listTemplate).content, true);
       const listTitle = listElement.querySelector(uiSelectors.listHeader);
-      listTitle.innerText = list.name + ' ' + list.index;
+      listTitle.innerText = list.name;
       listElement.querySelector(uiSelectors.listContainer).dataset.listContainer = list.id;
       //task render
       list.tasks.forEach((task) => {
@@ -79,6 +83,8 @@ export const renderPage = (items) => {
         const taskLocation = listElement.querySelector(uiSelectors.listTaskRenderLocation);
         const label = taskTemplate.querySelector('label');
         const taskDiv = taskTemplate.querySelector('div');
+        taskDiv.dataset.taskIndex = task.index;
+
         label.append(task.name);
         if (task.complete == true) taskDiv.classList.add('complete');
         const tagElement = taskTemplate.querySelector('[data-task-tag]');
@@ -86,6 +92,8 @@ export const renderPage = (items) => {
         const deadlineElement = taskTemplate.querySelector('[data-task-deadline]');
         if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
         const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
+        checkElement.checked = task.complete;
+
         checkElement.classList.add(`p${task.priority}`);
         //
         taskLocation.appendChild(taskTemplate);
@@ -93,6 +101,28 @@ export const renderPage = (items) => {
       columnElement.appendChild(listElement);
     });
   });
+};
+
+export const toggleNewTaskInput = (listContainerId) => {
+  const listElement = document.querySelector(`[data-list-container='${listContainerId}']`);
+  const promptElement = listElement.querySelector('[data-new-task="prompt"]');
+  promptElement.classList.toggle('hide');
+  const formElement = listElement.querySelector('[data-new-task="form"]');
+  formElement.classList.toggle('hide');
+  const input = listElement.querySelector('input[type="text"]');
+  input.focus();
+  console.log(listElement);
+};
+
+export const toggleAddListInput = (listContainerId) => {
+  const listElement = document.querySelector(`[data-list-container='${listContainerId}']`);
+  const hoverElement = listElement.querySelector('[data-new-list="hover"]');
+  hoverElement.classList.toggle('hide');
+  const formElement = listElement.querySelector('[data-new-list="form"]');
+  formElement.classList.toggle('hide');
+  const input = listElement.querySelector('input[type="text"]');
+  input.focus();
+  console.log(listElement);
 };
 
 const renderDeadline = (deadline) => {

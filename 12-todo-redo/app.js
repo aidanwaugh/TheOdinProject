@@ -14,7 +14,7 @@ const loadEventListeners = () => {
     list.addEventListener('click', (e) => {
       const listContainerId = list.dataset.listContainer;
       //console.log(list.dataset.listContainer); //print out id
-      // console.log(e.target);
+      console.log(e.target);
       // console.log(e.target.dataset);
 
       if (e.target.dataset.newTask == 'btn') {
@@ -34,9 +34,22 @@ const loadEventListeners = () => {
         deleteListSubmit(listContainerId);
       }
 
-      if (e.target.dataset.task == 'checkbox' || e.target.dataset.task == 'label') {
-        const taskIndex = e.target.parentElement.dataset.taskIndex;
+      if (e.target.dataset.task == 'checkbox' || e.target.dataset.task == 'label' || e.target.dataset.taskTag == '') {
+        let taskIndex;
+        if (e.target.dataset.taskTag == '') {
+          taskIndex = e.target.parentElement.parentElement.dataset.taskIndex;
+        } else {
+          taskIndex = e.target.parentElement.dataset.taskIndex;
+        }
         toggleTaskCompleteSubmit(taskIndex, listContainerId);
+      }
+
+      if (e.target.dataset.newTask == 'prompt' || e.target.dataset.newTask == 'span' || e.target.dataset.newTask == 'p') {
+        toggleNewTaskInputClick(listContainerId);
+      }
+
+      if (e.target.dataset.newList == 'hover') {
+        toggleAddListInputClick(listContainerId);
       }
     });
   });
@@ -51,7 +64,7 @@ const newTaskSubmit = (listContainerId) => {
   dataCtrl.addTask(newTask, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
   uiCtrl.clearInput(listContainerId);
-
+  uiCtrl.toggleNewTaskInput(listContainerId);
   storageCtrl.saveToLocalStorage(dataCtrl.todoData);
   // console.log(dataCtrl.todoData);
 };
@@ -76,6 +89,7 @@ const newListSubmit = (listContainerId) => {
   uiCtrl.renderList(listContainerId, newList);
   loadEventListeners();
   uiCtrl.clearInput(listContainerId);
+  uiCtrl.toggleAddListInput(listContainerId);
   storageCtrl.saveToLocalStorage(dataCtrl.todoData);
 };
 
@@ -92,6 +106,14 @@ const toggleTaskCompleteSubmit = (taskIndex, listContainerId) => {
   dataCtrl.toggleTaskComplete(taskIndex, listContainerId);
   uiCtrl.renderTasks(listContainerId, dataCtrl.findTargetList(listContainerId).tasks);
   storageCtrl.saveToLocalStorage(dataCtrl.todoData);
+};
+
+const toggleNewTaskInputClick = (listContainerId) => {
+  uiCtrl.toggleNewTaskInput(listContainerId);
+};
+
+const toggleAddListInputClick = (listContainerId) => {
+  uiCtrl.toggleAddListInput(listContainerId);
 };
 
 const init = () => {
