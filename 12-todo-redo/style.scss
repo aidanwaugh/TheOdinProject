@@ -54,6 +54,10 @@ button {
   }
 }
 
+.transparent {
+  opacity: 0;
+}
+
 nav {
   padding: 0 $desktop-margin;
   display: flex;
@@ -66,6 +70,35 @@ nav {
 
   .logo {
     text-transform: up;
+  }
+
+  .nav-edit-form {
+    margin-left: 2rem;
+    min-width: 5rem;
+    flex: 2;
+    height: 80%;
+
+    .nav-edit-input {
+      width: 50%;
+      height: 100%;
+    }
+    input[type='date'] {
+      height: 100%;
+    }
+    button {
+      width: 2.5rem;
+      color: color(bg);
+      font-size: 0.8rem;
+      font-weight: 500;
+      background-color: color(accent);
+      height: 100%;
+      &:hover {
+        background-color: color(bg);
+        color: color(accent);
+        border: 1px solid color(accent);
+        transition: 0.2s;
+      }
+    }
   }
   .nav-main {
     flex: 1;

@@ -37,6 +37,9 @@ export const renderTasks = (listId, tasksArray) => {
     const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
     checkElement.checked = task.complete;
     checkElement.classList.add(`p${task.priority}`);
+    //add task index to delete button for easy reference
+    const deleteBtn = taskTemplate.querySelector('[data-task="delete"]');
+    deleteBtn.append(`${task.index + 1}`);
     taskLocation.appendChild(taskTemplate);
   });
 };
@@ -57,6 +60,12 @@ export const clearInput = (listId) => {
   inputElements.forEach((input) => {
     input.value = '';
   });
+};
+
+export const clearEditInput = () => {
+  document.querySelector('[data-nav-edit-input]').value = '';
+  document.querySelector('[data-nav-edit-deadline]').value = '';
+  document.querySelector('[data-nav-edit-form]').classList.add('transparent');
 };
 
 export const renderPage = (items) => {
@@ -93,14 +102,26 @@ export const renderPage = (items) => {
         if (task.deadline !== '') deadlineElement.innerText = renderDeadline(task.deadline);
         const checkElement = taskTemplate.querySelector('input[type="checkbox"]');
         checkElement.checked = task.complete;
-
         checkElement.classList.add(`p${task.priority}`);
+        //add task index to delete button for easy reference
+        const deleteBtn = taskTemplate.querySelector('[data-task="delete"]');
+        deleteBtn.append(`${task.index + 1}`);
+
         //
         taskLocation.appendChild(taskTemplate);
       });
       columnElement.appendChild(listElement);
     });
   });
+};
+
+export const setInputToTaskValue = (textInput, dateInput) => {
+  document.querySelector('[data-nav-edit-form]').classList.remove('transparent');
+
+  let navInputElement = document.querySelector('[data-nav-edit-input]');
+  const navDeadlineElement = document.querySelector('[data-nav-edit-deadline]');
+  navInputElement.value = textInput;
+  navDeadlineElement.value = dateInput;
 };
 
 export const toggleNewTaskInput = (listContainerId) => {
@@ -134,13 +155,28 @@ const renderDeadline = (deadline) => {
   todayDate.setDate(todayDate.getDate());
   let endDate = new Date();
   endDate.setDate(endDate.getDate() + 7);
-  if (taskDueDate < todayDate) {
-    formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
+  let tomorrowDate = new Date();
+  tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+  let todayDateCheck = new Date();
+  todayDateCheck.setDate(todayDateCheck.getDate());
+  // console.log(todayDateCheck.getUTCMonth() + ' ' + taskDueDate.getUTCMonth());
+  if (taskDueDate.getUTCDate() < todayDate.getUTCDate()) {
+    // formattedDate = 'past';
+    formattedDate = `\u2297 ${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
+  } else if (
+    todayDateCheck.getUTCDay() == taskDueDate.getUTCDay() &&
+    todayDateCheck.getUTCMonth() == taskDueDate.getUTCMonth() &&
+    todayDateCheck.getUTCFullYear() == taskDueDate.getUTCFullYear()
+  ) {
+    formattedDate = 'Today';
+  } else if (taskDueDate < tomorrowDate) {
+    formattedDate = 'Tomorrow';
   } else if (taskDueDate < endDate) {
     formattedDate = weekday[taskDueDate.getUTCDay()];
   } else {
     formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
   }
+
   return formattedDate;
 };
 
@@ -149,6 +185,13 @@ export const getTaskInput = (listContainerId) => {
   return {
     taskInput: targetList.querySelector(uiSelectors.newTaskInput).value,
     taskDeadline: targetList.querySelector(uiSelectors.newTaskDeadline).value,
+  };
+};
+
+export const getEditedTaskInput = () => {
+  return {
+    taskInput: document.querySelector('[data-nav-edit-input]').value,
+    taskDeadline: document.querySelector('[data-nav-edit-deadline]').value,
   };
 };
 

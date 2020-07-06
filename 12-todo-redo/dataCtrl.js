@@ -1,5 +1,8 @@
 import * as storageCtrl from './storageCtrl.js';
 
+let trackedTaskIndex;
+let trackedListContainerId;
+
 export function createTask(inputValue, deadlineValue, listId) {
   let input = inputValue;
   let targetList = findTargetList(listId);
@@ -34,14 +37,14 @@ export function createTask(inputValue, deadlineValue, listId) {
     input = input.replace(tagPriority, '');
   }
 
-  const firstSpaceRegex = /^\s?/g;
+  const firstSpaceRegex = /^\s+/g;
   let tempName = input.match(firstSpaceRegex);
   if (tempName == null) {
     tempName = input;
   } else {
     tempName = input.replace(firstSpaceRegex, '');
   }
-  const lastSpaceRegex = /\s?$/g;
+  const lastSpaceRegex = /\s+$/g;
   let taskName;
   taskName = tempName.match(lastSpaceRegex);
   if (taskName == null) {
@@ -106,6 +109,27 @@ export const addTask = (newTask, listId) => {
   increaseIndexValues(newTask.index, targetList.tasks);
   targetList.tasks.push(newTask);
   sortByIndex(targetList.tasks);
+};
+
+export const getTaskValue = (taskIndexString, listContainerId) => {
+  let targetListTasks = findTargetList(listContainerId).tasks;
+  const taskIndex = parseInt(taskIndexString);
+  let editString = `${targetListTasks[taskIndex].tag}  ${targetListTasks[taskIndex].name} p${targetListTasks[taskIndex].priority} ${
+    targetListTasks[taskIndex].index + 1
+  }) `;
+  let editDate = targetListTasks[taskIndex].deadline;
+  // console.log(editDate);
+  return { string: editString, date: editDate };
+};
+
+export const setEditedTask = (taskIndex, listContainerId) => {
+  // console.log('current task ' + ' ' + taskIndex + ' ' + listContainerId);
+  trackedTaskIndex = taskIndex;
+  trackedListContainerId = listContainerId;
+};
+
+export const getEditedTask = () => {
+  return { taskIndex: trackedTaskIndex, containerId: trackedListContainerId };
 };
 
 export const deleteTask = (taskIndexString, listContainerId) => {

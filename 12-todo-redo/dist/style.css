@@ -26,6 +26,10 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+.transparent {
+  opacity: 0;
+}
+
 nav {
   padding: 0 9vw;
   display: -webkit-box;
@@ -42,6 +46,41 @@ nav {
 
 nav .logo {
   text-transform: up;
+}
+
+nav .nav-edit-form {
+  margin-left: 2rem;
+  min-width: 5rem;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  height: 80%;
+}
+
+nav .nav-edit-form .nav-edit-input {
+  width: 50%;
+  height: 100%;
+}
+
+nav .nav-edit-form input[type='date'] {
+  height: 100%;
+}
+
+nav .nav-edit-form button {
+  width: 2.5rem;
+  color: #f5f5f5;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #2187ff;
+  height: 100%;
+}
+
+nav .nav-edit-form button:hover {
+  background-color: #f5f5f5;
+  color: #2187ff;
+  border: 1px solid #2187ff;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 nav .nav-main {
