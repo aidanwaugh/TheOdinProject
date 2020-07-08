@@ -33,8 +33,16 @@ export const getItemsFromStorage = () => {
           name: 'Future Addons',
           id: 1593802129857,
           tasks: [
-            { index: 0, name: 'button to clear all completed tasks', tag: '', priority: 4, deadline: '', complete: false },
+            { index: 0, name: 'button to clear all completed tasks', tag: '', priority: 3, deadline: '', complete: false },
             { index: 1, name: 'only use uiSelectors, no direct reference', tag: '', priority: 4, deadline: '', complete: false },
+            {
+              index: 2,
+              name: 'BUG-Low editing 2nd last list item will position item to end of list',
+              tag: '',
+              priority: 4,
+              deadline: '',
+              complete: false,
+            },
           ],
         },
       ],

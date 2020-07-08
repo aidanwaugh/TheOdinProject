@@ -147,36 +147,28 @@ export const toggleAddListInput = (listContainerId) => {
 };
 
 const renderDeadline = (deadline) => {
-  let taskDueDate = new Date(deadline);
-  // let taskDueDateUTC = taskDueDate.getUTCDate();
+  let dueDate = new Date(deadline);
+  dueDate = new Date(dueDate.getUTCFullYear(), dueDate.getUTCMonth(), dueDate.getUTCDate());
+  let todayDate = new Date();
+  todayDate = new Date(todayDate.getUTCFullYear(), todayDate.getUTCMonth(), todayDate.getUTCDate());
+  let tomorrowDate = new Date();
+  tomorrowDate = new Date(todayDate.getUTCFullYear(), todayDate.getUTCMonth(), todayDate.getUTCDate() + 1);
+  let weekDate = new Date();
+  weekDate = new Date(todayDate.getUTCFullYear(), todayDate.getUTCMonth(), todayDate.getUTCDate() + 7);
   let formattedDate;
   let weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  let todayDate = new Date();
-  todayDate.setDate(todayDate.getDate());
-  let endDate = new Date();
-  endDate.setDate(endDate.getDate() + 7);
-  let tomorrowDate = new Date();
-  tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-  let todayDateCheck = new Date();
-  todayDateCheck.setDate(todayDateCheck.getDate());
-  // console.log(todayDateCheck.getUTCMonth() + ' ' + taskDueDate.getUTCMonth());
-  if (taskDueDate.getUTCDate() < todayDate.getUTCDate()) {
-    // formattedDate = 'past';
-    formattedDate = `\u2297 ${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
-  } else if (
-    todayDateCheck.getUTCDay() == taskDueDate.getUTCDay() &&
-    todayDateCheck.getUTCMonth() == taskDueDate.getUTCMonth() &&
-    todayDateCheck.getUTCFullYear() == taskDueDate.getUTCFullYear()
-  ) {
-    formattedDate = 'Today';
-  } else if (taskDueDate < tomorrowDate) {
-    formattedDate = 'Tomorrow';
-  } else if (taskDueDate < endDate) {
-    formattedDate = weekday[taskDueDate.getUTCDay()];
-  } else {
-    formattedDate = `${taskDueDate.getUTCDate()}-${taskDueDate.getUTCMonth() + 1}-${taskDueDate.getUTCFullYear()}`;
-  }
 
+  if (todayDate > dueDate) {
+    formattedDate = `\u2297 ${dueDate.getDate()}-${dueDate.getMonth() + 1}-${dueDate.getFullYear()}`;
+  } else if (todayDate.toDateString() == dueDate.toDateString()) {
+    formattedDate = 'Today';
+  } else if (tomorrowDate.toDateString() == dueDate.toDateString()) {
+    formattedDate = 'Tomorrow';
+  } else if (weekDate > dueDate) {
+    formattedDate = weekday[dueDate.getDay()];
+  } else if (weekDate <= dueDate) {
+    formattedDate = `${dueDate.getDate()}-${dueDate.getMonth() + 1}-${dueDate.getFullYear()}`;
+  }
   return formattedDate;
 };
 
